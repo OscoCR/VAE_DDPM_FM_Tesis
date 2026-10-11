@@ -1,0 +1,90 @@
+\renewcommand{\baselinestretch}{1.5}
+
+\chapter{Hypothesis and Objectives}
+
+\section{Problem}
+
+La generación de imágenes sintéticas con modelos de difusión latente se ha estudiado sobre todo con conjuntos de datos grandes y diversos. En agricultura de precisión, en cambio, los datos suelen ser pocos, homogéneos (las imágenes se parecen mucho entre sí: mismo cultivo, altura de vuelo y tipo de escena, con poca variabilidad) y, cada vez más, multimodales (cada imagen combina varias fuentes de información, por ejemplo color y profundidad). Este trabajo parte de un conjunto de 4\,908 imágenes aéreas de plantaciones de piña (resolución 960$\times$544), con una variante que añade un canal de profundidad monocular estimada.
+
+Un modelo de difusión latente se entrena en dos etapas: un autoencoder variacional (VAE) comprime la imagen a un espacio latente (aquí, 4$\times$32$\times$32 para recortes de 256$\times$256) y un generador (DDPM o Flow Matching) aprende a producir latentes a partir de ruido. La calidad del espacio latente fija el techo de lo que el generador puede lograr, pero las decisiones sobre qué datos alimentan al VAE y cómo se estructura se toman hoy de forma manual y su efecto sobre la \emph{generación} no está claro. En particular, la literatura reciente señala que mejorar la reconstrucción de un VAE no implica mejorar la generación, pero esto se ha estudiado con grandes volúmenes de datos y no en un régimen de pocos datos homogéneos.
+
+El problema que aborda esta propuesta es determinar cómo la variación de los datos de entrenamiento y de la estructura del VAE afecta la calidad de las imágenes aéreas de piña generadas mediante difusión latente, y a qué costo.
+
+\section{Hypothesis}
+
+Se plantean dos hipótesis, una sobre el efecto de manipular los datos y la estructura del VAE y otra sobre el límite de esa mejora:
+
+\begin{enumerate}
+  \item \textbf{Mejora.} Aplicar tratamientos a los datos de entrenamiento del VAE (aumento, enmascarado aleatorio, selección de imágenes y modalidad, con o sin canal de profundidad) y modificar su estructura (capa variacional y pérdida adversarial con un discriminador tipo GAN) mejorará el FID y el KID de las imágenes aéreas de piña generadas con modelos de difusión (DDPM y Flow Matching), en comparación con un VAE base sin tratamientos (entrenado solo con recortes aleatorios de 256$\times$256), sobre un conjunto de datos pequeño, homogéneo y multimodal.
+  \item \textbf{Límite.} La mejora de la generación al acumular estos tratamientos y modificaciones presentará rendimientos decrecientes: existirá un punto a partir del cual aumentar la calidad de reconstrucción del VAE no reducirá significativamente el FID ni el KID.
+\end{enumerate}
+
+La primera hipótesis se refuta si ninguna combinación de tratamientos y modificaciones reduce el FID/KID de forma significativa respecto al VAE base; la segunda, si el FID/KID sigue reduciéndose significativamente en todos los escalones de la manipulación.
+
+\section{Objectives}
+
+\subsection{Main Objective}
+
+Evaluar experimentalmente el efecto de variar los datos de entrenamiento y la estructura del VAE sobre la calidad de las imágenes aéreas de piña generadas mediante difusión latente, en un régimen de pocos datos homogéneos y multimodales.
+
+\subsection{Specific Objectives}
+
+\begin{enumerate}
+  \item Implementar una línea base reproducible del pipeline VAE + generador (DDPM y Flow Matching), con una receta de entrenamiento controlada y verificada.
+  \item Comparar tratamientos de los datos de entrada del VAE: aumento, enmascarado aleatorio, selección de imágenes y modalidad (RGB y RGB con profundidad).
+  \item Comparar modificaciones estructurales del VAE: capa variacional, pérdida adversarial (GAN) y regularización.
+  \item Analizar estadísticamente, con varias semillas, la relación entre la calidad de reconstrucción del VAE y la calidad de generación (FID/KID).
+  \item Experimentar con un encoder auto-supervisado preentrenado (DINO) como espacio latente alternativo.
+  \item Elaborar un artículo con los resultados del estudio.
+\end{enumerate}
+
+\subsection{Deliverables}
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{p{0.34\textwidth}p{0.58\textwidth}}
+\hline
+\textbf{Objetivo específico} & \textbf{Entregable} \\
+\hline
+1. Línea base reproducible & Informe de auditoría del pipeline y de la receta de entrenamiento corregida; código y configuraciones. \\
+2. Efecto de los datos & Familia de VAEs entrenados con cada tratamiento de los datos; tabla comparativa de FID/KID y reconstrucción. \\
+3. Efecto de la estructura & VAEs con capa variacional, GAN y regularización; análisis de su efecto sobre la reconstrucción y la generación. \\
+4. Reconstrucción contra generación & Análisis estadístico (correlaciones, curvas, intervalos de confianza) con varias semillas. \\
+5. Espacios latentes alternativos & Prototipo con un encoder auto-supervisado (DINO) y su comparación con el VAE base. \\
+6. Artículo & Manuscrito con los resultados del estudio. \\
+\hline
+\end{tabular}
+\caption{Entregables asociados a cada objetivo específico.}
+\end{table}
+
+\section{Research questions}
+
+\begin{itemize}
+  \item \textbf{RQ1.} ¿Cómo afecta la variación de los datos de entrenamiento del VAE (tratamientos: aumento, enmascarado, selección, modalidad) a la calidad de las imágenes generadas?
+  \item \textbf{RQ2.} ¿Cómo afectan las modificaciones estructurales del VAE (capa variacional, GAN, regularización) a la calidad de las imágenes generadas?
+  \item \textbf{RQ3.} ¿Se traduce una mejor reconstrucción del VAE en una mejor generación, o existe un punto a partir del cual deja de ayudar?
+  \item \textbf{RQ4.} ¿Puede un encoder auto-supervisado preentrenado sustituir a un VAE entrenado desde cero en este régimen de datos?
+\end{itemize}
+
+\section{Scope and Limitations}
+
+\subsection{Scope}
+
+\begin{itemize}
+  \item Un único conjunto de datos de imágenes aéreas de piña (4\,908 imágenes; 3\,536 para entrenamiento, 381 para validación y 346 para prueba), con recortes de 256$\times$256.
+  \item VAE convolucional de espacio latente 4$\times$32$\times$32 y dos generadores: DDPM y Flow Matching, ambos con una U-Net convolucional sin atención.
+  \item Calidad medida con FID y KID sobre imágenes generadas y un conjunto de referencia fijo; reconstrucción medida con MSE y PSNR.
+  \item Núcleo del estudio: objetivos 1 a 4. Extensión, si el tiempo lo permite: objetivo 5.
+  \item Extensión: la validación en otros dominios con conjuntos de datos pequeños y homogéneos, como las imágenes médicas, queda como extensión del estudio y no forma parte del núcleo.
+\end{itemize}
+
+\subsection{Limitations}
+
+\begin{itemize}
+  \item No se evalúa la utilidad de las imágenes sintéticas en una tarea posterior (por ejemplo, detección); se mide solo su calidad generativa.
+  \item La profundidad es una estimación monocular relativa, no una medición de sensor.
+  \item El número de semillas por condición está acotado por el costo de cómputo (unas 28 horas de GPU por entrenamiento).
+  \item El FID se calcula con un número limitado de imágenes generadas (400), por lo que se acompaña de KID y de intervalos de confianza.
+  \item Los resultados corresponden a un cultivo y a un conjunto de datos; su generalización a otros dominios no se evalúa.
+\end{itemize}
