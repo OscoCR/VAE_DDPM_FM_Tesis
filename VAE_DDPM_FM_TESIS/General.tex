@@ -1,0 +1,231 @@
+\documentclass[12pt,a4paper,oneside]{report}
+\usepackage[english]{babel}
+\selectlanguage{english}
+\usepackage[T1]{fontenc}
+\usepackage{times}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{longtable}
+\usepackage{tabularx} % Para tablas de mas de una página
+\usepackage{booktabs} 
+
+\usepackage{nicematrix}
+
+\usepackage{verbatim}
+
+\usepackage{calc}
+\usepackage[refpages]{gloss}
+\usepackage{float}
+\usepackage{anysize}
+\usepackage{bigstrut}
+\usepackage{appendix}
+%\usepackage{lscape} 
+\usepackage{pdflscape}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{setspace}
+\usepackage{enumerate} 
+\usepackage{ragged2e}
+\usepackage[utf8]{inputenc}
+\usepackage{comment}
+\usepackage{pslatex}
+\usepackage{apacite} 
+\usepackage{fixltx2e}
+\usepackage{caption}
+\usepackage{setspace} 
+\captionsetup[table]{skip=10pt}
+\usepackage{array}
+
+%%%%%%%% Probando referencias
+%\usepackage[a4paper]{geometry}
+\usepackage[sectionbib]{natbib}
+\usepackage{chapterbib}
+
+%%%%%%%%%
+
+\usepackage{lipsum}  
+
+\usepackage{fancyhdr}
+\usepackage[hidelinks]{hyperref}
+%\usepackage[backend=biber]{biblatex}
+
+\bibliographystyle{apacite}
+
+
+
+\newcommand{\thesisTitle}{Title}
+\newcommand{\autor}{Name}
+\newcommand{\asesor}{Advisor}
+\newcommand{\thesisType}{Course}
+
+\usepackage{tocloft}
+\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
+
+
+\begin{document}
+\renewcommand{\BOthers}[1]{et al.\hbox{}}
+\renewcommand\bibname{Bibliography}
+%----------------------------------------------------------------------------------------
+%	CONFIGURACION
+%----------------------------------------------------------------------------------------
+\marginsize{3.0cm}{3.0cm}{3.0cm}{3.0cm}
+\renewcommand*{\contentsname}{Table of contents}
+\renewcommand*{\listtablename}{Table index}
+\renewcommand*{\listfigurename}{Figure index}
+\renewcommand{\baselinestretch}{1.0}
+\renewcommand{\appendixname}{Annexes}
+\renewcommand{\appendixtocname}{Annexes}
+\renewcommand{\appendixpagename}{Annexes}
+\renewcommand{\thetable}{\arabic{chapter}.\arabic{table}}
+\renewcommand*{\tablename}{Table}
+\renewcommand*{\chaptername}{Chapter}
+\renewcommand*{\thechapter}{\Roman{chapter}}
+\renewcommand{\thesection}{\arabic{chapter}.\arabic{section}}
+\renewcommand{\figurename}{Figure}
+\renewcommand{\thefigure}{\arabic{chapter}.\arabic{figure}}
+\renewcommand{\theequation}{\arabic{chapter}.\arabic{equation}}
+
+%----------------------------------------------------------------------------------------
+%	Carátula
+%----------------------------------------------------------------------------------------
+
+\begin{titlepage}
+
+\begin{center}
+{\Large \bf Instituto Tecnológico de Costa Rica}\\
+\vspace{8mm} 
+{\Large \bf Programa de Maestría en Computación\\ Escuela de Ciencias de la Computación }\\
+\vspace{1cm}
+\includegraphics[height=2.cm]{Imagenes/logo.png}
+\vspace{1cm}
+
+\Huge{\textbf{\thesisTitle}}
+\vspace{1cm} 
+
+\Large{ {\thesisType} }\\[0.7cm]
+\vspace{0.7cm} 
+\textbf{\autor} \\[3pt]  
+\vspace{1.2cm}
+\large{\textbf{Nombre Asesor}}\\
+\asesor\\
+\vspace{0.75cm}
+
+{\today}
+\end{center}
+\end{titlepage}
+
+\pagenumbering{roman}
+
+\fancypagestyle{plain}{
+\fancyhf{}
+\fancyhead[R]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+}
+%----------------------------------------------------------------------------------------
+%	Resumen
+%----------------------------------------------------------------------------------------
+\input{TFC1/abstract} %Se agrega el resumen
+ 
+
+%----------------------------------------------------------------------------------------
+%	Agradecimientos
+%----------------------------------------------------------------------------------------
+
+
+%\chapter*{\centering \large Agradecimientos}
+%\addcontentsline{toc}{chapter}{Agradecimientos}
+%\markboth{Agradecimientos}{Agradecimientos}
+
+%\justify
+%{Escribir agradecimientos aquí}\\[0.5cm]
+
+
+%----------------------------------------------------------------------------------------
+%	TABLA DE CONTENIDOS
+%---------------------------------------------------------------------------------------
+\cleardoublepage
+\addcontentsline{toc}{chapter}{\contentsname}
+\tableofcontents \newpage
+\addcontentsline{toc}{chapter}{\listfigurename}
+\listoffigures \newpage
+\addcontentsline{toc}{chapter}{\listtablename}
+\listoftables \newpage
+\makegloss
+\newpage    
+\pagenumbering{arabic}
+
+\pagestyle{plain}
+\rhead[]{\thepage}
+
+% Se agregan cada uno de los capitulos
+%----------------------------------------------------------------------------------------
+%	Capítulo 1
+%----------------------------------------------------------------------------------------
+\doublespacing
+\input{TFC1/c1}
+
+
+%----------------------------------------------------------------------------------------
+%	Capítulo 2
+%----------------------------------------------------------------------------------------
+\input{TFC1/c2}
+
+%----------------------------------------------------------------------------------------
+%	Capítulo 3
+%----------------------------------------------------------------------------------------
+
+\input{TFC1/c3}
+%-----------------
+%	Capítulo 4
+%-----------------
+
+\input{TFC1/c4}
+
+
+%-----------------
+%	Conclusiones
+%-----------------
+
+\input{TFC1/conclusions} %Se agregan las conclusiones
+
+
+%----------------------------------------------------------------------------------------
+%	BIBLIOGRAFIA
+%----------------------------------------------------------
+%------------------------------
+\newpage
+\bibliography{TFC1/biblio} %Se agrega la bibliografia
+
+
+%----------------------------------------------------------------------------------------
+%	Anexos
+%----------------------------------------------------------------------------------------
+\appendix
+
+\renewcommand{\appendixname}{ANNEXES}% annexes
+\chapter*{\appendixname}
+\addcontentsline{toc}{chapter}{ANNEX} 
+\markboth{ANNEX}{ANNEX} % encabezado
+
+ \thispagestyle{empty}
+ 
+
+
+
+\textbf{ANNEX 1} 
+
+ \textbf{ANNEX 2} 
+ 
+ \textbf{ANNEX 3} 
+ 
+
+
+ \phantomsection
+\end{document} 
+
+
