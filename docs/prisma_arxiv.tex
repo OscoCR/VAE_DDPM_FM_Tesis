@@ -1,0 +1,22 @@
+% Requiere en General.tex:  \usepackage{tikz}  y  \usetikzlibrary{positioning}
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[node distance=6mm and 14mm,
+  main/.style={draw, rounded corners, text width=6.2cm, align=left, inner sep=5pt, fill=blue!6},
+  side/.style={draw, rounded corners, text width=5.8cm, align=left, inner sep=5pt, fill=orange!10},
+  arr/.style={-{Stealth}, thick}]
+\node[main] (a) {\textbf{Identification.} Records identified through arXiv searches (6 searches, 5 research strings): $n=167$};
+\node[side, right=of a] (a2) {Duplicates removed: $n=16$};
+\node[main, below=of a] (b) {\textbf{Screening.} Records screened by title and abstract (keyword criteria): $n=151$};
+\node[side, right=of b] (b2) {Records excluded: $n=117$ (criterion 1 or 2 not met)};
+\node[main, below=of b] (c) {\textbf{Eligibility.} Records meeting criteria 1 and 2: $n=34$};
+\node[side, right=of c] (c2) {Not meeting criterion 3 nor the domain: $n=30$ (related work, mostly large datasets)};
+\node[main, below=of c] (d) {Also meeting criterion 3 or the domain: $n=4$};
+\node[side, right=of d] (d2) {Excluded after reading the abstract: $n=4$ (medical applications that use a VAE to synthesize data)};
+\node[main, below=of d, fill=green!8] (e) {\textbf{Included.} Studies meeting the three criteria in the same regime: $n=0$};
+\draw[arr] (a)--(a2); \draw[arr] (b)--(b2); \draw[arr] (c)--(c2); \draw[arr] (d)--(d2);
+\draw[arr] (a)--(b); \draw[arr] (b)--(c); \draw[arr] (c)--(d); \draw[arr] (d)--(e);
+\end{tikzpicture}
+\caption{PRISMA-style flow of the literature search on arXiv (11 October 2026). Screening was automatic, based on keyword rules over title and abstract.}
+\label{fig:prisma}
+\end{figure}

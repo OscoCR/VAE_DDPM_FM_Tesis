@@ -1,0 +1,152 @@
+arxiv_id,fecha,titulo,C1_varia_VAE_o_datos,C2_mide_generacion,C3_pocos_datos,dominio_aereo_agricola_medico,consultas,decision_automatica
+2306.04445v2,2023-06-07,Multi-modal Latent Diffusion,1,1,0,0,Q4,relacionado
+2307.09781v1,2023-07-19,Text2Layer: Layered Image Generation using Latent Diffusion Model,1,1,0,0,Q4,relacionado
+2311.12090v2,2023-11-20,FrePolad: Frequency-Rectified Point Latent Diffusion for Point Cloud Generation,1,1,0,0,Q2,relacionado
+2406.01867v4,2024-06-04,MoLA: Motion Generation and Editing with Latent Diffusion Enhanced by Adversarial Training,1,1,0,0,Q2,relacionado
+2410.12490v2,2024-10-16,Stabilize the Latent Space for Image Autoregressive Modeling: A Unified Perspective,1,1,0,0,Q4,relacionado
+2412.14422v1,2024-12-19,Enhancing Diffusion Models for High-Quality Image Generation,1,1,0,0,Q1,relacionado
+2502.03444v2,2025-02-05,Masked Autoencoders Are Effective Tokenizers for Diffusion Models,1,1,0,0,Q4,relacionado
+2502.09164v1,2025-02-13,E-MD3C: Taming Masked Diffusion Transformers for Efficient Zero-Shot Object Customization,1,1,0,0,Q4,relacionado
+2502.14831v3,2025-02-20,Improving the Diffusability of Autoencoders,1,1,0,0,Q2,relacionado
+2503.11056v3,2025-03-14,Flow to the Mode: Mode-Seeking Diffusion Autoencoders for State-of-the-Art Image Tokenization,1,1,0,0,Q2,relacionado
+2506.12719v1,2025-06-15,GM-LDM: Latent Diffusion Model for Brain Biomarker Identification through Functional Data-Driven Gray Matter Synthesis,1,1,0,1,Q2,revisar resumen
+2506.13843v1,2025-06-16,BlastDiffusion: A Latent Diffusion Model for Generating Synthetic Embryo Images to Address Data Scarcity in In Vitro Fertilization,1,1,1,0,Q1,revisar resumen
+2506.13307v2,2025-06-16,Quantitative Comparison of Fine-Tuning Techniques for Pretrained Latent Diffusion Models in the Generation of Unseen SAR Images,1,1,0,0,Q1,relacionado
+2507.09308v1,2025-07-12,AlphaVAE: Unified End-to-End RGBA Image Reconstruction and Generation with Alpha-Aware Representation Learning,1,1,0,0,Q2,relacionado
+2507.09984v3,2025-07-14,Latent Diffusion Models with Masked AutoEncoders,1,1,0,0,Q4,relacionado
+2507.23357v2,2025-07-31,Foundations and Models in Modern Computer Vision: Key Building Blocks in Landmark Architectures,1,1,0,0,Q2 Q4,relacionado
+2508.00413v1,2025-08-01,DC-AE 1.5: Accelerating Diffusion Model Convergence with Structured Latent Space,1,1,0,0,Q1 Q2,relacionado
+2508.09746v1,2025-08-13,Region-to-Region: Enhancing Generative Image Harmonization with Adaptive Regional Injection,1,1,0,0,Q4,relacionado
+2509.24335v2,2025-09-29,Hyperspherical Latents Improve Continuous-Token Autoregressive Generation,1,1,0,0,Q4,relacionado
+2512.13014v1,2025-12-15,JoDiffusion: Jointly Diffusing Image with Pixel-Level Annotations for Semantic Segmentation Promotion,1,1,0,0,Q4,relacionado
+2512.16636v2,2025-12-18,REGLUE Your Latents with Global and Local Semantics for Entangled Diffusion,1,1,0,0,Q2,relacionado
+2601.05823v2,2026-01-09,Boosting Latent Diffusion Models via Disentangled Representation Alignment,1,1,0,0,Q2,relacionado
+2602.08620v1,2026-02-09,Improving Reconstruction of Representation Autoencoder,1,1,0,0,Q1,relacionado
+2603.10365v2,2026-03-11,Geometric Autoencoder for Diffusion Models,1,1,0,0,Q2,relacionado
+2603.19206v1,2026-03-19,RPiAE: A Representation-Pivoted Autoencoder Enhancing Both Image Generation and Editing,1,1,0,0,Q2,relacionado
+2604.17492v1,2026-04-19,Coevolving Representations in Joint Image-Feature Diffusion,1,1,0,0,Q2,relacionado
+2605.07915v1,2026-05-08,What Matters for Diffusion-Friendly Latent Manifold? Prior-Aligned Autoencoders for Latent Diffusion,1,1,0,0,Q2,relacionado
+2605.20235v1,2026-05-16,Provably Learning Diffusion Models under the Manifold Hypothesis: Collapse and Refine,1,1,0,0,Q2,relacionado
+2605.17991v1,2026-05-18,Stable Audio 3,1,1,0,0,Q2,relacionado
+2606.03578v1,2026-06-02,Diffusing in the Right Space: A Systematic Study of Latent Diffusability,1,1,0,0,Q2,relacionado
+2606.12987v1,2026-06-11,Diffusion Transformer World-Action Model for AV Scene Prediction,1,1,0,0,Q4,relacionado
+2606.25006v2,2026-06-23,Scalable Peptide Design via Memory-Efficient Equivariant Transformer,1,1,0,0,Q1,relacionado
+2606.25390v1,2026-06-24,Anatomically-conditioned Latent Diffusion Model for Data-Efficient Few-Shot Cross-Domain 3D Glioma MRI Synthesis,1,1,1,0,Q1 Q4,revisar resumen
+2606.26764v1,2026-06-25,Anatomy-Guided Residual Motion Diffusion for Controllable 4D Cardiac MRI Synthesis,1,1,0,1,Q1 Q4,revisar resumen
+2211.11138v1,2022-11-21,Diffusion-Based Scene Graph to Image Generation with Masked Contrastive Pre-Training,0,1,0,0,Q4,descartado
+2211.14304v3,2022-11-25,BeLFusion: Latent Diffusion for Behavior-Driven Human Motion Prediction,1,0,0,0,Q2,descartado
+2303.05334v2,2023-03-09,Natural scene reconstruction from fMRI signals using generative latent diffusion,0,0,0,0,Q4,descartado
+2304.08291v1,2023-04-17,Refusion: Enabling Large-Size Realistic Image Restoration with Latent-Space Diffusion Models,1,0,1,0,Q2,descartado
+2304.09420v1,2023-04-19,Latent Semantic Diffusion-based Channel Adaptive De-Noising SemCom for Future 6G Systems,1,0,0,0,Q2,descartado
+2304.11750v1,2023-04-23,DiffVoice: Text-to-Speech with Latent Diffusion,1,0,0,0,Q2,descartado
+2309.04399v1,2023-09-08,MaskDiffusion: Boosting Text-to-Image Consistency with Conditional Mask,0,0,0,0,Q4,descartado
+2310.06150v2,2023-10-09,Latent Diffusion Model for DNA Sequence Generation,0,1,0,0,Q2,descartado
+2311.03226v1,2023-11-06,LDM3D-VR: Latent Diffusion Model for 3D VR,0,0,0,0,Q5,descartado
+2311.16514v2,2023-11-27,Video Anomaly Detection via Spatio-Temporal Pseudo-Anomaly Generation : A Unified Approach,1,0,0,0,Q4,descartado
+2401.10227v2,2024-01-18,A Simple Latent Diffusion Approach for Panoptic Segmentation and Mask Inpainting,1,0,0,0,Q4,descartado
+2401.12578v3,2024-01-23,ToDA: Target-oriented Diffusion Attacker against Recommendation System,0,0,0,0,Q2,descartado
+2402.01054v3,2024-02-01,Unconditional Latent Diffusion Models Memorize Patient Imaging Data: Implications for Openly Sharing Synthetic Data,1,0,0,1,Q1 Q2,descartado
+2402.09712v2,2024-02-15,Diffusion Model with Cross Attention as an Inductive Bias for Disentanglement,0,0,0,0,Q2,descartado
+2402.11487v3,2024-02-18,Visual Concept-driven Image Generation with Text-to-Image Diffusion Model,0,1,0,0,Q4,descartado
+2402.19009v2,2024-02-29,"Unified Generation, Reconstruction, and Representation: Generalized Diffusion with Adaptive Latent Encoding-Decoding",1,0,0,0,Q2,descartado
+2403.07842v2,2024-03-12,DP-TLDM: Differentially Private Tabular Latent Diffusion Model,0,0,0,0,Q2,descartado
+2404.02954v2,2024-04-03,Deep Generative Models through the Lens of the Manifold Hypothesis: A Survey and New Connections,1,0,0,0,Q2,descartado
+2405.20279v2,2024-05-30,CV-VAE: A Compatible Video VAE for Latent Generative Video Models,1,0,0,0,Q2,descartado
+2406.03233v1,2024-06-05,Generative Diffusion Models for Fast Simulations of Particle Collisions at CERN,1,0,0,0,Q2,descartado
+2406.06372v1,2024-06-10,Improving Deep Learning-based Automatic Cranial Defect Reconstruction by Heavy Data Augmentation: From Image Registration to Latent Diffusion Models,1,0,0,1,Q1 Q2,descartado
+2406.13099v1,2024-06-18,Sampling 3D Gaussian Scenes in Seconds with Latent Diffusion Models,1,0,0,0,Q4,descartado
+2406.14815v5,2024-06-21,Latent diffusion models for parameterization and data assimilation of facies-based geomodels,0,1,0,0,Q2,descartado
+2406.15910v1,2024-06-22,Soft Masked Mamba Diffusion Model for CT to MRI Conversion,0,1,0,1,Q4,descartado
+2406.16028v3,2024-06-23,"TimeAutoDiff: A Unified Framework for Generation, Imputation, Forecasting, and Time-Varying Metadata Conditioning of Heterogeneous Time Series Tabular Data",1,0,0,0,Q4,descartado
+2407.08500v2,2024-07-11,Latent Conditional Diffusion-based Data Augmentation for Continuous-Time Dynamic Graph Model,1,0,0,0,Q1,descartado
+2407.10937v1,2024-07-15,IDOL: Unified Dual-Modal Latent Diffusion for Human-Centric Joint Video-Depth Generation,0,0,0,0,Q5,descartado
+2408.00196v1,2024-07-31,Combining audio control and style transfer using latent diffusion,1,0,0,0,Q2,descartado
+2408.10901v4,2024-08-20,A Gray-box Attack against Latent Diffusion Model-based Image Editing by Posterior Collapse,0,1,0,0,Q2,descartado
+2409.02529v4,2024-09-04,Sample what you cant compress,1,0,0,0,Q2,descartado
+2409.13337v3,2024-09-20,Invisible Servoing: a Visual Servoing Approach with Return-Conditioned Latent Diffusion,0,0,0,1,Q3,descartado
+2410.05322v1,2024-10-05,Noise Crystallization and Liquid Noise: Zero-shot Video Generation using Image Diffusion Models,0,1,0,0,Q1,descartado
+2410.22830v1,2024-10-30,"Latent Diffusion, Implicit Amplification: Efficient Continuous-Scale Super-Resolution for Remote Sensing Images",0,1,0,1,Q3,descartado
+2412.08117v1,2024-12-11,LatentSpeech: Latent Diffusion for Text-To-Speech Generation,1,0,0,0,Q2,descartado
+2412.09405v1,2024-12-12,Learned Compression for Compressed Learning,1,0,0,1,Q2 Q3,descartado
+2412.13059v2,2024-12-17,3D MedDiffusion: A 3D Medical Latent Diffusion Model for Controllable and High-quality Medical Image Generation,0,1,0,1,Q1,descartado
+2412.19844v1,2024-12-24,A Review of Latent Representation Models in Neuroimaging,1,0,0,0,Q2,descartado
+2501.11174v1,2025-01-19,Quantum Latent Diffusion Models,1,0,0,0,Q2,descartado
+2501.13087v2,2025-01-22,Orchid: Image Latent Diffusion for Joint Appearance and Geometry Generation,0,0,0,0,Q5,descartado
+2502.13345v1,2025-02-18,Secure and Efficient Watermarking for Latent Diffusion Models in Model Distribution Scenarios,1,0,0,0,Q2,descartado
+2503.02881v3,2025-03-04,Reactive Diffusion Policy: Slow-Fast Visual-Tactile Policy Learning for Contact-Rich Manipulation,0,0,0,0,Q1,descartado
+2503.04871v1,2025-03-06,Toward Lightweight and Fast Decoders for Diffusion Models in Image and Video Generation,0,1,0,0,Q4,descartado
+2503.11945v1,2025-03-15,Your Text Encoder Can Be An Object-Level Watermarking Controller,0,0,0,0,Q2,descartado
+2503.21791v1,2025-03-17,SeisRDT: Latent Diffusion Model Based On Representation Learning For Seismic Data Interpolation And Reconstruction,0,0,0,0,Q4,descartado
+2504.12352v2,2025-04-15,Deep Generative Model-Based Generation of Synthetic Individual-Specific Brain MRI Segmentations,1,0,1,0,Q2,descartado
+2504.18989v1,2025-04-26,REED-VAE: RE-Encode Decode Training for Iterative Image Editing with Diffusion Models,1,0,0,0,Q4,descartado
+2505.00515v1,2025-05-01,Safety-Critical Traffic Simulation with Guided Latent Diffusion Model,1,0,0,0,Q2,descartado
+2505.16725v1,2025-05-22,Masked Conditioning for Deep Generative Models,0,1,1,0,Q4,descartado
+2506.00681v2,2025-05-31,Learning to Upsample and Upmix Audio in the Latent Domain,1,0,0,0,Q1 Q2,descartado
+2506.07902v2,2025-06-09,FunDiff: Diffusion Models over Function Spaces for Physics-Informed Generative Modeling,0,0,0,0,Q2,descartado
+2506.10233v1,2025-06-11,Conditional diffusion models for guided anomaly detection in brain images using fluid-driven anomaly randomization,0,0,0,1,Q1,descartado
+2507.16535v2,2025-07-22,EarthCrafter: Scalable 3D Earth Generation via Dual-Sparse Latent Diffusion,0,0,0,1,Q3,descartado
+2507.21872v3,2025-07-29,MultiEditor: Controllable Multimodal Object Editing for Driving Scenarios Using 3D Gaussian Splatting Priors,0,0,0,0,Q5,descartado
+2507.22954v1,2025-07-29,Neural Autoregressive Modeling of Brain Aging,0,0,0,0,Q2,descartado
+2507.22454v1,2025-07-30,TopoLiDM: Topology-Aware LiDAR Diffusion Models for Interpretable and Realistic LiDAR Point Cloud Generation,1,0,0,0,Q2,descartado
+2508.21815v1,2025-08-29,Achieving Hilbert-Schmidt Independence Under Rényi Differential Privacy for Fair and Private Data Generation,1,0,0,0,Q1,descartado
+2509.00169v1,2025-08-29,Generative Latent Space Dynamics of Electron Density,0,0,0,0,Q2,descartado
+2509.17993v2,2025-09-22,StableGuard: Towards Unified Copyright Protection and Tamper Localization in Latent Diffusion Models,1,0,0,0,Q4,descartado
+2509.23624v4,2025-09-28,DiffInk: Glyph- and Style-Aware Latent Diffusion Transformer for Text to Online Handwriting Generation,1,0,0,0,Q2,descartado
+2510.00376v1,2025-10-01,Discrete Wavelet Transform as a Facilitator for Expressive Latent Space Representation in Variational Autoencoders in Satellite Imagery,0,0,1,1,Q3,descartado
+2510.04573v6,2025-10-06,LaDiR: Latent Diffusion Enhances LLMs for Text Reasoning,0,0,0,0,Q4,descartado
+2510.05717v1,2025-10-07,DiffSDA: Unsupervised Diffusion Sequential Disentanglement Across Modalities,1,0,0,0,Q2,descartado
+2510.06386v1,2025-10-07,Controllable Stylistic Text Generation with Train-Time Attribute-Regularized Diffusion,1,0,0,0,Q2,descartado
+2510.18707v1,2025-10-20,OmniCast: A Masked Latent Diffusion Model for Weather Forecasting Across Time Scales,1,0,0,0,Q4,descartado
+2510.19728v1,2025-10-22,Enabling Granular Subgroup Level Model Evaluations by Generating Synthetic Medical Time Series,1,0,0,1,Q1,descartado
+2511.14312v2,2025-11-18,H-LDM: Hierarchical Latent Diffusion Models for Controllable and Interpretable PCG Synthesis from Clinical Metadata,0,0,1,1,Q1,descartado
+2512.01292v5,2025-12-01,Diffusion Model in Latent Space for Medical Image Segmentation Task,1,0,0,1,Q4,descartado
+2512.05394v3,2025-12-05,Delving into Latent Spectral Biasing of Video VAEs for Superior Diffusability,1,0,0,0,Q2 Q4,descartado
+2512.17909v1,2025-12-19,Both Semantics and Reconstruction Matter: Making Representation Encoders Ready for Text-to-Image Generation and Editing,0,1,0,0,Q2,descartado
+2601.04056v1,2026-01-07,Bridging the Discrete-Continuous Gap: Unified Multimodal Generation via Coupled Manifold Discrete Absorbing Diffusion,0,1,0,0,Q4,descartado
+2602.02493v2,2026-02-02,PixelGen: Improving Pixel Diffusion with Perceptual Supervision,0,1,0,0,Q1,descartado
+2602.10167v1,2026-02-10,Anatomy-Preserving Latent Diffusion for Generation of Brain Segmentation Masks with Ischemic Infarct,1,0,1,1,Q4,descartado
+2602.09713v2,2026-02-10,Stroke3D: Lifting 2D strokes into rigged 3D model via latent diffusion models,1,0,0,0,Q1,descartado
+2602.11807v2,2026-02-12,PuYun-LDM: A Latent Diffusion Model for High-Resolution Ensemble Weather Forecasts,1,0,0,0,Q2 Q4,descartado
+2602.21631v1,2026-02-25,UniHand: A Unified Model for Diverse Controlled 4D Hand Motion Modeling,0,0,0,1,Q3,descartado
+2603.06057v1,2026-03-06,TempoSyncDiff: Distilled Temporally-Consistent Diffusion for Low-Latency Audio-Driven Talking Head Generation,1,0,0,0,Q2,descartado
+2603.06399v2,2026-03-06,DiffInf: Influence-Guided Diffusion for Supervision Alignment in Facial Attribute Learning,1,0,0,0,Q2,descartado
+2603.14645v1,2026-03-15,Spectrum Matching: a Unified Perspective for Superior Diffusability in Latent Diffusion,1,0,0,0,Q4,descartado
+2603.14366v1,2026-03-15,Representation Alignment for Just Image Transformers is not Easier than You Think,0,1,0,0,Q4,descartado
+2603.21085v1,2026-03-22,Taming Sampling Perturbations with Variance Expansion Loss for Latent Diffusion Models,0,1,0,0,Q2,descartado
+2603.22283v1,2026-03-23,End-to-End Training for Unified Tokenization and Latent Denoising,0,1,0,0,Q2,descartado
+2603.25194v1,2026-03-26,CardioDiT: Latent Diffusion Transformers for 4D Cardiac MRI Synthesis,0,1,0,1,Q4,descartado
+2603.25181v1,2026-03-26,VolDiT: Controllable Volumetric Medical Image Synthesis with Diffusion Transformers,0,1,0,1,Q4,descartado
+2604.16479v1,2026-04-12,Latent-Compressed Variational Autoencoder for Video Diffusion Models,1,0,0,0,Q2,descartado
+2604.20715v1,2026-04-22,GeoRelight: Learning Joint Geometrical Relighting and Reconstruction with Flexible Multi-Modal Diffusion Transformers,0,0,0,0,Q5,descartado
+2605.08218v1,2026-05-06,Deep Dreams Are Made of This: Visualizing Monosemantic Features in Diffusion Models,1,0,0,0,Q2,descartado
+2605.10084v2,2026-05-11,PoDAR: Power-Decoupled Audio Representation for Generative Modeling,0,0,0,0,Q1,descartado
+2605.13686v2,2026-05-13,Cross Modality Image Translation In Medical Imaging Using Generative Frameworks,0,0,0,1,Q2,descartado
+2605.17087v1,2026-05-16,The Learnability Gap in Medical Latent Diffusion,1,0,0,1,Q1,descartado
+2605.17085v1,2026-05-16,Taming Audio VAEs via Target-KL Regularization,1,0,0,0,Q2,descartado
+2605.22851v1,2026-05-17,VAMP-Diff: VampPrior Latent Diffusion for Photoplethysmography Modeling,1,0,0,0,Q2,descartado
+2605.19728v1,2026-05-19,Aero-World: Action-Conditioned Aerial Video Generation from Inertial Controls,0,0,0,1,Q3,descartado
+2605.23605v1,2026-05-22,DiLaDiff: Distilled Latent-Augmented Diffusion for Language Modeling,0,0,0,0,Q4,descartado
+2605.31530v2,2026-05-29,UNISON: A Unified Sound Generation and Editing Framework via Deep LLM Fusion,1,0,1,0,Q4,descartado
+2605.30893v1,2026-05-29,"Foundation VAEs for 3D CT Reconstruction, Augmentation, and Generation",1,0,0,1,Q1,descartado
+2606.00689v1,2026-05-30,Wavelet-Fusion Diffusion Model for Multimodal Brain MRI Synthesis with Modality and Metadata Conditioning,0,1,1,0,Q1,descartado
+2606.09378v1,2026-06-08,Echo-DM: Ultrasound Marker Removal via Conditional Latent Diffusion and Region-Aware Fusion,1,0,0,0,Q4,descartado
+2606.11691v1,2026-06-10,Spectrally Regularized Latent Flow Matching for Turbulence Generation,1,0,0,0,Q2,descartado
+2606.19651v2,2026-06-17,BrainG3N: A Dual-Purpose Tokenizer for Controllable 3D Brain MRI Generation,1,0,0,1,Q1 Q4,descartado
+2606.19939v2,2026-06-18,DiffMath: Symbol- and Graph-Aware Latent Diffusion Transformer for Handwritten Mathematical Expression Generation,0,0,0,0,Q1 Q2,descartado
+2606.19970v1,2026-06-18,CrossFlow: One-Step Generation Across Latent and Pixel Spaces,0,1,0,0,Q2,descartado
+2606.23086v1,2026-06-22,PeLAP-A: Adaptive Latent Pruning for Lightweight Latent Diffusion Models,1,0,0,0,Q1 Q2 Q4,descartado
+2607.01370v1,2026-07-01,MapDreamer: Aerial Imagery Conditioned Latent Diffusion for Lane-Level Map Generation,0,0,0,1,Q3,descartado
+2607.09134v1,2026-07-10,ReGen: Hierarchical Multi-Prompt Representation Generation for Efficient Waveform Diffusion Models,0,1,1,0,Q2,descartado
+2607.13365v1,2026-07-15,DiffGI: Differentiable Geometry Images for High-Fidelity Thin-Shell 3D Generation,1,0,0,0,Q1,descartado
+2607.24110v1,2026-07-27,BeyondFusion: Self-Aligned Latent Diffusion for Calibration-Free Infrared Super-Resolution and Infrared-Visible Fusion,0,1,0,0,Q1,descartado
+2608.00543v1,2026-08-01,Robust Watermarks Meet Backdoored Models: Evading Diffusion Semantic Watermarks via Stealthy Backdoor,1,0,0,1,Q2 Q3,descartado
+2608.01972v1,2026-08-03,Music Restoration via Latent Operator Optimization and Diffusion Model Priors,1,0,0,0,Q2,descartado
+2608.10000v1,2026-08-07,Pre- to Post-Contrast Synthesis of Breast DCE-MRI using Latent Bridge Matching,0,0,0,0,Q4,descartado
+2609.25017v1,2026-08-07,"Deepfakes and Synthetic Media: Generation, Detection, and Governance",1,0,0,0,Q2,descartado
+2608.08555v1,2026-08-09,SC-Diff: Semantically Calibrated Diffusion for Visible-to-Infrared Image Translation,0,0,0,0,Q4,descartado
+2608.16793v1,2026-08-17,PixRestore: Unified Image Restoration via Pixel Diffusion Transformer,0,0,0,0,Q2,descartado
+2608.28895v1,2026-08-28,ReconSplat: Generalizable 3D Scene Reconstruction Beyond Observed Views,0,0,0,0,Q5,descartado
+2609.02531v1,2026-09-02,Spatially Aware World Action Model via Geometric Latent Diffusion,1,0,0,0,Q5,descartado
+2609.37350v1,2026-09-29,PCaPaint: Prostate Cancer Inpainting by Mitigating Shortcut Learning,0,1,1,0,Q4,descartado
+2609.38170v1,2026-09-29,Adversarial Training for Pixel Diffusion,1,0,0,0,Q2,descartado
+2610.09376v1,2026-10-07,Unified Multi-plane Autoregressive Diffusion for 3D Multi-contrast MRI Synthesis,1,0,0,0,Q4,descartado
