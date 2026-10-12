@@ -1,0 +1,40 @@
+# Mapa de afirmaciones a fuentes (capítulo II, sección Problem)
+
+Cada fila dice qué se afirma en el texto, qué referencia lo respalda (clave de `TFC1/biblio.bib`), qué dice la fuente y cómo se verificó.
+Estado: **Sí** = leí el resumen oficial de arXiv o el texto del paper; **Parcial** = solo vi un resumen de búsqueda, hay que abrir el paper antes de dar la cita por buena.
+Fecha de la verificación de metadatos (autores, título, año): 11-oct-2026, contra la API de arXiv.
+
+| # | Afirmación en el texto | Clave | Qué dice la fuente | Verificado |
+|---|---|---|---|---|
+| 1 | La difusión latente comprime con un autoencoder y es más barata que en píxeles | `Rombach2022` | Aplican difusión en el espacio latente de autoencoders preentrenados para entrenar con recursos limitados | Sí (resumen arXiv 2112.10752) |
+| 2 | El diseño del latente se estudia sobre todo en benchmarks grandes como ImageNet | `Yao2025`, `Skorokhodov2025`, `Zheng2025` | Reportan resultados en ImageNet 256 (Skorokhodov también en Kinetics) | Parcial: falta abrir los tres papers y confirmar la sección de experimentos |
+| 3 | Las aplicaciones agrícolas regionales tienen datos pequeños y homogéneos; los modelos de difusión se diseñan para datos masivos y diversos | `Gonzalez2026` | Lo dice en la introducción | Sí (texto del PDF) |
+| 4 | Datasets limitados y muestras desbalanceadas son un reto frecuente en imágenes agrícolas | `Hu2025` | El resumen menciona "limited annotated datasets and imbalanced sample distributions" | Sí (resumen arXiv 2507.18376) |
+| 5 | Hay modelos que generan apariencia y geometría conjuntamente desde un latente compartido, a gran escala | `Krishnan2025` | VAE conjunto de RGB, profundidad y normales con difusión latente | Parcial: falta leer el resumen oficial de arXiv 2501.13087 |
+| 6 | Más dimensión por token mejora la reconstrucción pero exige modelos mayores y más entrenamiento para igualar la generación | `Yao2025` | Es el "dilema de optimización" de su resumen | Sí (resumen arXiv 2501.01423) |
+| 7 | Latentes con exceso de componentes de alta frecuencia estorban a la difusión | `Skorokhodov2025` | Análisis espectral; hipotetizan que interfieren con la síntesis de lo grueso a lo fino | Sí (resumen arXiv 2502.14831) |
+| 8 | Mejor reconstrucción del tokenizer no implica mejor generación | `Zhong2026` | Primera frase del resumen | Sí (resumen arXiv 2606.03578; es un preprint de 2026) |
+| 9 | Con presupuesto de entrenamiento limitado, un latente de mayor dimensión empeoró la generación | `Sehwag2025` | Sección 6.2: el modelo de 4 canales superó al de 16 en FID, Clip-FID, CLIP y GenEval. Es presupuesto de cómputo, no pocos datos | Sí (texto HTML del paper) |
+| 10 | El enmascarado aleatorio se usa para aprender representaciones y tokenizers para difusión | `He2022`, `Chen2025` | MAE; MAETok (autoencoder con enmascarado para difusión) | Parcial: venue de `Chen2025` (ICML 2025) sale de una búsqueda; confirmar |
+| 11 | En este contexto, un latente de VAE continuo conservó la estructura del cultivo donde uno discreto falló | `Gonzalez2026` | Resultado central del paper | Sí (texto del PDF) |
+| 12 | Las decisiones sobre datos y estructura del VAE se toman por experimentación manual | `Gonzalez2026` | Conclusiones: "architectural adaptations were manually derived through systematic experimentation" | Sí (texto del PDF) |
+
+## Identificadores para traer las referencias desde Zotero ("Add Item by Identifier")
+
+```
+2112.10752   Rombach2022
+2501.01423   Yao2025
+2502.14831   Skorokhodov2025
+2606.03578   Zhong2026
+2407.15811   Sehwag2025
+2510.11690   Zheng2025
+2507.18376   Hu2025
+2501.13087   Krishnan2025
+2502.03444   Chen2025
+2111.06377   He2022
+10.1145/3795101.3814709   Gonzalez2026 (DOI)
+```
+
+## Pendientes
+- Abrir los papers marcados "Parcial" y confirmar lo que dicen.
+- Cambiar a la versión publicada (venue) en las entradas de arXiv que ya se publicaron.

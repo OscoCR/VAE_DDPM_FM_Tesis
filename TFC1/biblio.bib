@@ -18,7 +18,10 @@
   language = "en"
 }
 %%%%%
-%%%%% Referencias de la propuesta (metadatos verificados contra arXiv)
+
+%%%%% Referencias de la propuesta (metadatos verificados contra arXiv, 11-oct-2026)
+
+%%% Base: difusión latente
 @inproceedings{Rombach2022,
   title     = {High-Resolution Image Synthesis with Latent Diffusion Models},
   author    = {Rombach, Robin and Blattmann, Andreas and Lorenz, Dominik and Esser, Patrick and Ommer, Bj{\"o}rn},
@@ -27,6 +30,8 @@
   note      = {arXiv:2112.10752}
 }
 
+
+%%% Diseño del espacio latente (reconstrucción contra generación)
 @inproceedings{Yao2025,
   title     = {Reconstruction vs. Generation: Taming Optimization Dilemma in Latent Diffusion Models},
   author    = {Yao, Jingfeng and Yang, Bin and Wang, Xinggang},
@@ -67,6 +72,17 @@
   archivePrefix = {arXiv}
 }
 
+
+%%% Datos pequeños, homogéneos y agricultura
+@inproceedings{Gonzalez2026,
+  title     = {Peeling Back the Pixels: Stabilizing Latent Diffusion for Data-Efficient Generation of Pineapple Fields},
+  author    = {Gonzalez Hernandez, Manfred and Xie-Li, Danny and Fallas Moya, Fabian and Rojas Gonzalez, Sebastian and Couckuyt, Ivo},
+  booktitle = {Genetic and Evolutionary Computation Conference (GECCO Companion '26)},
+  year      = {2026},
+  address   = {San Jose, Costa Rica},
+  doi       = {10.1145/3795101.3814709}
+}
+
 @misc{Hu2025,
   title         = {A Comprehensive Review of Diffusion Models in Smart Agriculture: Progress, Applications, and Challenges},
   author        = {Hu, Xing and Chen, Haodong and Duan, Qianqian and Zhang, Dawei},
@@ -75,12 +91,24 @@
   archivePrefix = {arXiv}
 }
 
+
+%%% Multimodal (apariencia y geometría)
 @inproceedings{Krishnan2025,
   title     = {Orchid: Image Latent Diffusion for Joint Appearance and Geometry Generation},
   author    = {Krishnan, Akshay and Yan, Xinchen and Casser, Vincent and Kundu, Abhijit},
   booktitle = {Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)},
   year      = {2025},
   note      = {arXiv:2501.13087}
+}
+
+
+%%% Tratamientos de datos: enmascarado
+@inproceedings{He2022,
+  title     = {Masked Autoencoders Are Scalable Vision Learners},
+  author    = {He, Kaiming and Chen, Xinlei and Xie, Saining and Li, Yanghao and Doll{\'a}r, Piotr and Girshick, Ross},
+  booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+  year      = {2022},
+  note      = {arXiv:2111.06377}
 }
 
 @inproceedings{Chen2025,
@@ -91,19 +119,3 @@
   note      = {arXiv:2502.03444}
 }
 
-@inproceedings{He2022,
-  title     = {Masked Autoencoders Are Scalable Vision Learners},
-  author    = {He, Kaiming and Chen, Xinlei and Xie, Saining and Li, Yanghao and Doll{\'a}r, Piotr and Girshick, Ross},
-  booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
-  year      = {2022},
-  note      = {arXiv:2111.06377}
-}
-
-@inproceedings{Gonzalez2026,
-  title     = {Peeling Back the Pixels: Stabilizing Latent Diffusion for Data-Efficient Generation of Pineapple Fields},
-  author    = {Gonzalez Hernandez, Manfred and Xie-Li, Danny and Fallas Moya, Fabian and Rojas Gonzalez, Sebastian and Couckuyt, Ivo},
-  booktitle = {Genetic and Evolutionary Computation Conference (GECCO Companion '26)},
-  year      = {2026},
-  address   = {San Jose, Costa Rica},
-  doi       = {10.1145/3795101.3814709}
-}
