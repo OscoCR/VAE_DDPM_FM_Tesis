@@ -1,0 +1,78 @@
+# Lista de verificación de integridad (propuesta de tesis, entrega 23-oct-2026)
+
+Estado: [x] hecho y verificado, [ ] pendiente, [~] parcial.
+Última actualización: 11-oct-2026.
+
+## A. Uso de herramientas de IA
+- [ ] Preguntar al asesor (reunión del lunes 12-oct) qué se permite en la propuesta y cómo se declara.
+- [ ] Incluir la declaración de uso de herramientas de IA al final del documento (borrador abajo; ajustar a lo que diga el asesor).
+- [ ] Poder explicar con mis palabras cada sección (ver C).
+
+Borrador de declaración (ajustar):
+> Se utilizó un asistente de inteligencia artificial (Claude, de Anthropic) para: organizar y redactar borradores del texto, buscar y resumir literatura, verificar metadatos bibliográficos y revisar el código de entrenamiento. Las decisiones de investigación (pregunta, hipótesis, objetivos, diseño experimental y alcance), los experimentos y el análisis de resultados fueron realizados por el autor, quien revisó y es responsable de todo el contenido.
+
+## B. Citas (clave de `biblio.bib`): qué verificar y leer
+Leyenda: Meta = autores, título y año verificados en arXiv; Resumen = se leyó el resumen oficial; Leer = falta abrir el paper y confirmar lo que se cita.
+
+| Clave | Meta | Resumen | Leer yo |
+|---|---|---|---|
+| Rombach2022, Yao2025, Skorokhodov2025, Zhong2026, Zheng2025, Hu2025, Krishnan2025, Chen2025, He2022 | [x] | [x] | [x] leídos por el autor (11-oct) |
+| Sehwag2025 | [x] | [x] (sección 6.2 leída) | [x] leído por el autor |
+| Gonzalez2026 (paper del grupo) | [x] | [x] (texto leído) | [x] leído por el autor |
+| Kingma2014, vandenOord2017, Ho2020, Lipman2023, Goodfellow2014, Isola2017, Heusel2017, Binkowski2018 | [x] | n/a (clásicos) | [x] leídos por el autor |
+| Paszke2019, Kingma2015, Loshchilov2019, Loshchilov2017, He2016, Wu2018, Ronneberger2015 | [ ] límite de arXiv | n/a | [ ] |
+| Goodfellow2016, Rumelhart1986, LeCun1998, Higgins2017 | [ ] confirmar en editorial | n/a | [ ] |
+
+- [ ] Confirmar las sedes (ICLR, NeurIPS, CVPR, ICML, ICCV) de todas las entradas.
+- [ ] Reemplazar la versión de arXiv por la publicada donde exista.
+- [ ] Confirmar el venue de Chen2025 (ICML 2025).
+
+## C. Escritura con mi propia voz
+- [x] Problem: revisado oración por oración (oraciones 7, 9, 15 y "by hand" reescritas con el autor).
+- [x] Hypothesis y Objectives: formulados con el autor (verbos de Bloom, "tratamientos", VAE).
+- [~] Background: leído por el autor; falta la reescritura con su voz si algo no le suena.
+- [ ] Related Work (estado del arte): por escribir.
+- [ ] Metodología y diseño de experimentos: por escribir.
+- [ ] Resultados iniciales: por escribir (hay datos).
+- [ ] Plan de trabajo y abstract: por escribir.
+
+## D. Números que aparecen en el texto: verificados contra el código o los datos
+- [x] 4,908 imágenes de 960x544 (atributos del archivo .h5; fuente original 1920x1088).
+- [x] Divisiones: 3,536 entrenamiento, 381 validación, 346 prueba (columna `split` del .h5; las 645 marcadas `drop` se excluyen).
+- [x] Profundidad monocular relativa, normalizada por imagen (atributo `depth_semantics` del .h5).
+- [x] Latente 4x32x32 para recortes de 256x256.
+- [x] beta = 0.001 (`kl_beta` en los configs del VAE).
+- [x] lambda = 0.01 (`adv_weight` en la configuración y en `train_step`).
+- [x] Tamaño de lote 8 (`batch_size` en los configs).
+- [x] DDPM con 1000 pasos de entrenamiento (`models/ddpm.py`) y 1000 de muestreo en la evaluación; Flow Matching con 50 pasos de Euler.
+- [x] FID y KID con 400 imágenes generadas y un conjunto de referencia fijo.
+- [x] Unas 26 horas de GPU por entrenamiento de generador (25 h 09 min a 26 h 39 min en las corridas v2). Corregido en el texto (antes decía 28).
+- [x] Tabla de FID/KID de las corridas: salida de `compare_v2_augall` (20:11 del 11-oct).
+- [~] Frases del texto con "se ha estudiado con datos grandes": respaldadas por los resúmenes (ver mapa de fuentes), falta leer los papers.
+
+## E. Compilación y formato
+- [ ] Compilar en Overleaf y corregir errores (el capítulo I, con ecuaciones y la figura PRISMA, no se ha compilado nunca).
+- [ ] Decidir el idioma con el asesor (la plantilla y la propuesta de Danny están en inglés).
+- [ ] Revisar la portada (el nombre del curso se asumió de la portada de Danny).
+
+## F. Preguntas para el asesor (lunes 12-oct)
+1. Idioma de la entrega y política de uso de IA.
+2. Extensión esperada y formato de citas.
+3. Hipótesis y alcance: dos hipótesis (mejora y límite), DINO y enmascarado como parte del trabajo.
+4. Hallazgo del scheduler de LR del repositorio base: ¿era intencional? (resumen en `resumen_profesor_bug_LR.md`).
+5. Propuesta de medir propiedades del latente (alta frecuencia, suavidad): ¿le parece una línea útil?
+
+## G. Cronograma hasta el 23
+| Fecha | Qué |
+|---|---|
+| 12-oct | Reunión con el asesor; compilar |
+| 13-16 | Metodología, diseño de experimentos y resultados iniciales |
+| 17-19 | Estado del arte |
+| 20-21 | Plan de trabajo, abstract, reescritura propia |
+| 22 | Revisión completa y verificación de citas |
+| 23 | Entrega |
+
+
+## H. Versiones del documento
+- [ ] v1 para retroalimentación del asesor: congelar el estado actual (commit con etiqueta `v1-feedback` y PDF compilado en Overleaf).
+- [ ] Registrar los cambios que pida el asesor y aplicarlos en v2.
