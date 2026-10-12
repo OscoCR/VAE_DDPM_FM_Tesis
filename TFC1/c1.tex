@@ -11,9 +11,46 @@
 
 \section{Background}
 
-\subsection{Latent diffusion models}
+This section presents, in sequential order, the concepts needed to follow the rest of the proposal: how an image becomes a tensor, how a neural network learns, how a convolutional network processes images, and how these pieces are combined into the autoencoders and the generative models studied in this work.
 
-A latent diffusion model (LDM) \cite{Rombach2022} separates image generation into two stages. First, an autoencoder is trained to compress an image $x \in \mathbb{R}^{H\times W\times C}$ into a compact latent $z = E(x)$ and to reconstruct it with a decoder $\hat{x} = D(z)$. Second, a generative model is trained in the latent space, so that new latents can be sampled and decoded into images. Working in the latent space reduces the cost of training and sampling with respect to diffusion in pixel space. In this work, a $256\times256$ crop is compressed into a latent of size $4\times32\times32$ (a $8\times$ spatial reduction with 4 channels), and each position of that grid is a \emph{token} in the terminology of the literature; the autoencoder is therefore also called a tokenizer.
+\subsection{From pixels to tensors}
+
+A digital image is a grid of pixels. Each pixel stores one intensity value per channel: a color image has three channels (red, green, and blue), and each value is usually an 8-bit integer between 0 and 255. The dataset of this work contains aerial frames of $544\times960$ pixels, and each frame has an associated depth map, a single channel whose values are normalized per image.
+
+In PyTorch \cite{Paszke2019}, an image is represented as a \emph{tensor}, a multidimensional array of numbers that can be moved to a GPU and differentiated automatically. The convention is channels first: an image has shape $(C,H,W)$, and a batch of $N$ images has shape $(N,C,H,W)$. Before training, the integers are converted to floating-point numbers and divided by 255, so that every value lies in $[0,1]$. Table~\ref{tab:shapes} shows how the data change shape along the pipeline.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{p{0.34\textwidth}p{0.22\textwidth}p{0.3\textwidth}}
+\hline
+\textbf{Stage} & \textbf{Shape} & \textbf{Numbers per image} \\
+\hline
+RGB frame stored in the file (height, width, channels), 8-bit & $544\times960\times3$ & 1\,566\,720 \\
+Random crop with depth, as a tensor in $[0,1]$ & $(4,256,256)$ & 262\,144 \\
+Batch used for training & $(8,4,256,256)$ & --- \\
+Latent produced by the encoder & $(4,32,32)$ & 4\,096 \\
+\hline
+\end{tabular}
+\caption{Tensor shapes along the pipeline. The crop has three color channels and one depth channel.}
+\label{tab:shapes}
+\end{table}
+
+\subsection{Neural networks and learning}
+
+A neural network is a composition of layers, $f_\theta=f_L\circ\dots\circ f_1$, where each layer applies a linear map followed by a nonlinear function, and $\theta$ denotes all the learnable parameters. Learning consists of minimizing a loss function $\mathcal{L}(\theta)$ that measures how far the output is from the desired result. The gradient of the loss with respect to every parameter is computed by backpropagation \cite{Rumelhart1986,Goodfellow2016}, and the parameters are updated in the direction that reduces the loss. Optimizers such as Adam \cite{Kingma2015} and AdamW \cite{Loshchilov2019} adapt the size of each update, which is controlled by the \emph{learning rate}. The learning rate is often changed during training with a schedule, for example a cosine decay \cite{Loshchilov2017}; a poorly configured schedule can make training oscillate or become unstable. To detect overfitting, the data are split into training, validation, and test sets, and the model is selected with the validation loss.
+
+\subsection{Convolutional neural networks}
+
+A convolutional neural network (CNN) \cite{LeCun1998} processes images with filters that slide over the input and share their weights. For an input $X$ with $C$ channels, a convolutional layer with kernels $W$ and bias $b$ produces
+\begin{equation}
+Y_{c',i,j}=\sum_{c=1}^{C}\sum_{u,v}W_{c',c,u,v}\,X_{c,\,i+u,\,j+v}+b_{c'},
+\end{equation}
+which makes the layer sensitive to local patterns, such as the edge of a leaf, wherever they appear in the image. A stride of 2 halves the height and the width, so stacking such layers compresses the image spatially while increasing the number of channels. Residual blocks \cite{He2016} add the input of a block to its output to ease the training of deep networks, and group normalization \cite{Wu2018} stabilizes the activations. The U-Net \cite{Ronneberger2015} combines a downsampling path, an upsampling path, and skip connections between them; it is the architecture used by the generators of this work, in its convolutional version without attention layers.
+
+\subsection{Autoencoders and the latent space}
+
+An autoencoder is a network with two parts: an encoder $E$ that compresses an input $x$ into a smaller representation $z=E(x)$, called the \emph{latent}, and a decoder $D$ that reconstructs the input, $\hat{x}=D(z)$. It is trained to minimize the reconstruction error. In this work, the encoder maps a $(4,256,256)$ tensor to a latent of shape $(4,32,32)$: a grid of $32\times32$ positions, each with 4 values. Each position is called a \emph{token}, and for this reason the autoencoder is also referred to as a tokenizer in the literature.
 
 \subsection{Variational autoencoders}
 
@@ -21,13 +58,19 @@ A variational autoencoder (VAE) \cite{Kingma2014} learns a probabilistic encoder
 \begin{equation}
 \mathcal{L}_{\mathrm{VAE}} = \mathbb{E}_{q_\phi(z\mid x)}\big[\lVert x-\hat{x}\rVert_2^2\big] + \beta\, D_{\mathrm{KL}}\big(q_\phi(z\mid x)\,\Vert\,\mathcal{N}(0,I)\big),
 \end{equation}
-where the latent is sampled with the reparameterization $z=\mu_\phi(x)+\sigma_\phi(x)\odot\varepsilon$, $\varepsilon\sim\mathcal{N}(0,I)$. The weight $\beta$ controls the trade-off between reconstruction and regularization \cite{Higgins2017}; in this work $\beta=10^{-3}$. A discrete alternative replaces the Gaussian latent with a codebook of embeddings (VQ-VAE) \cite{vandenOord2017}.
+where the latent is sampled with the reparameterization $z=\mu_\phi(x)+\sigma_\phi(x)\odot\varepsilon$, $\varepsilon\sim\mathcal{N}(0,I)$. The weight $\beta$ controls the trade-off between reconstruction and regularization \cite{Higgins2017}; in this work $\beta=10^{-3}$. A discrete alternative replaces the Gaussian latent with a codebook of embeddings (VQ-VAE) \cite{vandenOord2017}. One of the structural modifications studied in this work is a \emph{variational output layer}: instead of producing the image directly, the last layer of the decoder predicts a mean and a log-variance for every output value and the image is sampled from that distribution.
+
+\subsection{Data treatments}
+
+A data treatment is any transformation applied to the training data before it reaches the model. Data augmentation applies random transformations that preserve the content of the image; for aerial imagery, which has no canonical orientation, these include rotations by multiples of $90^{\circ}$, flips, and random crops. Random masking hides random regions of the image so that the model must infer the missing content; masked autoencoders \cite{He2022} reconstruct the hidden patches, and masking has also been used to train tokenizers for diffusion models \cite{Chen2025}. A third treatment is image selection, in which the training set is changed by choosing or repeating certain images, for example those with the largest reconstruction error.
 
 \subsection{Adversarial training}
 
 A generative adversarial network (GAN) \cite{Goodfellow2014} trains a discriminator $D_\psi$ to distinguish real from generated images while the generator is trained to fool it. When the discriminator judges local patches instead of the whole image \cite{Isola2017}, it encourages sharp local texture. In a VAE, an adversarial term can be added to the loss, $\mathcal{L}=\mathcal{L}_{\mathrm{VAE}}+\lambda\,\mathcal{L}_{\mathrm{adv}}$, with a small weight $\lambda$ (here $\lambda=0.01$).
 
-\subsection{Diffusion and Flow Matching}
+\subsection{Latent diffusion, DDPM, and Flow Matching}
+
+A latent diffusion model (LDM) \cite{Rombach2022} separates image generation into two stages: an autoencoder compresses the images into latents, and a generative model is trained in the latent space, so that new latents can be sampled and decoded into images. Working in the latent space reduces the cost of training and sampling with respect to diffusion in pixel space.
 
 A denoising diffusion probabilistic model (DDPM) \cite{Ho2020} defines a forward process that gradually adds Gaussian noise to a latent $z_0$,
 \begin{equation}

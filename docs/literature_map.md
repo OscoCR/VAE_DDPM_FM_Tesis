@@ -68,3 +68,10 @@ Conclusión: la frase del Problem ("a nuestro leal saber") queda respaldada por 
 - LDMAE ("Latent Diffusion Models with Masked AutoEncoders"), arXiv 2507.09984: dice que las propiedades deseables y el diseño óptimo de los autoencoders para LDM están poco explorados; propone VMAE. Muy cercano al enmascarado; datos grandes.
 - arXiv 2506.13307: compara ajuste fino de UNet, VAE y codificadores de texto de un LDM preentrenado para imágenes SAR (100 mil imágenes).
 - arXiv 2605.07915 (autoencoders alineados con un prior), 2602.08620 (mejora de la reconstrucción de RAE), 2508.00413 (DC-AE 1.5): diseño del latente a gran escala.
+
+
+## Referencias del marco teórico: metadatos PENDIENTES de verificar
+No se pudieron verificar contra la API de arXiv (límite de peticiones el 11-oct-2026); los datos salen de mi conocimiento. Verificar antes de entregar:
+`Paszke2019` (1912.01703), `Kingma2015` (1412.6980), `Loshchilov2019` (1711.05101), `Loshchilov2017` (1608.03983), `He2016` (1512.03385), `Wu2018` (1803.08494), `Ronneberger2015` (1505.04597).
+Sin arXiv, confirmar en la editorial: `Goodfellow2016` (libro, MIT Press), `Rumelhart1986` (Nature 323), `LeCun1998` (Proc. IEEE 86(11)), `Higgins2017` (ICLR 2017).
+Las sedes (ICLR, NeurIPS, CVPR) de Kingma2014, vandenOord2017, Ho2020, Lipman2023, Goodfellow2014, Isola2017, Heusel2017 y Binkowski2018 también salen de memoria; autores, títulos y años sí se verificaron.
