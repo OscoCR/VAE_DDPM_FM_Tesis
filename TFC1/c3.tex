@@ -1,8 +1,89 @@
-  \renewcommand{\baselinestretch}{1.5}
+\renewcommand{\baselinestretch}{1.5}
 
-\chapter{Research Proposal}
+\chapter{Hypothesis and Objectives}
 
-\section{Methodology}
+\section{Problem}
 
-\section{Design of Experiments}
+Latent diffusion models \cite{Rombach2022} compress each image with an autoencoder and run the diffusion process in the resulting latent space, which makes training far cheaper than diffusion in pixel space. Recent work on how to design that latent space has been carried out mostly on large benchmarks such as ImageNet \cite{Yao2025,Skorokhodov2025,Zheng2025}. In contrast, regional agricultural applications are characterized by small, homogeneous datasets, whereas most diffusion models are designed for massive and highly diverse ones \cite{Gonzalez2026}. Limited datasets and imbalanced sample distributions are a recurrent challenge in agricultural image analysis \cite{Hu2025}. Agricultural imagery is also increasingly multimodal, and latent diffusion models that jointly generate appearance and geometry from a shared latent space have been proposed \cite{Krishnan2025}.
 
+The quality of the latent space matters for generation beyond reconstruction fidelity. Increasing the number of latent channels per position (the feature dimension per token) improves the reconstruction of the autoencoder but requires substantially larger diffusion models and more training to reach comparable generation \cite{Yao2025}; latent spaces with excessive high-frequency components hinder the diffusion process \cite{Skorokhodov2025}; and a recent systematic study reports that better reconstruction of the autoencoder (tokenizer) does not necessarily translate into better generation \cite{Zhong2026}. Under a limited training budget, a higher-dimensional latent space even degraded generation \cite{Sehwag2025}. Treatments of the training data such as random masking have also been used to learn better representations \cite{He2022} and tokenizers for diffusion \cite{Chen2025}.
+
+This work starts from a set of 4,908 aerial images of pineapple plantations (resolution 960$\times$544), with a variant that adds an estimated monocular depth channel. A latent diffusion model is trained in two stages: a variational autoencoder (VAE) compresses the image into a latent space (here, 4$\times$32$\times$32 for 256$\times$256 crops) and a generator (DDPM or Flow Matching) learns to produce latents from noise. In this setting, a continuous VAE latent space preserved crop structure where a discrete one failed \cite{Gonzalez2026}, but the choices of which data feed the VAE and how it is structured are usually made through manual experimentation \cite{Gonzalez2026}, without a systematic assessment of their effect on generation. Related questions have been studied with large datasets \cite{Yao2025,Skorokhodov2025,Zhong2026}, but, to the best of our knowledge, the effect on generation of data treatments and structural modifications of the VAE has not been studied in a regime of few, homogeneous, and multimodal data. The closest work we found measured the effect of preprocessing on the generation quality of a latent diffusion model in a small medical cohort \cite{Fallah2026}, but it varied a single treatment, did not modify the structure of the VAE, and did not consider aerial, agricultural, or multimodal data.
+
+The problem addressed by this proposal is to determine how varying the training data and the structure of the VAE affects the quality of aerial pineapple images generated through latent diffusion, and at what cost.
+
+\section{Hypothesis}
+
+\textbf{Hypothesis.} Treatments of the training data of the VAE and modifications of its structure reduce the FID and the KID of aerial pineapple images generated through latent diffusion (DDPM and Flow Matching), compared with a base VAE trained only with random crops, on a small, homogeneous, and multimodal dataset.
+
+The treatments considered are data augmentation, random masking, image selection, and modality (with or without a depth channel); the modifications are a variational output layer and an adversarial loss with a GAN-style discriminator.
+
+The hypothesis is supported if, across seeds, at least one treatment or modification has a statistically significant effect that lowers the FID with respect to the base VAE, with the KID pointing in the same direction (analysis of variance, with correction for multiple comparisons). It is refuted if none does.
+
+\section{Objectives}
+
+\subsection{Main Objective}
+
+To experimentally evaluate the effect of varying the training data and the structure of the VAE on the quality of aerial pineapple images generated through latent diffusion, in a regime of few, homogeneous, and multimodal data.
+
+\subsection{Specific Objectives}
+
+\begin{enumerate}
+  \item To implement a reproducible baseline of the VAE + generator pipeline (DDPM and Flow Matching), with a controlled and verified training recipe.
+  \item To compare treatments of the VAE input data: augmentation, random masking, image selection, and modality (RGB and RGB with depth).
+  \item To compare structural modifications of the VAE: variational layer, adversarial loss (GAN), and regularization.
+  \item To statistically analyze, with several seeds, the relationship between the reconstruction quality of the VAE and the generation quality (FID/KID).
+  \item To experiment with a pretrained self-supervised encoder (DINO) as an alternative latent space.
+  \item To write a paper with the results of the study.
+\end{enumerate}
+
+\subsection{Deliverables}
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{p{0.34\textwidth}p{0.58\textwidth}}
+\hline
+\textbf{Specific objective} & \textbf{Deliverable} \\
+\hline
+1. Reproducible baseline & Audit report of the pipeline and of the corrected training recipe; code and configurations. \\
+2. Effect of the data & Family of VAEs trained with each data treatment; comparative table of FID/KID and reconstruction. \\
+3. Effect of the structure & VAEs with variational layer, GAN, and regularization; analysis of their effect on reconstruction and generation. \\
+4. Reconstruction versus generation & Statistical analysis (correlations, curves, confidence intervals) with several seeds. \\
+5. Alternative latent spaces & Prototype with a self-supervised encoder (DINO) and its comparison with the base VAE. \\
+6. Paper & Manuscript with the results of the study. \\
+\hline
+\end{tabular}
+\caption{Deliverables associated with each specific objective.}
+\end{table}
+
+\section{Research questions}
+
+\begin{itemize}
+  \item \textbf{RQ1.} How does varying the VAE training data (treatments: augmentation, masking, selection, modality) affect the quality of the generated images?
+  \item \textbf{RQ2.} How do structural modifications of the VAE (variational layer, GAN, regularization) affect the quality of the generated images?
+  \item \textbf{RQ3.} Does a better VAE reconstruction translate into better generation, or is there a point beyond which it stops helping?
+  \item \textbf{RQ4.} Can a pretrained self-supervised encoder replace a VAE trained from scratch in this data regime?
+\end{itemize}
+
+\section{Scope and Limitations}
+
+\subsection{Scope}
+
+\begin{itemize}
+  \item A single dataset of aerial pineapple images (4,908 images; 3,536 for training, 381 for validation, and 346 for testing), with 256$\times$256 crops.
+  \item A convolutional VAE with a 4$\times$32$\times$32 latent space and two generators: DDPM and Flow Matching, both with a convolutional U-Net without attention.
+  \item Quality measured with FID and KID on generated images and a fixed reference set; reconstruction measured with MSE and PSNR.
+  \item Core of the study: objectives 1 to 4. Extension, if time permits: objective 5.
+  \item Extension: validation in other domains with small, homogeneous datasets, such as medical images, is left as an extension of the study and is not part of the core.
+\end{itemize}
+
+\subsection{Limitations}
+
+\begin{itemize}
+  \item The usefulness of the synthetic images in a downstream task (for example, detection or counting) is not evaluated, and labeling the generated images is left as future work; only their generative quality is measured.
+  \item Depth is a relative monocular estimate, not a sensor measurement.
+  \item The number of seeds per condition is bounded by the computational cost (about 26 GPU hours per training run).
+  \item FID is computed with a limited number of generated images (400), so it is accompanied by KID and confidence intervals.
+  \item The results correspond to one crop and one dataset; their generalization to other domains is not evaluated.
+\end{itemize}

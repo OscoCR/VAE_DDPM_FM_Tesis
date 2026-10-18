@@ -1,92 +1,175 @@
 \renewcommand{\baselinestretch}{1.5}
 
-\chapter{Hypothesis and Objectives}
+\chapter{Background and State of the Art}
 
-\section{Problem}
+\section{Application Context}
 
-Latent diffusion models \cite{Rombach2022} compress each image with an autoencoder and run the diffusion process in the resulting latent space, which makes training far cheaper than diffusion in pixel space. Recent work on how to design that latent space has been carried out mostly on large benchmarks such as ImageNet \cite{Yao2025,Skorokhodov2025,Zheng2025}. In contrast, regional agricultural applications are characterized by small, homogeneous datasets, whereas most diffusion models are designed for massive and highly diverse ones \cite{Gonzalez2026}. Limited datasets and imbalanced sample distributions are a recurrent challenge in agricultural image analysis \cite{Hu2025}. Agricultural imagery is also increasingly multimodal, and latent diffusion models that jointly generate appearance and geometry from a shared latent space have been proposed \cite{Krishnan2025}.
+This section describes the application that motivates this work, plant counting from images captured by unmanned aerial vehicles (UAVs), explains why the data available for it are scarce, and why generated images are a promising way to enrich them. It also places the thesis in the research line of the group.
 
-The quality of the latent space matters for generation beyond reconstruction fidelity. Increasing the number of latent channels per position (the feature dimension per token) improves the reconstruction of the autoencoder but requires substantially larger diffusion models and more training to reach comparable generation \cite{Yao2025}; latent spaces with excessive high-frequency components hinder the diffusion process \cite{Skorokhodov2025}; and a recent systematic study reports that better reconstruction of the autoencoder (tokenizer) does not necessarily translate into better generation \cite{Zhong2026}. Under a limited training budget, a higher-dimensional latent space even degraded generation \cite{Sehwag2025}. Treatments of the training data such as random masking have also been used to learn better representations \cite{He2022} and tokenizers for diffusion \cite{Chen2025}.
+\subsection{Counting plants with UAVs}
 
-This work starts from a set of 4,908 aerial images of pineapple plantations (resolution 960$\times$544), with a variant that adds an estimated monocular depth channel. A latent diffusion model is trained in two stages: a variational autoencoder (VAE) compresses the image into a latent space (here, 4$\times$32$\times$32 for 256$\times$256 crops) and a generator (DDPM or Flow Matching) learns to produce latents from noise. In this setting, a continuous VAE latent space preserved crop structure where a discrete one failed \cite{Gonzalez2026}, but the choices of which data feed the VAE and how it is structured are usually made through manual experimentation \cite{Gonzalez2026}, without a systematic assessment of their effect on generation. Related questions have been studied with large datasets \cite{Yao2025,Skorokhodov2025,Zhong2026}, but, to the best of our knowledge, the effect on generation of data treatments and structural modifications of the VAE has not been studied in a regime of few, homogeneous, and multimodal data.
+Unmanned aerial vehicles equipped with RGB cameras cover large fields at low cost, and combined with deep learning they have become a common way to automate tasks in precision agriculture \cite{Osco2021Review,Kamilaris2018}. One of these tasks is plant counting. Plant density is one of the main factors that determine yield, but measuring it in the field is impractical in large production areas because of the labor it requires \cite{Kitano2019}. For this reason, detectors applied to UAV imagery have been used to count crops such as corn \cite{Kitano2019,Osco2021}, potato and lettuce \cite{Machefer2020}, and maize seedlings \cite{Feng2025}. For pineapple, the crop of this work, Faster R-CNN has been applied to UAV images to locate and count mature pineapple fruits for yield prediction \cite{Shiu2023}, and an improved YOLOv7 to detect pineapples in field images for early yield estimation \cite{Lai2023}.
 
-The problem addressed by this proposal is to determine how varying the training data and the structure of the VAE affects the quality of aerial pineapple images generated through latent diffusion, and at what cost.
+The long-term goal of the research line in which this thesis is framed is to support the automatic detection and counting of plants from drone imagery. This work does not train or evaluate a counting model. It studies a step that comes before it: how to obtain good synthetic images of the crop when the available real data are few. The next subsections explain how counting is done, why the data are the bottleneck, and why generated images are a promising way to address it.
 
-\section{Hypothesis}
+\subsection{From classical detection to YOLO}
 
-Two hypotheses are stated: one about the effect of manipulating the data and the structure of the VAE, and another about the limit of that improvement:
+Early object detectors combined hand-designed features with a trained classifier, for example Haar-like features in a boosted cascade \cite{Viola2001} or histograms of oriented gradients \cite{Dalal2005}. Convolutional networks replaced the hand-designed features: R-CNN classifies region proposals using features learned by a CNN \cite{Girshick2014}, and Faster R-CNN adds a region proposal network that shares its convolutional features with the detector, which makes the proposals almost free \cite{Ren2017}. YOLO takes a different route: a single network predicts the boxes and the class scores from the whole image in one pass, which made real-time detection possible \cite{Redmon2016}. Variants of this family have been adapted to aerial imagery \cite{Tang2024} and to embedded hardware \cite{Shafiee2017}.
 
-\begin{enumerate}
-  \item \textbf{Improvement.} Applying treatments to the VAE training data (augmentation, random masking, image selection, and modality, with or without a depth channel) and modifying its structure (a variational output layer and an adversarial loss with a GAN-style discriminator) will improve the FID and KID of aerial pineapple images generated with diffusion models (DDPM and Flow Matching), compared with a base VAE without treatments (trained only with random 256$\times$256 crops), on a small, homogeneous, and multimodal dataset.
-  \item \textbf{Limit.} The improvement in generation obtained by accumulating these treatments and modifications will show diminishing returns: there will be a point beyond which increasing the reconstruction quality of the VAE will not significantly reduce FID or KID.
-\end{enumerate}
+Counting can be built on top of detection, by counting the detected boxes or the segmented instances \cite{Machefer2020,Bumbaca2025}. An alternative is to learn a density map whose integral over the image gives the number of objects \cite{Lempitsky2010}, an approach that has also been applied to plants \cite{Ayalew2020}.
 
-The first hypothesis is refuted if no combination of treatments and modifications significantly reduces FID/KID with respect to the base VAE; the second, if FID/KID keeps decreasing significantly at every step of the manipulation.
+\subsection{The data problem in agriculture}
 
-\section{Objectives}
-
-\subsection{Main Objective}
-
-To experimentally evaluate the effect of varying the training data and the structure of the VAE on the quality of aerial pineapple images generated through latent diffusion, in a regime of few, homogeneous, and multimodal data.
-
-\subsection{Specific Objectives}
+Both families of methods need annotated images, and in agriculture these are hard to obtain for three reasons.
 
 \begin{enumerate}
-  \item To implement a reproducible baseline of the VAE + generator pipeline (DDPM and Flow Matching), with a controlled and verified training recipe.
-  \item To compare treatments of the VAE input data: augmentation, random masking, image selection, and modality (RGB and RGB with depth).
-  \item To compare structural modifications of the VAE: variational layer, adversarial loss (GAN), and regularization.
-  \item To statistically analyze, with several seeds, the relationship between the reconstruction quality of the VAE and the generation quality (FID/KID).
-  \item To experiment with a pretrained self-supervised encoder (DINO) as an alternative latent space.
-  \item To write a paper with the results of the study.
+  \item \textbf{Few and homogeneous data.} A campaign covers a few flights over a single field, with one type of soil, specific growth stages, and similar illumination, so even thousands of frames show little variability. Small, homogeneous UAV datasets are typical of precision agriculture \cite{Gonzalez2026}.
+  \item \textbf{Limited transfer between domains.} A detector trained in one domain does not necessarily work in another. In maize seedling counting from drone orthomosaics, no model trained on out-of-distribution data reached acceptable counting accuracy, whereas models trained on in-domain data did so with 60 to 130 annotated images \cite{Bumbaca2025}. Domain shift is also a recognized obstacle in plant counting \cite{Ayalew2020}.
+  \item \textbf{Manual and costly annotation.} Pixel-level annotation of agricultural images by an expert is extremely time-consuming \cite{Bah2018}, annotating small and dense objects is burdensome \cite{Ayalew2020}, and the labor-intensive ground truthing of UAV images is a bottleneck for the detection and counting of sorghum panicles \cite{Cai2022}.
 \end{enumerate}
 
-\subsection{Deliverables}
+\subsection{Synthetic images to enrich the dataset}
 
-\begin{table}[h]
+A generative model learns the distribution of the training images and can then produce new images: they are not copies of any training image, but samples of what the model learned. Synthetic images have been used to enrich the training data of plant-related detectors. Images generated with GANs improved the detection and counting of sorghum panicles in UAV imagery \cite{Cai2022}; diffusion models have been used to augment plant disease images \cite{Muhammad2023} and to improve vineyard shoot detection \cite{Hirahara2025}; controllable diffusion improved detection in few-shot settings \cite{Fang2024}; with Stable Diffusion, the results on small datasets were promising only for some classes \cite{Deng2023}; and a detector for onboard UAV use has been trained on a synthetic dataset \cite{Bernardo2023}. If a generator produced varied and realistic aerial images of pineapple fields from limited real data, those images could enrich the dataset available for downstream tasks such as counting. Labeling the generated images, which is needed to use them for counting, and measuring their effect on a counting model are left as future work within the same research line (see the limitations in Chapter~III); what this proposal studies is the generative step.
+
+\subsection{Research line of the group}
+
+This work belongs to a research line on the detection and generation of pineapple imagery captured by drones, in a setting of scarce labels. Xie-Li et al.\ proposed a training-free few-shot detection framework, based on visual foundation models, to localize pineapples in drone images of large fields where labeled data are scarce and expensive \cite{XieLi2024}. Gonz\'alez-Hern\'andez et al.\ studied the generation side: they trained a latent diffusion model from scratch on small pineapple datasets, and found that a continuous latent space (a $\beta$-VAE) preserved the structure of the crop where a discrete one (a VQ-VAE) failed, and that a purely convolutional U-Net avoided the instabilities caused by global attention \cite{Gonzalez2026}. The present work starts from that recipe and asks how to improve it systematically through the data and the structure of the VAE.
+
+\section{Theoretical Framework}
+
+This section presents, in sequential order, the concepts needed to follow the rest of the proposal: how an image becomes a tensor, how a neural network learns, how a convolutional network processes images, and how these pieces are combined into the autoencoders and the generative models studied in this work.
+
+\subsection{From pixels to tensors}
+
+A digital image is a grid of pixels. Each pixel stores one intensity value per channel: a color image has three channels (red, green, and blue), and each value is usually an 8-bit integer between 0 and 255. The dataset of this work contains aerial frames of $544\times960$ pixels, and each frame has an associated depth map, a single channel whose values are normalized per image.
+
+In PyTorch \cite{Paszke2019}, an image is represented as a \emph{tensor}, a multidimensional array of numbers that can be moved to a GPU and differentiated automatically. The convention is channels first: an image has shape $(C,H,W)$, and a batch of $N$ images has shape $(N,C,H,W)$. Before training, the integers are converted to floating-point numbers and divided by 255, so that every value lies in $[0,1]$. Table~\ref{tab:shapes} shows how the data change shape along the pipeline.
+
+\begin{table}[H]
 \centering
 \small
-\begin{tabular}{p{0.34\textwidth}p{0.58\textwidth}}
+\begin{tabular}{p{0.34\textwidth}p{0.22\textwidth}p{0.3\textwidth}}
 \hline
-\textbf{Specific objective} & \textbf{Deliverable} \\
+\textbf{Stage} & \textbf{Shape} & \textbf{Numbers per image} \\
 \hline
-1. Reproducible baseline & Audit report of the pipeline and of the corrected training recipe; code and configurations. \\
-2. Effect of the data & Family of VAEs trained with each data treatment; comparative table of FID/KID and reconstruction. \\
-3. Effect of the structure & VAEs with variational layer, GAN, and regularization; analysis of their effect on reconstruction and generation. \\
-4. Reconstruction versus generation & Statistical analysis (correlations, curves, confidence intervals) with several seeds. \\
-5. Alternative latent spaces & Prototype with a self-supervised encoder (DINO) and its comparison with the base VAE. \\
-6. Paper & Manuscript with the results of the study. \\
+RGB frame stored in the file (height, width, channels), 8-bit & $544\times960\times3$ & 1\,566\,720 \\
+Random crop with depth, as a tensor in $[0,1]$ & $(4,256,256)$ & 262\,144 \\
+Batch used for training & $(8,4,256,256)$ & --- \\
+Latent produced by the encoder & $(4,32,32)$ & 4\,096 \\
 \hline
 \end{tabular}
-\caption{Deliverables associated with each specific objective.}
+\caption{Tensor shapes along the pipeline. The crop has three color channels and one depth channel.}
+\label{tab:shapes}
 \end{table}
 
-\section{Research questions}
+\subsection{Neural networks and learning}
 
+A neural network is a composition of layers, $f_\theta=f_L\circ\dots\circ f_1$, where each layer applies a linear map followed by a nonlinear function, and $\theta$ denotes all the learnable parameters. Learning consists of minimizing a loss function $\mathcal{L}(\theta)$ that measures how far the output is from the desired result. The gradient of the loss with respect to every parameter is computed by backpropagation \cite{Rumelhart1986,Goodfellow2016}, and the parameters are updated in the direction that reduces the loss. Optimizers such as Adam \cite{Kingma2015} and AdamW \cite{Loshchilov2019} adapt the size of each update, which is controlled by the \emph{learning rate}. The learning rate is often changed during training with a schedule, for example a cosine decay \cite{Loshchilov2017}; a poorly configured schedule can make training oscillate or become unstable. To detect overfitting, the data are split into training, validation, and test sets, and the model is selected with the validation loss.
+
+\subsection{Convolutional neural networks}
+
+A convolutional neural network (CNN) \cite{LeCun1998} processes images with filters that slide over the input and share their weights. For an input $X$ with $C$ channels, a convolutional layer with kernels $W$ and bias $b$ produces
+\begin{equation}
+Y_{c',i,j}=\sum_{c=1}^{C}\sum_{u,v}W_{c',c,u,v}\,X_{c,\,i+u,\,j+v}+b_{c'},
+\end{equation}
+which makes the layer sensitive to local patterns, such as the edge of a leaf, wherever they appear in the image. A stride of 2 halves the height and the width, so stacking such layers compresses the image spatially while increasing the number of channels. Residual blocks \cite{He2016} add the input of a block to its output to ease the training of deep networks, and group normalization \cite{Wu2018} stabilizes the activations. The U-Net \cite{Ronneberger2015} combines a downsampling path, an upsampling path, and skip connections between them; it is the architecture used by the generators of this work, in its convolutional version without attention layers.
+
+\subsection{Autoencoders and the latent space}
+
+An autoencoder is a network with two parts: an encoder $E$ that compresses an input $x$ into a smaller representation $z=E(x)$, called the \emph{latent}, and a decoder $D$ that reconstructs the input, $\hat{x}=D(z)$. It is trained to minimize the reconstruction error. In this work, the encoder maps a $(4,256,256)$ tensor to a latent of shape $(4,32,32)$: a grid of $32\times32$ positions, each with 4 values. Each position is called a \emph{token}, and for this reason the autoencoder is also referred to as a tokenizer in the literature.
+
+\subsection{Variational autoencoders}
+
+A variational autoencoder (VAE) \cite{Kingma2014} learns a probabilistic encoder $q_\phi(z\mid x)=\mathcal{N}(\mu_\phi(x),\sigma_\phi^2(x))$ and a decoder $p_\theta(x\mid z)$. It is trained by minimizing a reconstruction term plus a regularization term that keeps the latent close to a standard Gaussian prior:
+\begin{equation}
+\mathcal{L}_{\mathrm{VAE}} = \mathbb{E}_{q_\phi(z\mid x)}\big[\lVert x-\hat{x}\rVert_2^2\big] + \beta\, D_{\mathrm{KL}}\big(q_\phi(z\mid x)\,\Vert\,\mathcal{N}(0,I)\big),
+\end{equation}
+where the latent is sampled with the reparameterization $z=\mu_\phi(x)+\sigma_\phi(x)\odot\varepsilon$, $\varepsilon\sim\mathcal{N}(0,I)$. The weight $\beta$ controls the trade-off between reconstruction and regularization \cite{Higgins2017}; in this work $\beta=10^{-3}$. A discrete alternative replaces the Gaussian latent with a codebook of embeddings (VQ-VAE) \cite{vandenOord2017}. One of the structural modifications studied in this work is a \emph{variational output layer}: instead of producing the image directly, the last layer of the decoder predicts a mean and a log-variance for every output value and the image is sampled from that distribution.
+
+\subsection{Data treatments}
+
+A data treatment is any transformation applied to the training data before it reaches the model. Data augmentation applies random transformations that preserve the content of the image; for aerial imagery, which has no canonical orientation, these include rotations by multiples of $90^{\circ}$, flips, and random crops. Random masking hides random regions of the image so that the model must infer the missing content; masked autoencoders \cite{He2022} reconstruct the hidden patches, and masking has also been used to train tokenizers for diffusion models \cite{Chen2025}. A third treatment is image selection, in which the training set is changed by choosing or repeating certain images, for example those with the largest reconstruction error.
+
+\subsection{Adversarial training}
+
+A generative adversarial network (GAN) \cite{Goodfellow2014} trains a discriminator $D_\psi$ to distinguish real from generated images while the generator is trained to fool it. When the discriminator judges local patches instead of the whole image \cite{Isola2017}, it encourages sharp local texture. In a VAE, an adversarial term can be added to the loss, $\mathcal{L}=\mathcal{L}_{\mathrm{VAE}}+\lambda\,\mathcal{L}_{\mathrm{adv}}$, with a small weight $\lambda$ (here $\lambda=0.01$).
+
+\subsection{Latent diffusion, DDPM, and Flow Matching}
+
+A latent diffusion model (LDM) \cite{Rombach2022} separates image generation into two stages: an autoencoder compresses the images into latents, and a generative model is trained in the latent space, so that new latents can be sampled and decoded into images. Working in the latent space reduces the cost of training and sampling with respect to diffusion in pixel space.
+
+A denoising diffusion probabilistic model (DDPM) \cite{Ho2020} defines a forward process that gradually adds Gaussian noise to a latent $z_0$,
+\begin{equation}
+z_t=\sqrt{\bar{\alpha}_t}\,z_0+\sqrt{1-\bar{\alpha}_t}\,\varepsilon,\qquad \varepsilon\sim\mathcal{N}(0,I),
+\end{equation}
+and trains a network $\varepsilon_\theta$ to predict the added noise,
+\begin{equation}
+\mathcal{L}_{\mathrm{DDPM}}=\mathbb{E}_{z_0,\varepsilon,t}\big[\lVert\varepsilon-\varepsilon_\theta(z_t,t)\rVert_2^2\big].
+\end{equation}
+Sampling starts from pure noise and removes it step by step (here, with 1000 training steps). Flow Matching \cite{Lipman2023} instead learns a velocity field along a path between noise $x_0\sim\mathcal{N}(0,I)$ and data $x_1$. With the linear path $x_t=(1-t)\,x_0+t\,x_1$, the target velocity is constant, $v=x_1-x_0$, and the loss is
+\begin{equation}
+\mathcal{L}_{\mathrm{FM}}=\mathbb{E}_{x_0,x_1,t}\big[\lVert v_\theta(x_t,t)-(x_1-x_0)\rVert_2^2\big].
+\end{equation}
+Sampling integrates the learned velocity with a few Euler steps (here, 50), which makes generation considerably faster than DDPM sampling.
+
+\subsection{Evaluation metrics}
+
+The quality of the reconstruction is measured with the mean squared error (MSE) and the peak signal-to-noise ratio. The quality of the generated images is measured by comparing the distribution of generated images with that of real images in the feature space of an Inception network. The Fr\'echet Inception Distance (FID) \cite{Heusel2017} models both sets of features as Gaussians with means $\mu_r,\mu_g$ and covariances $\Sigma_r,\Sigma_g$:
+\begin{equation}
+\mathrm{FID}=\lVert\mu_r-\mu_g\rVert_2^2+\mathrm{Tr}\!\big(\Sigma_r+\Sigma_g-2(\Sigma_r\Sigma_g)^{1/2}\big).
+\end{equation}
+The Kernel Inception Distance (KID) \cite{Binkowski2018} is the squared maximum mean discrepancy with a polynomial kernel; unlike FID, it has an unbiased estimator and does not depend on the number of generated images in the same way, so it is more reliable for small samples. For both metrics, lower is better.
+
+\section{Related Work}
+
+% TODO (estado del arte): diseño del espacio latente; autoencoders con enmascarado y tratamientos de datos;
+% generación con pocos datos y en agricultura; generación multimodal. Fuentes verificadas en docs/literature_map.md.
+
+\subsection{Literature search}
+
+\textbf{Review question.} Has the effect of data treatments and of structural modifications of the VAE on the generation quality of latent diffusion models been studied for small, homogeneous, and multimodal datasets?
+
+\textbf{Sources and date.} Two sources were queried, both restricted to publications from 2022 onward: the arXiv API on 11 October 2026 and the Semantic Scholar Academic Graph API (bulk search with boolean syntax over title and abstract) on 18 October 2026. All strings combine a latent-diffusion term (L) with a term for the autoencoder (A), plus the term specific to each string:
 \begin{itemize}
-  \item \textbf{RQ1.} How does varying the VAE training data (treatments: augmentation, masking, selection, modality) affect the quality of the generated images?
-  \item \textbf{RQ2.} How do structural modifications of the VAE (variational layer, GAN, regularization) affect the quality of the generated images?
-  \item \textbf{RQ3.} Does a better VAE reconstruction translate into better generation, or is there a point beyond which it stops helping?
-  \item \textbf{RQ4.} Can a pretrained self-supervised encoder replace a VAE trained from scratch in this data regime?
+  \item L = \texttt{"latent diffusion"}
+  \item A = \texttt{autoencoder OR VAE OR tokenizer}
 \end{itemize}
 
-\section{Scope and Limitations}
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{p{0.06\textwidth}p{0.50\textwidth}p{0.09\textwidth}p{0.17\textwidth}}
+\hline
+\textbf{ID} & \textbf{Search string (in addition to L)} & \textbf{arXiv} & \textbf{Semantic Scholar} \\
+\hline
+S1 & A \texttt{AND (augmentation OR "data augmentation")} & 30 & 48 \\
+S2 & A \texttt{AND (adversarial OR KL OR regularization OR "latent channels")} & 73 & 123 \\
+S3 & A \texttt{AND (aerial OR agricultural OR crop OR plant OR UAV OR "remote sensing")} & 9 & 18 \\
+S4 & \texttt{(masked OR masking) AND} A & 47 & 79 \\
+S5 & \texttt{depth AND (RGB OR appearance) AND (joint OR jointly OR "shared latent")} & 7 & 8 \\
+\hline
+\end{tabular}
+\caption{Search strings and number of records returned by each source. A first version of S1 and S2 for arXiv that also required a small-data term was too restrictive (it returned an error and one record, respectively) and was replaced by the strings above.}
+\end{table}
 
-\subsection{Scope}
+\textbf{Screening criteria.} Records were screened by title and abstract with three criteria:
+\begin{enumerate}
+  \item \textbf{C1:} the work varies something in the autoencoder or in its training data (augmentation, masking, adversarial loss, KL or regularization, number of latent channels, or fine-tuning).
+  \item \textbf{C2:} the work measures generation (FID, KID, generation or sample quality, image generation or synthesis).
+  \item \textbf{C3:} the work addresses few or homogeneous data (small or limited datasets, few images, scarcity, few-shot, data efficiency) or an aerial, agricultural, or medical domain.
+\end{enumerate}
+The screening was automatic: each criterion was a set of keywords applied to the title and abstract. For the Semantic Scholar records that had not been found on arXiv, the same criteria were re-implemented as keyword rules from their written definition, because the first script was not kept; the records found in both sources kept their arXiv screening. The titles of the records that met C1, C2, and C3 were reviewed, and the abstracts of the closest ones were read. A work is considered to study the review question when it meets the three criteria and examines how the data or the structure of the autoencoder change generation.
 
-\begin{itemize}
-  \item A single dataset of aerial pineapple images (4,908 images; 3,536 for training, 381 for validation, and 346 for testing), with 256$\times$256 crops.
-  \item A convolutional VAE with a 4$\times$32$\times$32 latent space and two generators: DDPM and Flow Matching, both with a convolutional U-Net without attention.
-  \item Quality measured with FID and KID on generated images and a fixed reference set; reconstruction measured with MSE and PSNR.
-  \item Core of the study: objectives 1 to 4. Extension, if time permits: objective 5.
-  \item Extension: validation in other domains with small, homogeneous datasets, such as medical images, is left as an extension of the study and is not part of the core.
-\end{itemize}
+\textbf{Result.} Figure~\ref{fig:prisma} summarizes the flow, which follows the PRISMA 2020 flow diagram \cite{Page2021}. The two sources returned 442 records, of which 258 were unique. Of these, 84 met C1 and C2, and 36 also met C3 or the domain criterion. Most of the 36 are medical applications that use a VAE to synthesize data; the others are spectral data (soil, water quality) and a multimodal remote sensing generator with a domain-specific VAE trained on 11.5 million images, a large-scale setting. Two works come closest to the review question, both in medical imaging. Fallah and Herzog report a controlled ablation of the preprocessing of a small cohort (295 participants) and measure its effect on the KID and FID of the images generated by a VAE and a latent diffusion model \cite{Fallah2026}; Dombrowski et al.\ show that the structure of the latent space of pretrained autoencoders, rather than their fidelity, limits the usefulness of synthetic medical images \cite{Dombrowski2026}. Neither studies aerial or agricultural images, multimodal inputs, or structural modifications of the VAE. Therefore, no record studied the review question, but the preprocessing ablation of Fallah and Herzog shows that the effect of a data treatment on generation has been measured at small-cohort scale, so the claim of novelty applies to the combination of data treatments, VAE modifications, and the aerial, agricultural, multimodal regime.
 
-\subsection{Limitations}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.95\textwidth]{Imagenes/prisma_flow.png}
+\caption{PRISMA 2020-style flow diagram of the literature search on arXiv and Semantic Scholar (11 and 18 October 2026). Screening was automatic, based on keyword rules over title and abstract.}
+\label{fig:prisma}
+\end{figure}
 
-\begin{itemize}
-  \item The usefulness of the synthetic images in a downstream task (for example, detection or counting) is not evaluated, and labeling the generated images is left as future work; only their generative quality is measured.
-  \item Depth is a relative monocular estimate, not a sensor measurement.
-  \item The number of seeds per condition is bounded by the computational cost (about 26 GPU hours per training run).
-  \item FID is computed with a limited number of generated images (400), so it is accompanied by KID and confidence intervals.
-  \item The results correspond to one crop and one dataset; their generalization to other domains is not evaluated.
-\end{itemize}
+\textbf{Complementary searches.} The references on plant counting, object detection, data scarcity, and synthetic data used in the Background were located with 14 targeted queries on Semantic Scholar (Academic Graph API, 18 October 2026, 20 results per query, publications from 2012 onward); the title, authors, venue, and abstract of every work cited from them were checked on the same source. These searches support the narrative of the Background and are not part of the PRISMA flow above, which answers the review question only.
+
+\textbf{Limitations.} Only arXiv and Semantic Scholar were searched, the screening relied on keywords (re-implemented for the second source), there was no registered protocol, and the search was not repeated by a second reviewer. PRISMA 2020 is followed only in how the flow is reported; this is a first systematic search and not a full systematic review.

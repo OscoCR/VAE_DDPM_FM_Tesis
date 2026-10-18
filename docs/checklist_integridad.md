@@ -86,3 +86,13 @@ Leyenda: Meta = autores, título y año verificados en arXiv; Resumen = se leyó
 - [x] Búsqueda de novedad (S1 a S5) repetida en Semantic Scholar (18-oct): texto y tabla en c1.tex; datos en `docs/s2/`.
 - [ ] Leer los resúmenes de los 49 registros que cumplen C1, C2 y C3 (`screening_s2_2026-10-18.csv`, filtrar C1=C2=1 y C3) y confirmar que ninguno responde la pregunta; leer Fallah2026 y Dombrowski2026.
 - [ ] Decidir si se menciona Fallah2026 en el Problem de c2.tex (hoy la frase de novedad dice que 'no se ha estudiado' en el régimen de pocos datos homogéneos y multimodales: sigue siendo cierta, pero un jurado puede citar a Fallah).
+
+## F. Cambios del 18-oct (tarde)
+- [x] Hipótesis única (la de "Mejora"), por pedido del asesor; el límite de rendimientos pasó a RQ3 como análisis exploratorio. Borrador v1 en c2.tex, por pulir con el asesor.
+- [x] Oración sobre Fallah y Herzog agregada al Problem (c2.tex).
+- [x] Introducción seccionada: 1.1 Background and Motivation, 1.2 Theoretical Framework, 1.3 Related Work (c1.tex).
+- [x] Figura PRISMA nueva con dos fuentes (`Imagenes/prisma_flow.png`, script `docs/s2/draw_prisma.py`); cifras en `docs/s2/prisma_combined_numbers.json`.
+- [x] PRISMA 2020 citado (`Page2021`, metadatos de Crossref). El texto dice que se sigue solo para reportar el flujo; no es revisión sistemática completa.
+- [x] Quitada la frase sobre conteo en tiempo real a bordo (la línea del grupo, Danny, procesa fuera de línea).
+- [x] Capítulos separados como Danny (19-oct): I Introduction (c1, nueva y corta), II Background and State of the Art (c2), III Hypothesis and Objectives (c3), IV Research Proposal (c4, vacío), V Initial Results (c5, esqueleto), VI Workplan (c6, vacío). `General.tex` incluye c1 a c6.
+- [ ] Revisar con el asesor si la hipótesis debe nombrar solo 4 factores (aumento, enmascarado, capa variacional, GAN) o los 6 actuales (con selección y modalidad).

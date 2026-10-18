@@ -1,0 +1,17 @@
+\renewcommand{\baselinestretch}{1.5}
+
+\chapter{Initial Results}
+
+% Sources: docs/ of this repository and the audit report (propuesta/Informe_avance_reunion.html in Latent-Diffusion).
+
+\section{Audit of the Training Pipeline}
+
+% TODO: the seven problems found, with the evidence for each (learning-rate scheduler, best-checkpoint criterion, gradient clipping, decoder noise, sigma of the latent, in-place decoder operation, uncertainty).
+
+\section{Generation Quality of the Retrained Models}
+
+% TODO: FID and KID table (original VAE and new VAE, DDPM and Flow Matching, best and final checkpoint) and the attribution caveat: the new VAE changes three things at once.
+
+\section{Reconstruction Pilots with Masking}
+
+% TODO: masked-input VAEs (25 and 50 percent) against the control, when the runs finish.

@@ -1,4 +1,4 @@
-# Mapa de afirmaciones a fuentes (capítulo II, sección Problem)
+# Mapa de afirmaciones a fuentes (capítulo III, sección Problem; antes capítulo II)
 
 Cada fila dice qué se afirma en el texto, qué referencia lo respalda (clave de `TFC1/biblio.bib`), qué dice la fuente y cómo se verificó.
 Estado: **Sí** = leí el resumen oficial de arXiv o el texto del paper; **Parcial** = solo vi un resumen de búsqueda, hay que abrir el paper antes de dar la cita por buena.
@@ -128,3 +128,5 @@ Los más cercanos a la pregunta de revisión (ninguno la responde):
 
 Consecuencia para la afirmación de novedad: sigue en pie para la combinación (tratamientos de datos + modificaciones del VAE + régimen aéreo, agrícola y multimodal con pocos datos), pero NO se puede decir que el efecto de un tratamiento de datos sobre la generación con pocos datos nunca se midió (Fallah2026 lo hizo en MRI).
 Pendiente: abrir y leer Fallah2026 y Dombrowski2026.
+
+`Page2021` (PRISMA 2020, BMJ 2021, n71): metadatos comprobados en Crossref el 18-oct-2026.
