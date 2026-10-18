@@ -4,5 +4,11 @@
 
 \section{Methodology}
 
+\subsection{Dataset}
+
+The frames belong to the drone recordings of a pineapple plantation of Upala Agr\'icola, in Costa Rica, captured from a top-down view at a two-meter altitude; individual frames of the continuous video streams were extracted and treated as still images \cite{Gonzalez2026,XieLi2025VAE}. % TODO: confirm with the advisor that this is exactly the subset used here (the file attributes only say that the source is a vertical-view collection of $1\,920\times1\,088$ frames).
+
+The dataset used in this work contains 4\,908 frames, stored with their estimated depth maps and the bounding boxes of the pineapples (17\,609 boxes in total). The frames have a source resolution of $1\,920\times1\,088$ pixels and were reduced by an exact $2\times$ box average to $960\times544$. Depth is a monocular relative estimate, normalized per image, so it is neither metric nor comparable across images. The split follows the order of capture: blocks of 60 consecutive frames of a capture session are assigned whole to training, validation, or test, and 20 frames are discarded at every boundary between splits so that near-identical frames of a video do not leak across them; the frames marked as discarded belong to no split. This gives 3\,536 training, 381 validation, and 346 test frames.
+
 \section{Design of Experiments}
 

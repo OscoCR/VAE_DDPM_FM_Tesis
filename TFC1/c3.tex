@@ -71,7 +71,7 @@ To experimentally evaluate the effect of varying the training data and the struc
 \subsection{Scope}
 
 \begin{itemize}
-  \item A single dataset of aerial pineapple images (4,908 images; 3,536 for training, 381 for validation, and 346 for testing), with 256$\times$256 crops.
+  \item A single dataset of aerial pineapple images (4,908 frames of 960$\times$544 pixels, reduced from 1\,920$\times$1\,088; 3,536 for training, 381 for validation, and 346 for testing, split by blocks of capture), with 256$\times$256 crops.
   \item A convolutional VAE with a 4$\times$32$\times$32 latent space and two generators: DDPM and Flow Matching, both with a convolutional U-Net without attention.
   \item Quality measured with FID and KID on generated images and a fixed reference set; reconstruction measured with MSE and PSNR.
   \item Core of the study: objectives 1 to 4. Extension, if time permits: objective 5.
@@ -86,4 +86,5 @@ To experimentally evaluate the effect of varying the training data and the struc
   \item The number of seeds per condition is bounded by the computational cost (about 26 GPU hours per training run).
   \item FID is computed with a limited number of generated images (400), so it is accompanied by KID and confidence intervals.
   \item The results correspond to one crop and one dataset; their generalization to other domains is not evaluated.
+  \item The data preparation, the input of the VAE, and the evaluation protocol differ from those of the work this proposal builds on \cite{Gonzalez2026}, so the values of FID and KID are not directly comparable with the Fr\'echet Distance reported there.
 \end{itemize}

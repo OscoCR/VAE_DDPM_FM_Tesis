@@ -2,16 +2,92 @@
 
 \chapter{Initial Results}
 
-% Sources: docs/ of this repository and the audit report (propuesta/Informe_avance_reunion.html in Latent-Diffusion).
+The experiments reported in this chapter were run between 15 September and 14 October 2026 with a single seed per configuration. Their purpose was not to rank configurations but to establish a reliable baseline, to learn what the measurements can and cannot distinguish, and to decide how the main experiments must be designed. Generation quality was measured with FID and KID on 400 generated images against a fixed reference set; DDPM sampled with 1\,000 steps and Flow Matching with 50 Euler steps. Reconstruction was measured on the 346 test images.
 
 \section{Audit of the Training Pipeline}
 
-% TODO: the seven problems found, with the evidence for each (learning-rate scheduler, best-checkpoint criterion, gradient clipping, decoder noise, sigma of the latent, in-place decoder operation, uncertainty).
+Before comparing configurations, the training and generation code inherited from the base repository was audited. Seven problems were found, most of them present since the first commit of the base repository, and all were corrected (Table~\ref{tab:audit}).
 
-\section{Generation Quality of the Retrained Models}
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{p{0.04\textwidth}p{0.28\textwidth}p{0.38\textwidth}p{0.20\textwidth}}
+\hline
+\textbf{\#} & \textbf{Problem} & \textbf{Evidence} & \textbf{Correction} \\
+\hline
+1 & Learning-rate schedule completed about four cosine cycles and ended near its maximum & The total number of steps was divided by the batch size twice: 44\,800 steps assumed against 353\,600 real steps. The training loss correlates with the faulty curve ($r=0.75$) & Schedule computed from the real number of steps \\
+2 & ``Best'' checkpoint chosen by training loss with a threshold of 0.1 & The selected epochs were arbitrary (DDPM: epoch 485; Flow Matching: epochs 1, 2, 11, and 248) & Selection by validation loss \\
+3 & No gradient clipping & The Flow Matching run with the augmented VAE diverged near epoch 245 and never recovered (final FID 379) & Gradient clipping \\
+4 & Pixel noise of the variational output layer at generation time & Single-pass MSE rises by 47 to 49\%; the FID of the DDPM generations falls from 173.4 to 155.8 when the mean is decoded & Decoding with the mean \\
+5 & Scale of the latent estimated from 8 images & 0.2153 against 0.2222 estimated from more images (small effect) & Estimated from more batches \\
+6 & The decoder divides its input in place & Reusing the same latent scales it by 5.49 & Input is copied \\
+7 & Uncertainty mixes encoder and decoder noise & With decoder noise only, the correlation between uncertainty and error is still negative (Spearman $-0.36$ for the mean and $-0.51$ for the maximum) & Decoder-only estimate \\
+\hline
+\end{tabular}
+\caption{Problems found in the inherited pipeline.}
+\label{tab:audit}
+\end{table}
 
-% TODO: FID and KID table (original VAE and new VAE, DDPM and Flow Matching, best and final checkpoint) and the attribution caveat: the new VAE changes three things at once.
+The effect of these corrections on the FID is small: with the same VAE, the DDPM went from 155.8 (old recipe, mean decoding) to 160.1 (corrected recipe), and Flow Matching with the best checkpoint from 167.2 to 162.8. What changed is the reliability of the pipeline: a Flow Matching model that had silently collapsed now trains stably.
 
-\section{Reconstruction Pilots with Masking}
+\section{Reconstruction Quality of the VAE Variants}
 
-% TODO: masked-input VAEs (25 and 50 percent) against the control, when the runs finish.
+Table~\ref{tab:recon} reports the reconstruction of the VAE variants on the test set. Adding the adversarial loss and the variational output layer lowers the pixel fidelity by about 1.7~dB, but the reconstructions look more realistic: the FID and KID of the reconstructed images improve when the VAE receives the depth channel. The effect depends on the modality: with an RGB-only input, the same change did not improve the perceptual metrics.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{p{0.34\textwidth}p{0.10\textwidth}p{0.10\textwidth}p{0.13\textwidth}p{0.10\textwidth}p{0.10\textwidth}}
+\hline
+\textbf{VAE} & \textbf{PSNR (dB)} & \textbf{SSIM} & \textbf{PSNR depth (dB)} & \textbf{FID recon.} & \textbf{KID recon.} \\
+\hline
+RGB only (base repository) & 29.69 & 0.9881 & -- & -- & -- \\
+RGB-D (input and output) & 29.56 & 0.9877 & 35.74 & 132.2 & 0.135 \\
+RGB-D, adversarial loss and variational layer & 27.83 & 0.9834 & 31.14 & 118.6 & 0.115 \\
+RGB input, RGB-D output & 27.91 & 0.9825 & 21.88 & 131.0 & 0.130 \\
+RGB input, RGB-D output, adversarial loss & 26.91 & 0.9790 & 22.08 & 134.8 & 0.135 \\
+\hline
+\end{tabular}
+\caption{Reconstruction on the test set (346 images). The FID and KID are computed on the reconstructed images, not on generated images.}
+\label{tab:recon}
+\end{table}
+
+Among the VAEs with adversarial loss, data augmentation lowered the test MSE by 3 to 5\% with respect to the controls trained for the same number of epochs. Masking the input (blocks of $32\times32$ pixels) lowered the unmasked validation reconstruction in an ordered way: PSNR 25.40~dB without masking, 24.62~dB with 25\% of the input masked, and 23.95~dB with 50\% (SSIM 0.977, 0.971, and 0.967). This is expected for a model trained to fill gaps; its effect on generation has not been tested.
+
+\section{Generation Quality}
+
+Table~\ref{tab:gen} reports the FID of the generated images. The first row is the reference, trained with the original recipe (800 epochs); the next two rows use the corrected recipe (500 epochs, validation-based selection, gradient clipping, and mean decoding).
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{p{0.46\textwidth}p{0.11\textwidth}p{0.11\textwidth}p{0.11\textwidth}p{0.11\textwidth}}
+\hline
+ & \multicolumn{2}{c}{\textbf{DDPM}} & \multicolumn{2}{c}{\textbf{Flow Matching}} \\
+\textbf{VAE (and recipe)} & best & final & best & final \\
+\hline
+RGB-D, original recipe & 155.2 & -- & 163.3 & 156.7 \\
+RGB-D, adversarial loss, variational layer, and augmentation & 160.1 & 159.1 & 162.8 & 170.6 \\
+RGB-D, adversarial loss and variational layer, no augmentation & 160.4 & 151.4 & 159.9 & 165.9 \\
+\hline
+RGB input, RGB-D output, original recipe & 169.2 & -- & 171.6 & 169.0 \\
+\hline
+\end{tabular}
+\caption{FID of 400 generated images (lower is better); single seed. ``Best'' and ``final'' are two checkpoints of the same run.}
+\label{tab:gen}
+\end{table}
+
+Three observations follow. First, none of the changes to the VAE (adversarial loss, variational layer, augmentation) produces a difference in FID larger than the variability inside a single run: two checkpoints of the same training differ by up to 9 points. The lowest value (DDPM final, 151.4, with a KID of 0.153) is 2.4\% below the reference, which cannot be distinguished from chance with one seed. Second, adding augmentation did not improve generation: with the DDPM final checkpoint, the configuration with augmentation is 7.7 points worse than the one without it. Third, providing the depth channel as an input of the VAE is the only difference that appears in all three comparisons (DDPM, and Flow Matching with the best and the final checkpoint), with 8 to 14 points of FID in favor of the RGB-D input; it was observed with the original recipe and has not been repeated with the corrected one. Flow Matching did not improve the FID over DDPM, but it generated the 400 images in about 11 minutes against 1 to 3 hours for the 1\,000-step DDPM.
+
+\section{Implications for the Research Proposal}
+
+The initial results lead to four decisions for the experimental design of Chapter~IV:
+
+\begin{enumerate}
+  \item \textbf{Replicates are necessary.} With one seed per configuration, the differences observed are of the order of the variability between checkpoints, so no ranking can be claimed. The main experiments use several seeds per condition and an analysis of variance.
+  \item \textbf{Absence of effect must be testable.} Most of the changes produced no visible difference. The analysis includes equivalence tests, so that a null result can be reported as an effect smaller than a stated margin and not as an inconclusive one.
+  \item \textbf{Reconstruction and generation must be reported separately.} Pixel fidelity, perceptual quality of the reconstructions, and generation quality moved in different directions (research question RQ3).
+  \item \textbf{Modality is a first-order factor.} The only consistent signal was the depth channel, so it is considered in the design from the start and not as a later extension.
+\end{enumerate}
+
+In summary, the experiments carried out so far show that the question is open: the usual improvements to the VAE do not transfer in an obvious way to generation in this regime, and the measurement noise is as large as the effects. The proposed design is built to resolve exactly that.

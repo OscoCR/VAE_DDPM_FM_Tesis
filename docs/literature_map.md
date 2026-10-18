@@ -130,3 +130,9 @@ Consecuencia para la afirmación de novedad: sigue en pie para la combinación (
 Pendiente: abrir y leer Fallah2026 y Dombrowski2026.
 
 `Page2021` (PRISMA 2020, BMJ 2021, n71): metadatos comprobados en Crossref el 18-oct-2026.
+
+
+## Papers del grupo leídos el 18-oct-2026 (PDF)
+- `XieLi2025VAE` (BIP 2025, 6 páginas; PDF en OneDrive/Maestria/Tesis/Papers): compara beta-VAE (beta = 0, 0.001, 0.1, 1, 10) y VQ-VAE (codebook 128/256, dimensión 64/128) con unas 4 000 imágenes de Upala Agrícola (1920x1080, vista cenital de 90 grados, reducidas a 256x256), validación cruzada de 5 pliegues, 400 épocas, lote 4, Adam 1e-4. Mide reconstrucción (FD, precision, recall, autenticidad, SSIM) y separación de plantas y fondo en el latente (PCA + t-SNE). Resultado: un beta intermedio (0.001) da el mejor balance; el VQ-VAE separa bien fondo y plantas. Un VAE preentrenado de difusión latente generaliza mal (FD 1159.9). NO evalúa generación. El README de su repositorio pide citarlo a quien use el dataset. No cambia la afirmación de novedad, que es sobre generación.
+- `Gonzalez2026` y `XieLi2025VAE` describen la misma colección de grabaciones (Upala Agrícola, vista cenital, 2 m). Nuestro `.h5` (cuadros 1920x1088, colección "vertical") es consistente con eso; falta confirmar con el asesor que es exactamente el mismo subconjunto.
+- `XieLi2025PineSORT` (CVPRW 2025): seguimiento de piñas en video de drone para estimar rendimiento, validado con 5 pliegues frente a BoTSORT y AgriSORT; resumen leído.

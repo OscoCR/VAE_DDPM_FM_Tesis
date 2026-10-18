@@ -96,3 +96,8 @@ Leyenda: Meta = autores, título y año verificados en arXiv; Resumen = se leyó
 - [x] Quitada la frase sobre conteo en tiempo real a bordo (la línea del grupo, Danny, procesa fuera de línea).
 - [x] Capítulos separados como Danny (19-oct): I Introduction (c1, nueva y corta), II Background and State of the Art (c2), III Hypothesis and Objectives (c3), IV Research Proposal (c4, vacío), V Initial Results (c5, esqueleto), VI Workplan (c6, vacío). `General.tex` incluye c1 a c6.
 - [ ] Revisar con el asesor si la hipótesis debe nombrar solo 4 factores (aumento, enmascarado, capa variacional, GAN) o los 6 actuales (con selección y modalidad).
+
+## G. Dataset y papers del grupo (18-oct, noche)
+- [x] Paper BIP 2025 leído: no evalúa generación; respalda beta = 0.001; describe la colección (Upala Agrícola, vista cenital, 2 m).
+- [x] Procedencia del dataset descrita en c4.tex con cita a Gonzalez2026 y XieLi2025VAE.
+- [ ] Confirmar con el asesor que nuestro `.h5` es exactamente el mismo subconjunto (quién armó el `.h5` y con qué grabaciones).
