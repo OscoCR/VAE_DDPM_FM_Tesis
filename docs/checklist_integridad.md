@@ -125,3 +125,7 @@ Leyenda: Meta = autores, título y año verificados en arXiv; Resumen = se leyó
 - [ ] Contexto aplicado en la Introducción (país, proyecto): pospuesto por el usuario.
 - [ ] Resumen y conclusiones: pendientes. Muestras del dataset como figura: pendiente.
 - [ ] Leer los papers del estado del arte antes de la defensa (Esser2024, Ma2024, Kong2026, Lee2025LDMAE, Chen2025 y los del profe).
+
+## L. Redacción de afirmaciones de ausencia (18-oct, noche)
+- [x] Las afirmaciones del tipo "ninguno", "no hay" o "no se ha estudiado" llevan "hasta donde sabemos", "según la búsqueda de octubre de 2026" o "entre los registros recuperados". Aplicado en c2, c3 y c5.
+- [ ] Regla para cualquier texto nuevo: voz impersonal (sin "we" ni "our"); toda ausencia se respalda con "according to the literature reviewed" o "according to the search of October 2026", nunca con "to the best of our knowledge".
