@@ -1,0 +1,583 @@
+{
+ "On the Minimum Dataset Requirements": {
+  "paperId": "50adcd9ba71f73b2a89c49d895b0a168426a6bfd",
+  "externalIds": {
+   "DOI": "10.3390/rs17132190",
+   "CorpusId": 279712015
+  },
+  "publicationVenue": {
+   "id": "8e1bd4b5-d5b2-4e22-ba0a-01fe5568d472",
+   "name": "Remote Sensing",
+   "type": "journal",
+   "alternate_names": [
+    "Remote Sens"
+   ],
+   "issn": "2315-4675",
+   "alternate_issns": [
+    "2072-4292"
+   ],
+   "url": "http://www.e-helvetica.nb.admin.ch/directAccess?callnumber=bel-169233",
+   "alternate_urls": [
+    "https://www.mdpi.com/journal/remotesensing",
+    "http://www.mdpi.com/journal/remotesensing",
+    "http://nbn-resolving.de/urn/resolver.pl?urn=urn:nbn:ch:bel-169233"
+   ]
+  },
+  "title": "On the Minimum Dataset Requirements for Fine-Tuning an Object Detector for Arable Crop Plant Counting: A Case Study on Maize Seedlings",
+  "venue": "Remote Sensing",
+  "year": 2025,
+  "citationCount": 8,
+  "openAccessPdf": {
+   "url": "https://doi.org/10.3390/rs17132190",
+   "status": "GOLD",
+   "license": "CCBY",
+   "disclaimer": "Notice: Paper or abstract available at https://api.unpaywall.org/v2/10.3390/rs17132190?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.3390/rs17132190, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+  },
+  "publicationTypes": [
+   "JournalArticle"
+  ],
+  "authors": [
+   {
+    "authorId": "2282226601",
+    "name": "Samuele Bumbaca"
+   },
+   {
+    "authorId": "1436198448",
+    "name": "E. Borgogno-Mondino"
+   }
+  ],
+  "abstract": "Object detection is essential for precision agriculture applications like automated plant counting, but the minimum dataset requirements for effective model deployment remain poorly understood for arable crop seedling detection on orthomosaics. This study investigated how much annotated data is required to achieve standard counting accuracy (R2 = 0.85) for maize seedlings across different object detection approaches. We systematically evaluated traditional deep learning models requiring many training examples (YOLOv5, YOLOv8, YOLO11, RT-DETR), newer approaches requiring few examples (CD-ViTO), and methods requiring zero labeled examples (OWLv2) using drone-captured orthomosaic RGB imagery. We also implemented a handcrafted computer graphics algorithm as baseline. Models were tested with varying training sources (in-domain vs. out-of-distribution data), training dataset sizes (10–150 images), and annotation quality levels (10–100%). Our results demonstrate that no model trained on out-of-distribution data achieved acceptable performance, regardless of dataset size. In contrast, models trained on in-domain data reached the benchmark with as few as 60–130 annotated images, depending on architecture. Transformer-based models (RT-DETR) required significantly fewer samples (60) than CNN-based models (110–130), though they showed different tolerances to annotation quality reduction. Models maintained acceptable performance with only 65–90% of original annotation quality. Despite recent advances, neither few-shot nor zero-shot approaches met minimum performance requirements for precision agriculture deployment. These findings provide practical guidance for developing maize seedling detection systems, demonstrating that successful deployment requires in-domain training data, with minimum dataset requirements varying by model architecture."
+ },
+ "Field-deployable lightweight YOLOv8n": {
+  "paperId": "2daf26c5ff71464127f7ee59e86bc5cb1536b273",
+  "externalIds": {
+   "PubMedCentral": "12450948",
+   "DOI": "10.3389/fpls.2025.1639533",
+   "CorpusId": 281223141,
+   "PubMed": "40989739"
+  },
+  "publicationVenue": {
+   "id": "e110cc75-cd00-4b7f-968c-fd70b464a553",
+   "name": "Frontiers in Plant Science",
+   "type": "journal",
+   "alternate_names": [
+    "Front Plant Sci"
+   ],
+   "issn": "1664-462X",
+   "url": "http://www.frontiersin.org/about/journalseries",
+   "alternate_urls": [
+    "http://www.frontiersin.org/plant_science",
+    "https://www.frontiersin.org/journals/plant-science",
+    "http://journal.frontiersin.org/journal/plant-science"
+   ]
+  },
+  "title": "Field-deployable lightweight YOLOv8n for real-time detection and counting of Maize seedlings using UAV RGB imagery",
+  "venue": "Frontiers in Plant Science",
+  "year": 2025,
+  "citationCount": 13,
+  "openAccessPdf": {
+   "url": "https://www.frontiersin.org/journals/plant-science/articles/10.3389/fpls.2025.1639533/pdf",
+   "status": "GOLD",
+   "license": "CCBY",
+   "disclaimer": "Notice: Paper or abstract available at https://pmc.ncbi.nlm.nih.gov/articles/PMC12450948, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+  },
+  "publicationTypes": [
+   "JournalArticle"
+  ],
+  "authors": [
+   {
+    "authorId": "2056810897",
+    "name": "P. Feng"
+   },
+   {
+    "authorId": "2263801442",
+    "name": "Zhi-Gang Nie"
+   },
+   {
+    "authorId": "145175303",
+    "name": "Guang Li"
+   }
+  ],
+  "abstract": "The aim of this study is to propose a lightweight YOLOv8n maize seedling detection algorithm that incorporates multi-scale features to address the problems of large number of model parameters and computation, low real-time performance, and small detection range of the existing maize seedling detection models during plant detection. By fusing RepConv with HGNetV2 using the idea of reparameterisation, a Rep_HGBlock structure is designed to form a new lightweight backbone network, Rep_HGNetV2,; BiFPN is introduced into the neck network portion of the model to enhance the interactive fusion of bidirectional information flow between multiple scales and hierarchies; and a fusion task decomposition, dynamic convolutional alignment is designed, DFL (Distribution Focal Loss) ideas, TDADH, a task dynamically aligned detection head, which uses shared convolution and dynamically aligns the tasks of classification and localization to extract features; and Grad-CAM++ technique is used to generate a heat map for model detection, visualize effective features of the target and understand the model focus region. The experimental results show that the improved model achieves a detection accuracy of 96.5%, which is basically the same as the original model. The weight size, number of parameters, and computational FLOPs are reduced to 3.5 MB, 1.58 M, and 7.4 G, respectively, which are reduced by about 43%, 47%, and 8.6%. The frame rate FPS is only reduced from 149.98 to 146.3, a reduction of about 2.4%. The results show that the lightweight model has high recognition accuracy, speed and low complexity, which is more suitable for practical deployment in resource-constrained edge devices, UAVs, and embedded systems, and is able to provide technical support for the precise management of maize during the seedling stage of drip irrigation water-fertilizer integration."
+ },
+ "Counting in the Wild": {
+  "paperId": "7d6e2d45340270b80d17c4869761c58ca7c9c489",
+  "externalIds": {
+   "MAG": "2520723410",
+   "DBLP": "conf/eccv/ArtetaLZ16",
+   "DOI": "10.1007/978-3-319-46478-7_30",
+   "CorpusId": 40576626
+  },
+  "publicationVenue": {
+   "id": "167fa0ca-e88a-4ef7-a16f-bc66c457c806",
+   "name": "European Conference on Computer Vision",
+   "type": "conference",
+   "alternate_names": [
+    "ECCV",
+    "Eur Conf Comput Vis"
+   ],
+   "url": "https://link.springer.com/conference/eccv"
+  },
+  "title": "Counting in the Wild",
+  "venue": "European Conference on Computer Vision",
+  "year": 2016,
+  "citationCount": 320,
+  "openAccessPdf": {
+   "url": "",
+   "status": "CLOSED",
+   "license": null,
+   "disclaimer": "Notice: The following paper fields have been elided by the publisher: {'abstract'}. Paper or abstract available at https://api.unpaywall.org/v2/10.1007/978-3-319-46478-7_30?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.1007/978-3-319-46478-7_30, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+  },
+  "publicationTypes": [
+   "JournalArticle",
+   "Conference"
+  ],
+  "authors": [
+   {
+    "authorId": "2901486",
+    "name": "C. Arteta"
+   },
+   {
+    "authorId": "1740145",
+    "name": "V. Lempitsky"
+   },
+   {
+    "authorId": "1688869",
+    "name": "Andrew Zisserman"
+   }
+  ],
+  "abstract": null
+ },
+ "Unsupervised Domain Adaptation For Plant Organ": {
+  "paperId": "42fffe59b9b8c5c318f700dc41589bc41fdb605f",
+  "externalIds": {
+   "DBLP": "journals/corr/abs-2009-01081",
+   "MAG": "3082766113",
+   "ArXiv": "2009.01081",
+   "DOI": "10.1007/978-3-030-65414-6_23",
+   "CorpusId": 221447895
+  },
+  "publicationVenue": null,
+  "title": "Unsupervised Domain Adaptation For Plant Organ Counting",
+  "venue": "ECCV Workshops",
+  "year": 2020,
+  "citationCount": 29,
+  "openAccessPdf": {
+   "url": "https://arxiv.org/pdf/2009.01081",
+   "status": "GREEN",
+   "license": null,
+   "disclaimer": "Notice: Paper or abstract available at https://arxiv.org/abs/2009.01081, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+  },
+  "publicationTypes": [
+   "JournalArticle"
+  ],
+  "authors": [
+   {
+    "authorId": "82299577",
+    "name": "T. Ayalew"
+   },
+   {
+    "authorId": "47858004",
+    "name": "Jordan R. Ubbens"
+   },
+   {
+    "authorId": "2351671",
+    "name": "I. Stavness"
+   }
+  ],
+  "abstract": "Supervised learning is often used to count objects in images, but for counting small, densely located objects, the required image annotations are burdensome to collect. Counting plant organs for image-based plant phenotyping falls within this category. Object counting in plant images is further challenged by having plant image datasets with significant domain shift due to different experimental conditions, e.g. applying an annotated dataset of indoor plant images for use on outdoor images, or on a different plant species. In this paper, we propose a domain-adversarial learning approach for domain adaptation of density map estimation for the purposes of object counting. The approach does not assume perfectly aligned distributions between the source and target datasets, which makes it more broadly applicable within general object counting and plant organ counting tasks. Evaluation on two diverse object counting tasks (wheat spikelets, leaves) demonstrates consistent performance on the target datasets across different classes of domain shift: from indoor-to-outdoor images and from species-to-species adaptation."
+ },
+ "A survey of unmanned aerial vehicles and deep learning in precision": {
+  "paperId": "44fa2baf5fc5aafb2b97517e0a8b34675e486b36",
+  "externalIds": {
+   "DOI": "10.1016/j.eja.2024.127477",
+   "CorpusId": 274835530
+  },
+  "publicationVenue": {
+   "id": "db07ebd7-0e09-4ed7-942d-761a9e00f60e",
+   "name": "European Journal of Agronomy",
+   "type": "journal",
+   "alternate_names": [
+    "Eur J Agron"
+   ],
+   "issn": "1161-0301",
+   "url": "http://www.elsevier.com/wps/find/journaldescription.cws_home/600108/description#description",
+   "alternate_urls": [
+    "http://www.sciencedirect.com/science/journal/11610301"
+   ]
+  },
+  "title": "A survey of unmanned aerial vehicles and deep learning in precision agriculture",
+  "venue": "European Journal of Agronomy",
+  "year": 2025,
+  "citationCount": 51,
+  "openAccessPdf": {
+   "url": "",
+   "status": null,
+   "license": null,
+   "disclaimer": "Notice: Paper or abstract available at https://api.unpaywall.org/v2/10.1016/j.eja.2024.127477?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.1016/j.eja.2024.127477, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+  },
+  "publicationTypes": [
+   "JournalArticle",
+   "Review"
+  ],
+  "authors": [
+   {
+    "authorId": "2111221900",
+    "name": "Da-Shuai Wang"
+   },
+   {
+    "authorId": "2324181042",
+    "name": "Minghu Zhao"
+   },
+   {
+    "authorId": "15401873",
+    "name": "Zhuo-rui Li"
+   },
+   {
+    "authorId": "2331465357",
+    "name": "Sheng Xu"
+   },
+   {
+    "authorId": "2200106767",
+    "name": "Xiao-Hu Wu"
+   },
+   {
+    "authorId": "2336048053",
+    "name": "Xuan Ma"
+   },
+   {
+    "authorId": "2324215600",
+    "name": "Xiao-Guang Liu"
+   }
+  ],
+  "abstract": null
+ },
+ "D4: Text-guided diffusion": {
+  "paperId": "0a40e2ad37d96554d4df419b2bbe79e7cf127018",
+  "externalIds": {
+   "DBLP": "journals/corr/abs-2409-04060",
+   "ArXiv": "2409.04060",
+   "DOI": "10.48550/arXiv.2409.04060",
+   "CorpusId": 272463889
+  },
+  "publicationVenue": {
+   "id": "80fdf70e-8520-4bb7-b387-3abebc9970b7",
+   "name": "Computers and Electronics in Agriculture",
+   "type": "journal",
+   "alternate_names": [
+    "Comput Electron Agric"
+   ],
+   "issn": "0168-1699",
+   "url": "http://www.elsevier.com/wps/find/journaldescription.cws_home/503304/description#description",
+   "alternate_urls": [
+    "http://www.sciencedirect.com/science/journal/01681699"
+   ]
+  },
+  "title": "D4: Text-guided diffusion model-based domain adaptive data augmentation for vineyard shoot detection",
+  "venue": "Computers and Electronics in Agriculture",
+  "year": 2024,
+  "citationCount": 15,
+  "openAccessPdf": {
+   "url": "",
+   "status": null,
+   "license": null,
+   "disclaimer": "Notice: Paper or abstract available at https://arxiv.org/abs/2409.04060, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+  },
+  "publicationTypes": [
+   "JournalArticle"
+  ],
+  "authors": [
+   {
+    "authorId": "2320152678",
+    "name": "Kentaro Hirahara"
+   },
+   {
+    "authorId": "2102876549",
+    "name": "C. Nakane"
+   },
+   {
+    "authorId": "2320153130",
+    "name": "Hajime Ebisawa"
+   },
+   {
+    "authorId": "2056942624",
+    "name": "Tsuyoshi Kuroda"
+   },
+   {
+    "authorId": "2215950752",
+    "name": "Yohei Iwaki"
+   },
+   {
+    "authorId": "143709200",
+    "name": "T. Utsumi"
+   },
+   {
+    "authorId": "2038498261",
+    "name": "Yuichiro Nomura"
+   },
+   {
+    "authorId": "2308936149",
+    "name": "Makoto Koike"
+   },
+   {
+    "authorId": "2308936695",
+    "name": "Hiroshi Mineno"
+   }
+  ],
+  "abstract": "In an agricultural field, plant phenotyping using object detection models is gaining attention. However, collecting the training data necessary to create generic and high-precision models is extremely challenging due to the difficulty of annotation and the diversity of domains. Furthermore, it is difficult to transfer training data across different crops, and although machine learning models effective for specific environments, conditions, or crops have been developed, they cannot be widely applied in actual fields. In this study, we propose a generative data augmentation method (D4) for vineyard shoot detection. D4 uses a pre-trained text-guided diffusion model based on a large number of original images culled from video data collected by unmanned ground vehicles or other means, and a small number of annotated datasets. The proposed method generates new annotated images with background information adapted to the target domain while retaining annotation information necessary for object detection. In addition, D4 overcomes the lack of training data in agriculture, including the difficulty of annotation and diversity of domains. We confirmed that this generative data augmentation method improved the mean average precision by up to 28.65% for the BBox detection task and the average precision by up to 13.73% for the keypoint detection task for vineyard shoot detection. Our generative data augmentation method D4 is expected to simultaneously solve the cost and domain diversity issues of training data generation in agriculture and improve the generalization performance of detection models."
+ },
+ "Data Augmentation for Object Detection via Controllable": {
+  "paperId": "4bd32b23796b23970889a37155dc88aeea3c92fc",
+  "externalIds": {
+   "DBLP": "conf/wacv/FangHZZHY24",
+   "DOI": "10.1109/WACV57701.2024.00129",
+   "CorpusId": 268429228
+  },
+  "publicationVenue": {
+   "id": "acd15a6d-3248-41fb-8439-9a40aabe5608",
+   "name": "IEEE Workshop/Winter Conference on Applications of Computer Vision",
+   "type": "conference",
+   "alternate_names": [
+    "Workshop on Applications of Computer Vision",
+    "WACV",
+    "IEEE Work Conf Appl Comput Vis",
+    "Workshop Appl Comput Vis"
+   ],
+   "url": "http://www.wikicfp.com/cfp/program?id=2993"
+  },
+  "title": "Data Augmentation for Object Detection via Controllable Diffusion Models",
+  "venue": "IEEE Workshop/Winter Conference on Applications of Computer Vision",
+  "year": 2024,
+  "citationCount": 121,
+  "openAccessPdf": {
+   "url": "",
+   "status": "CLOSED",
+   "license": null,
+   "disclaimer": "Notice: Paper or abstract available at https://api.unpaywall.org/v2/10.1109/WACV57701.2024.00129?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.1109/WACV57701.2024.00129, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+  },
+  "publicationTypes": [
+   "JournalArticle",
+   "Conference"
+  ],
+  "authors": [
+   {
+    "authorId": "2291681126",
+    "name": "Haoyang Fang"
+   },
+   {
+    "authorId": "2257285260",
+    "name": "Boran Han"
+   },
+   {
+    "authorId": "1583098764",
+    "name": "Shuai Zhang"
+   },
+   {
+    "authorId": "2291690929",
+    "name": "Su Zhou"
+   },
+   {
+    "authorId": "2291617436",
+    "name": "Cuixiong Hu"
+   },
+   {
+    "authorId": "122298411",
+    "name": "Wenqian Ye"
+   }
+  ],
+  "abstract": "Data augmentation is vital for object detection tasks that require expensive bounding box annotations. Recent successes in diffusion models have inspired the use of diffusion-based synthetic images for data augmentation. However, existing works have primarily focused on image classification, and their applicability to boost object detection’s performance remains unclear. To address this gap, we propose a data augmentation pipeline based on controllable diffusion models and CLIP. Our approach involves generating appropriate visual priors to control the generation of synthetic data and implementing post-filtering techniques using category-calibrated CLIP scores. The evaluation of our approach is conducted under few-shot settings in MSCOCO, full PASCAL VOC dataset, and selected downstream datasets. We observe the performance increase using our augmentation pipeline. Specifically, the mAP improvement is +18.0%/+15.6%/+15.9% for COCO 5/10/30-shot, +2.9% on full PASCAL VOC dataset, and +12.4% on average for selected downstream datasets."
+ },
+ "Data Augmentation using Conditional Generative Adversarial Networks for Leaf": {
+  "paperId": "0636eb841bf3480309a346587010f43f2a87633e",
+  "externalIds": {
+   "DBLP": "conf/bmvc/ZhuAKV18",
+   "MAG": "2892804940",
+   "CorpusId": 52286863
+  },
+  "publicationVenue": {
+   "id": "78a7fbcc-41c5-4258-b633-04b8637d4a9f",
+   "name": "British Machine Vision Conference",
+   "type": "conference",
+   "alternate_names": [
+    "Br Mach Vis Conf",
+    "BMVC"
+   ],
+   "url": "http://www.bmva.org/bmvc/"
+  },
+  "title": "Data Augmentation using Conditional Generative Adversarial Networks for Leaf Counting in Arabidopsis Plants",
+  "venue": "British Machine Vision Conference",
+  "year": 2018,
+  "citationCount": 89,
+  "openAccessPdf": {
+   "url": "",
+   "status": null,
+   "license": null,
+   "disclaimer": "Notice: The following paper fields have been elided by the publisher: {'abstract'}. Paper or abstract available at http://bmvc2018.org/contents/workshops/cvppp2018/0014.pdf, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+  },
+  "publicationTypes": [
+   "JournalArticle",
+   "Conference"
+  ],
+  "authors": [
+   {
+    "authorId": "5559825",
+    "name": "Yezi Zhu"
+   },
+   {
+    "authorId": "1806010796",
+    "name": "M. Aoun"
+   },
+   {
+    "authorId": "31380789",
+    "name": "M. Krijn"
+   },
+   {
+    "authorId": "1717534",
+    "name": "J. Vanschoren"
+   }
+  ],
+  "abstract": null
+ },
+ "High-Resolution UAV Image Generation for Sorghum": {
+  "paperId": "e73a614769fd8fb63e31b5fbcc6105946a32c891",
+  "externalIds": {
+   "DBLP": "conf/cvpr/CaiLBGYD22",
+   "ArXiv": "2205.03947",
+   "DOI": "10.1109/CVPRW56347.2022.00174",
+   "CorpusId": 248571969
+  },
+  "publicationVenue": null,
+  "title": "High-Resolution UAV Image Generation for Sorghum Panicle Detection",
+  "venue": "2022 IEEE/CVF Conference on Computer Vision and Pattern Recognition Workshops (CVPRW)",
+  "year": 2022,
+  "citationCount": 8,
+  "openAccessPdf": {
+   "url": "https://arxiv.org/pdf/2205.03947",
+   "status": "GREEN",
+   "license": null,
+   "disclaimer": "Notice: Paper or abstract available at https://arxiv.org/abs/2205.03947, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+  },
+  "publicationTypes": [
+   "JournalArticle",
+   "Conference"
+  ],
+  "authors": [
+   {
+    "authorId": "152921498",
+    "name": "Enyu Cai"
+   },
+   {
+    "authorId": "2303505875",
+    "name": "Zhankun Luo"
+   },
+   {
+    "authorId": "148009206",
+    "name": "Sriram Baireddy"
+   },
+   {
+    "authorId": "2285036679",
+    "name": "Jiaqi Guo"
+   },
+   {
+    "authorId": "115475353",
+    "name": "Changye Yang"
+   },
+   {
+    "authorId": "1741483",
+    "name": "E. Delp"
+   }
+  ],
+  "abstract": "The number of panicles (or heads) of Sorghum plants is an important phenotypic trait for plant development and grain yield estimation. The use of Unmanned Aerial Vehicles (UAVs) enables the capability of collecting and analyzing Sorghum images on a large scale. Deep learning can provide methods for estimating phenotypic traits from UAV images but requires a large amount of labeled data. The lack of training data due to the labor-intensive ground truthing of UAV images causes a major bottleneck in developing methods for Sorghum panicle detection and counting. In this paper, we present an approach that uses synthetic training images from generative adversarial networks (GANs) for data augmentation to enhance the performance of Sorghum panicle detection and counting. Our method can generate synthetic high-resolution UAV RGB images with panicle labels by using image-to-image translation GANs with a limited ground truth dataset of real UAV RGB images. The results show the improvements in panicle detection and counting using our data augmentation approach."
+ },
+ "Few-Shot Object Detection with Foundation Models": {
+  "paperId": "9be3086912b584ee9219b19d4067ed1cf1d38d69",
+  "externalIds": {
+   "DBLP": "conf/cvpr/HanL24",
+   "DOI": "10.1109/CVPR52733.2024.02703",
+   "CorpusId": 272723903
+  },
+  "publicationVenue": {
+   "id": "768b87bb-8a18-4d9c-a161-4d483c776bcf",
+   "name": "Computer Vision and Pattern Recognition",
+   "type": "conference",
+   "alternate_names": [
+    "CVPR",
+    "Comput Vis Pattern Recognit"
+   ],
+   "issn": "1063-6919",
+   "url": "https://ieeexplore.ieee.org/xpl/conhome.jsp?punumber=1000147",
+   "alternate_urls": [
+    "https://en.wikipedia.org/wiki/Conference_on_Computer_Vision_and_Pattern_Recognition"
+   ]
+  },
+  "title": "Few-Shot Object Detection with Foundation Models",
+  "venue": "Computer Vision and Pattern Recognition",
+  "year": 2024,
+  "citationCount": 89,
+  "openAccessPdf": {
+   "url": "",
+   "status": "CLOSED",
+   "license": null,
+   "disclaimer": "Notice: The following paper fields have been elided by the publisher: {'abstract'}. Paper or abstract available at https://api.unpaywall.org/v2/10.1109/CVPR52733.2024.02703?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.1109/CVPR52733.2024.02703, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+  },
+  "publicationTypes": [
+   "JournalArticle",
+   "Conference"
+  ],
+  "authors": [
+   {
+    "authorId": "2275814516",
+    "name": "Guangxing Han"
+   },
+   {
+    "authorId": "2237082163",
+    "name": "Ser-Nam Lim"
+   }
+  ],
+  "abstract": null
+ },
+ "UAV Embedded Real-Time Object Detection by a DCNN": {
+  "paperId": "79e01374ed61009b5ca533595c814139c04bc114",
+  "externalIds": {
+   "DOI": "10.1109/ICUAS57906.2023.10156134",
+   "CorpusId": 259278386
+  },
+  "publicationVenue": {
+   "id": "04936387-1b87-4ce0-93e7-767cb352e9c8",
+   "name": "International Conference on Unmanned Aircraft Systems",
+   "type": "conference",
+   "alternate_names": [
+    "ICUAS",
+    "Int Conf Unmanned Aircr Syst"
+   ]
+  },
+  "title": "UAV Embedded Real-Time Object Detection by a DCNN Model Trained on Synthetic Dataset",
+  "venue": "International Conference on Unmanned Aircraft Systems",
+  "year": 2023,
+  "citationCount": 2,
+  "openAccessPdf": {
+   "url": "",
+   "status": "CLOSED",
+   "license": null,
+   "disclaimer": "Notice: Paper or abstract available at https://api.unpaywall.org/v2/10.1109/ICUAS57906.2023.10156134?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.1109/ICUAS57906.2023.10156134, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+  },
+  "publicationTypes": [
+   "Conference"
+  ],
+  "authors": [
+   {
+    "authorId": "46650926",
+    "name": "R. M. Bernardo"
+   },
+   {
+    "authorId": null,
+    "name": "Luis Claudio Batista da Silva"
+   },
+   {
+    "authorId": "2511951988",
+    "name": "P. F. Ferreira Rosa"
+   }
+  ],
+  "abstract": "The utilization of unmanned aerial vehicles (UAVs) in civilian and military applications has significantly increased in recent years. A common task associated with these applications is detecting objects of interest in images captured by onboard UAV cameras. The ongoing development of advanced deep convolutional neural network (DCNN) algorithms has substantially improved the accuracy of general image segmentation and classification. However, applying these techniques to images obtained from UAVs requires a representative dataset for enhanced performance. This paper presents a method for DCNN-based object detection, utilizing resources embedded in a 1.5kg quadrotor-type UAV. To address the lack of representative datasets for our target scope, we employed a DCNN model trained on a self-generated synthetic dataset. The proposed method has been validated through real experiments, and the results demonstrate this approach’s feasibility for real-time surveillance with fully onboard processing. Furthermore, this offers a stand-alone, portable, and cost-effective solution for surveillance tasks using a small UAV."
+ }
+}

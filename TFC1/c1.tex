@@ -11,7 +11,37 @@
 
 \section{Background}
 
-This section presents, in sequential order, the concepts needed to follow the rest of the proposal: how an image becomes a tensor, how a neural network learns, how a convolutional network processes images, and how these pieces are combined into the autoencoders and the generative models studied in this work.
+This section first describes the application that motivates this work, plant counting from images captured by unmanned aerial vehicles (UAVs), and explains why the data available for it are scarce. It then presents, in sequential order, the concepts needed to follow the rest of the proposal: how an image becomes a tensor, how a neural network learns, how a convolutional network processes images, and how these pieces are combined into the autoencoders and the generative models studied in this work.
+
+\subsection{Motivation: counting plants with UAVs}
+
+Unmanned aerial vehicles equipped with RGB cameras cover large fields at low cost, and combined with deep learning they have become a common way to automate tasks in precision agriculture \cite{Osco2021Review,Kamilaris2018}. One of these tasks is plant counting. Plant density is one of the main factors that determine yield, but measuring it in the field is impractical in large production areas because of the labor it requires \cite{Kitano2019}. For this reason, detectors applied to UAV imagery have been used to count crops such as corn \cite{Kitano2019,Osco2021}, potato and lettuce \cite{Machefer2020}, and maize seedlings \cite{Feng2025}. For pineapple, the crop of this work, Faster R-CNN has been applied to UAV images to locate and count mature pineapple fruits for yield prediction \cite{Shiu2023}, and an improved YOLOv7 to detect pineapples in field images for early yield estimation \cite{Lai2023}.
+
+The long-term goal of the research line in which this thesis is framed is to support the automatic detection and counting of plants from drone imagery. This work does not train or evaluate a counting model. It studies a step that comes before it: how to obtain good synthetic images of the crop when the available real data are few. The next subsections explain how counting is done, why the data are the bottleneck, and why generated images are a promising way to address it.
+
+\subsection{From classical detection to YOLO}
+
+Early object detectors combined hand-designed features with a trained classifier, for example Haar-like features in a boosted cascade \cite{Viola2001} or histograms of oriented gradients \cite{Dalal2005}. Convolutional networks replaced the hand-designed features: R-CNN classifies region proposals using features learned by a CNN \cite{Girshick2014}, and Faster R-CNN adds a region proposal network that shares its convolutional features with the detector, which makes the proposals almost free \cite{Ren2017}. YOLO takes a different route: a single network predicts the boxes and the class scores from the whole image in one pass, which made real-time detection possible \cite{Redmon2016}. Variants of this family have been adapted to aerial imagery \cite{Tang2024} and to embedded hardware \cite{Shafiee2017}.
+
+Counting can be built on top of detection, by counting the detected boxes or the segmented instances \cite{Machefer2020,Bumbaca2025}. An alternative is to learn a density map whose integral over the image gives the number of objects \cite{Lempitsky2010}, an approach that has also been applied to plants \cite{Ayalew2020}. Lightweight detectors can run in real time on the UAV itself \cite{Bernardo2023,Feng2025}, which makes onboard counting a possible deployment scenario for these models.
+
+\subsection{The data problem in agriculture}
+
+Both families of methods need annotated images, and in agriculture these are hard to obtain for three reasons.
+
+\begin{enumerate}
+  \item \textbf{Few and homogeneous data.} A campaign covers a few flights over a single field, with one type of soil, specific growth stages, and similar illumination, so even thousands of frames show little variability. Small, homogeneous UAV datasets are typical of precision agriculture \cite{Gonzalez2026}.
+  \item \textbf{Limited transfer between domains.} A detector trained in one domain does not necessarily work in another. In maize seedling counting from drone orthomosaics, no model trained on out-of-distribution data reached acceptable counting accuracy, whereas models trained on in-domain data did so with 60 to 130 annotated images \cite{Bumbaca2025}. Domain shift is also a recognized obstacle in plant counting \cite{Ayalew2020}.
+  \item \textbf{Manual and costly annotation.} Pixel-level annotation of agricultural images by an expert is extremely time-consuming \cite{Bah2018}, annotating small and dense objects is burdensome \cite{Ayalew2020}, and the labor-intensive ground truthing of UAV images is a bottleneck for the detection and counting of sorghum panicles \cite{Cai2022}.
+\end{enumerate}
+
+\subsection{Synthetic images to enrich the dataset}
+
+A generative model learns the distribution of the training images and can then produce new images: they are not copies of any training image, but samples of what the model learned. Synthetic images have been used to enrich the training data of plant-related detectors. Images generated with GANs improved the detection and counting of sorghum panicles in UAV imagery \cite{Cai2022}; diffusion models have been used to augment plant disease images \cite{Muhammad2023} and to improve vineyard shoot detection \cite{Hirahara2025}; controllable diffusion improved detection in few-shot settings \cite{Fang2024}; with Stable Diffusion, the results on small datasets were promising only for some classes \cite{Deng2023}; and a detector for onboard UAV use has been trained on a synthetic dataset \cite{Bernardo2023}. If a generator produced varied and realistic aerial images of pineapple fields from limited real data, those images could enrich the dataset available for downstream tasks such as counting. Labeling the generated images, which is needed to use them for counting, and measuring their effect on a counting model are left as future work within the same research line (see the limitations in Chapter~II); what this proposal studies is the generative step.
+
+\subsection{Research line of the group}
+
+This work belongs to a research line on the detection and generation of pineapple imagery captured by drones, in a setting of scarce labels. Xie-Li et al.\ proposed a training-free few-shot detection framework, based on visual foundation models, to localize pineapples in drone images of large fields where labeled data are scarce and expensive \cite{XieLi2024}. Gonz\'alez-Hern\'andez et al.\ studied the generation side: they trained a latent diffusion model from scratch on small pineapple datasets, and found that a continuous latent space (a $\beta$-VAE) preserved the structure of the crop where a discrete one (a VQ-VAE) failed, and that a purely convolutional U-Net avoided the instabilities caused by global attention \cite{Gonzalez2026}. The present work starts from that recipe and asks how to improve it systematically through the data and the structure of the VAE.
 
 \subsection{From pixels to tensors}
 
@@ -143,4 +173,27 @@ The screening was automatic: each criterion was a set of keywords applied to the
 \label{fig:prisma}
 \end{figure}
 
-\textbf{Limitations.} Only arXiv was searched, the screening relied on keywords, and the search was not repeated by a second reviewer; it is a first systematic search and not a full systematic review.
+\textbf{Second source: Semantic Scholar.} The five strings were repeated on Semantic Scholar on 18 October 2026 (bulk search with boolean syntax over title and abstract, publications from 2022 onward), and the same three criteria were applied. The criteria were re-implemented as keyword rules from their written definition because the first script was not kept, and C3 was applied as ``few data \emph{or} aerial, agricultural, or medical domain'' without separating the two.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{p{0.06\textwidth}p{0.20\textwidth}p{0.20\textwidth}}
+\hline
+\textbf{ID} & \textbf{Records} & \textbf{arXiv (11 Oct)} \\
+\hline
+S1 & 48 & 30 \\
+S2 & 123 & 73 \\
+S3 & 18 & 9 \\
+S4 & 79 & 47 \\
+S5 & 8 & 7 \\
+\hline
+\end{tabular}
+\caption{Records returned by the same search strings on Semantic Scholar (18 October 2026) and, for comparison, on arXiv.}
+\end{table}
+
+Of 244 unique records, 137 had already been found on arXiv and 107 were new; 112 met C1 and C2, and 49 of them also met C3 or the domain criterion. The titles of the 49 were reviewed, and the abstracts of the closest ones were read. Forty-four are medical or biomedical applications, and the other five come from other domains (hyperspectral soil data, water-quality spectra, engineering data, waveform generation, and remote sensing image generation). Two works come closest to the review question, both in medical imaging. Fallah and Herzog report a controlled ablation of the preprocessing of a small cohort (295 participants) and measure its effect on the KID and FID of the images generated by a VAE and a latent diffusion model \cite{Fallah2026}; Dombrowski et al.\ show that the structure of the latent space of pretrained autoencoders, rather than their fidelity, limits the usefulness of synthetic medical images \cite{Dombrowski2026}. Neither studies aerial or agricultural images, multimodal inputs, or structural modifications of the VAE. Among the 49, the only remote sensing image generator is a multimodal model with a domain-specific VAE trained on 11.5 million images, a large-scale setting. Therefore, no record on either source studied the review question, but the preprocessing ablation of Fallah and Herzog shows that the effect of a data treatment on generation has been measured at small-cohort scale, so the claim of novelty applies to the combination of data treatments, VAE modifications, and the aerial, agricultural, multimodal regime.
+
+\textbf{Complementary searches.} The references on plant counting, object detection, data scarcity, and synthetic data used in the Background were located with 14 targeted queries on Semantic Scholar (Academic Graph API, 18 October 2026, 20 results per query, publications from 2012 onward); the title, authors, venue, and abstract of every work cited from them were checked on the same source. These searches support the narrative of the Background and are not part of the PRISMA flow above, which answers the review question only.
+
+\textbf{Limitations.} Only arXiv and Semantic Scholar were searched, the screening relied on keywords (re-implemented for the second source), and the search was not repeated by a second reviewer; it is a first systematic search and not a full systematic review.

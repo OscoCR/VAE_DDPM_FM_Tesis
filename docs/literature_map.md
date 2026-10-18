@@ -75,3 +75,56 @@ No se pudieron verificar contra la API de arXiv (límite de peticiones el 11-oct
 `Paszke2019` (1912.01703), `Kingma2015` (1412.6980), `Loshchilov2019` (1711.05101), `Loshchilov2017` (1608.03983), `He2016` (1512.03385), `Wu2018` (1803.08494), `Ronneberger2015` (1505.04597).
 Sin arXiv, confirmar en la editorial: `Goodfellow2016` (libro, MIT Press), `Rumelhart1986` (Nature 323), `LeCun1998` (Proc. IEEE 86(11)), `Higgins2017` (ICLR 2017).
 Las sedes (ICLR, NeurIPS, CVPR) de Kingma2014, vandenOord2017, Ho2020, Lipman2023, Goodfellow2014, Isola2017, Heusel2017 y Binkowski2018 también salen de memoria; autores, títulos y años sí se verificaron.
+
+
+## Referencias nuevas del Background (18-oct-2026): motivación, detección, datos y datos sintéticos
+Fuente: 14 consultas en la API de Semantic Scholar (Academic Graph, con clave, 20 resultados por consulta, desde 2012). Registro completo en `docs/s2/topic_search_s2_2026-10-18.csv`. Metadatos (título, autores, año, sede) comprobados en Semantic Scholar por DOI o arXiv (`docs/s2/cited_full_2026-10-18.json`, `shortlist_new_s2_2026-10-18.json`). Los nombres se dejaron como los indexa la fuente (iniciales cuando da iniciales).
+"Resumen" = leí el resumen que devuelve la API. "Leer" = falta que el autor abra el paper.
+
+| Clave | Qué se afirma en el texto | Qué dice la fuente (resumen) | Resumen | Leer yo |
+|---|---|---|---|---|
+| Kitano2019 | La densidad de plantas determina el rendimiento y medirla en campo es impráctica por la mano de obra; conteo de maíz con UAV | Lo dice el resumen | Sí | [ ] |
+| Osco2021 | Conteo de plantas y detección de hileras desde UAV (maizal entre los casos) | Resumen: CNN que detecta hileras y cuenta plantas; evaluado en maizal | Sí | [ ] |
+| Machefer2020 | Conteo de papa y lechuga con Mask R-CNN | Resumen: conteo y medida de plantas, cultivos de baja densidad (papa, lechuga) | Sí | [ ] |
+| Feng2025 | Conteo de plántulas de maíz con YOLOv8n ligero en tiempo real | Título y resumen | Sí | [ ] |
+| Shiu2023 | Faster R-CNN ubica y cuenta frutos maduros de piña en UAV | Resumen | Sí | [ ] |
+| Lai2023 | YOLOv7 mejorado detecta piñas en el campo (estimación temprana del rendimiento) | Resumen | Sí | [ ] |
+| Osco2021Review, Kamilaris2018 | El deep learning con UAV es común en agricultura de precisión | Osco: 232 artículos; "UAV-based applications have dominated aerial sensing research". Kamilaris: encuesta (sin resumen devuelto por la API) | Parcial (Kamilaris sin resumen) | [ ] |
+| Viola2001, Dalal2005, Girshick2014, Ren2017, Redmon2016 | Historia de la detección: rasgos manuales, R-CNN, Faster R-CNN (propuestas casi gratis), YOLO en tiempo real | Clásicos; metadatos comprobados | Metadatos | [ ] |
+| Tang2024, Shafiee2017 | Variantes de YOLO adaptadas a imágenes aéreas y a hardware embebido | Tang: encuesta de detección para UAV. Shafiee: título "Real-time Embedded" | Sí | [ ] |
+| Lempitsky2010, Ayalew2020 | Conteo por mapa de densidad, también en plantas | Ayalew: estimación de mapas de densidad para conteo | Ayalew sí; Lempitsky solo título | [ ] |
+| Bumbaca2025 | Modelos entrenados fuera de dominio no alcanzaron conteo aceptable; 60 a 130 imágenes en dominio bastaron (maíz) | Resumen | Sí | [ ] |
+| Bah2018 | Anotar pixel a pixel por un experto es extremadamente lento | Resumen | Sí | [ ] |
+| Cai2022 | Falta de datos por el etiquetado manual es un cuello de botella para detectar y contar panículas de sorgo; GANs mejoran | Resumen | Sí | [ ] |
+| Muhammad2023, Hirahara2025, Fang2024, Deng2023, Bernardo2023 | Imágenes sintéticas (difusión/GAN) para aumentar datos de detección; en UAV embebido con datos sintéticos | Resúmenes leídos. Deng: "promising results for certain classes" | Sí | [ ] |
+| XieLi2024 | Detección de piñas sin entrenamiento, con datos etiquetados escasos y caros | Resumen | Sí | [ ] |
+
+Resuelto el 18-oct con Crossref: `Hirahara2025` (Comput. Electron. Agric. 230, 109849, DOI 10.1016/j.compag.2024.109849) y los 3 autores de `Feng2025` (Pengbo Feng, Zhigang Nie, Guang Li; Front. Plant Sci. 16, 1639533). Pendiente: `Tang2024` aparece como 2023 en Semantic Scholar pero el DOI (rs16) es del volumen 2024.
+
+## Referencias del marco teórico: actualización 18-oct-2026
+Verificadas en Semantic Scholar (por arXiv): Paszke2019 (NeurIPS 2019), Kingma2015 (ICLR), Loshchilov2019 (arXiv 1711.05101, publicado en ICLR 2019 como "Decoupled Weight Decay Regularization"), Loshchilov2017 (SGDR, ICLR 2017), He2016 (CVPR), Wu2018 (Group Normalization; ECCV 2018, versión extendida en IJCV), Ronneberger2015 (MICCAI). Sin verificar aún: Goodfellow2016, Rumelhart1986, LeCun1998, Higgins2017.
+También verificadas por Semantic Scholar las candidatas del Related Work: 2406.11713 (Latent Denoising Diffusion GAN, IEEE Access 2024), 2512.16636 (REGLUE), 2309.15807 (Emu), 2603.27519 (SPROUT), 2405.04717 (Remote Diffusion), 2507.09984 (LDMAE, ICCV-W/2025), 2506.13307 (ISPRS J. 2025), 2605.07915, 2602.08620, 2508.00413 (DC-AE 1.5). Los resúmenes de estas candidatas aún no se leyeron: siguen "por verificar" antes de citarlas.
+
+
+## Repetición de S1 a S5 en Semantic Scholar (18-oct-2026)
+Script: `docs/s2/s2_screening.py` (búsqueda masiva booleana sobre título y resumen, desde 2022). Detalle por registro: `docs/s2/screening_s2_2026-10-18.csv`; cifras: `screening_s2_2026-10-18_summary.json`.
+Los criterios C1 a C3 se reimplementaron como reglas de palabras clave a partir de su definición escrita (el script de arXiv no se conservó). C3 se aplicó como "pocos datos O dominio aéreo/agrícola/médico" sin separar.
+
+| Cadena | Semantic Scholar | arXiv (11-oct) |
+|---|---|---|
+| S1 | 48 | 30 |
+| S2 | 123 | 73 |
+| S3 | 18 | 9 |
+| S4 | 79 | 47 |
+| S5 | 8 | 7 |
+
+244 registros únicos (137 ya estaban en arXiv, 107 nuevos); 112 cumplen C1 y C2; 49 cumplen además C3 o dominio (arXiv: 34 y 4; la regla de C3 de esta vez es más amplia, por eso la diferencia).
+Revisé los 49 títulos y los resúmenes de los más cercanos. 44 son aplicaciones médicas o biomédicas; 5 son de otros dominios (espectros hiperespectrales de suelo, espectros de calidad del agua, datos de ingeniería, difusión de formas de onda, generación de imágenes de teledetección).
+
+Los más cercanos a la pregunta de revisión (ninguno la responde):
+- `Fallah2026` (J. Imaging, DOI 10.3390/jimaging12090426): VAE 256x256 a 32x32x8 + difusión latente con 295 participantes; una ablación controlada que varía solo el preprocesamiento mejoró KID en 0.0147 (FID no separó las configuraciones). Es un tratamiento de datos con pocos datos, pero en MRI, un solo tratamiento y sin cambios estructurales del VAE.
+- `Dombrowski2026` (arXiv 2605.17087): la estructura del latente de autoencoders preentrenados, no su fidelidad, limita la utilidad de imágenes médicas sintéticas. Médico, datos grandes preentrenados.
+- OmniRSI (arXiv 2610.15414): generación multimodal de teledetección con un VAE propio, 11.5 M de imágenes. No se cita; es gran escala.
+
+Consecuencia para la afirmación de novedad: sigue en pie para la combinación (tratamientos de datos + modificaciones del VAE + régimen aéreo, agrícola y multimodal con pocos datos), pero NO se puede decir que el efecto de un tratamiento de datos sobre la generación con pocos datos nunca se midió (Fallah2026 lo hizo en MRI).
+Pendiente: abrir y leer Fallah2026 y Dombrowski2026.

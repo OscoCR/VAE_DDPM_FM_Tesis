@@ -1,0 +1,27 @@
+{
+ "fecha": "2026-10-18",
+ "endpoint": "paper/search/bulk",
+ "year": "2022-",
+ "strings": {
+  "S1": "\"latent diffusion\" + (autoencoder | VAE | tokenizer) + (augmentation | \"data augmentation\")",
+  "S2": "\"latent diffusion\" + (autoencoder | VAE | tokenizer) + (adversarial | KL | regularization | \"latent channels\")",
+  "S3": "\"latent diffusion\" + (autoencoder | VAE | tokenizer) + (aerial | agricultural | crop | plant | UAV | \"remote sensing\")",
+  "S4": "(masked | masking) + \"latent diffusion\" + (autoencoder | VAE | tokenizer)",
+  "S5": "\"latent diffusion\" + depth + (RGB | appearance) + (joint | jointly | \"shared latent\")"
+ },
+ "registros_por_cadena": {
+  "S1": 48,
+  "S2": 123,
+  "S3": 18,
+  "S4": 79,
+  "S5": 8
+ },
+ "unicos": 244,
+ "ya_en_arxiv": 137,
+ "nuevos_vs_arxiv": 107,
+ "sin_resumen": 5,
+ "C1": 191,
+ "C1_y_C2": 112,
+ "C1_C2_y_C3": 49,
+ "C1_C2_y_C3_nuevos": 32
+}

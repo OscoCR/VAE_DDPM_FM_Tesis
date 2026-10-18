@@ -1,0 +1,997 @@
+{
+ "Kitano2019": {
+  "paperId": "9cd300b3322cbe6ddf15a56895fc78b2eb156063",
+  "externalIds": {
+   "MAG": "2968911939",
+   "DOI": "10.1109/LGRS.2019.2930549",
+   "CorpusId": 202137725
+  },
+  "publicationVenue": {
+   "id": "290335d6-cddc-465d-87f1-807e86d8efee",
+   "name": "IEEE Geoscience and Remote Sensing Letters",
+   "type": "journal",
+   "alternate_names": [
+    "IEEE Geosci Remote Sens Lett"
+   ],
+   "issn": "1545-598X",
+   "url": "http://ieeexplore.ieee.org/servlet/opac?punumber=8859",
+   "alternate_urls": [
+    "https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=8859"
+   ]
+  },
+  "title": "Corn Plant Counting Using Deep Learning and UAV Images",
+  "venue": "IEEE Geoscience and Remote Sensing Letters",
+  "year": 2019,
+  "citationCount": 119,
+  "openAccessPdf": {
+   "url": "",
+   "status": null,
+   "license": null,
+   "disclaimer": "Notice: Paper or abstract available at https://api.unpaywall.org/v2/10.1109/LGRS.2019.2930549?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.1109/LGRS.2019.2930549, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+  },
+  "publicationTypes": null,
+  "authors": [
+   {
+    "authorId": "1396071283",
+    "name": "Bruno T. Kitano"
+   },
+   {
+    "authorId": "1506558438",
+    "name": "C. Mendes"
+   },
+   {
+    "authorId": "122711171",
+    "name": "A. R. Geus"
+   },
+   {
+    "authorId": "2143395388",
+    "name": "H. C. Oliveira"
+   },
+   {
+    "authorId": "2095013870",
+    "name": "Jefferson R. Souza"
+   }
+  ],
+  "abstract": "The adoption of new technologies, such as unmanned aerial vehicles (UAVs), image processing, and machine learning, is disrupting traditional concepts in agriculture, with a new range of possibilities opening in its fields of research. Plant density is one of the most important corn (Zea mays L.) yield factors, yet its precise measurement after the emergence of plants is impractical in large-scale production fields due to the amount of labor required. This letter aims to develop techniques that enable corn plant counting and the automation of this process through deep learning and computational vision, using images of several corn crops obtained using a low-cost unmanned aerial vehicle (UAV) platform assembled with an RGB sensor."
+ },
+ "Osco2021cnn": {
+  "paperId": "5d947ae3e7cf9119e94755b7845ff914947516e7",
+  "externalIds": {
+   "DBLP": "journals/corr/abs-2012-15827",
+   "MAG": "3118257828",
+   "ArXiv": "2012.15827",
+   "DOI": "10.1016/j.isprsjprs.2021.01.024",
+   "CorpusId": 229923160
+  },
+  "publicationVenue": {
+   "id": "227fb221-5e57-477c-b756-e39dd8ffd538",
+   "name": "Isprs Journal of Photogrammetry and Remote Sensing",
+   "type": "journal",
+   "alternate_names": [
+    "Isprs J Photogramm Remote Sens"
+   ]
+  },
+  "title": "A CNN Approach to Simultaneously Count Plants and Detect Plantation-Rows from UAV Imagery",
+  "venue": "Isprs Journal of Photogrammetry and Remote Sensing",
+  "year": 2020,
+  "citationCount": 128,
+  "openAccessPdf": {
+   "url": "https://repositorio.udesc.br/handle/UDESC/3823",
+   "status": "GREEN",
+   "license": "other-oa",
+   "disclaimer": "Notice: Paper or abstract available at https://arxiv.org/abs/2012.15827, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+  },
+  "publicationTypes": [
+   "JournalArticle"
+  ],
+  "authors": [
+   {
+    "authorId": "1879063052",
+    "name": "L. Osco"
+   },
+   {
+    "authorId": "144703151",
+    "name": "Mauro dos Santos de Arruda"
+   },
+   {
+    "authorId": "37527850",
+    "name": "D. Gonçalves"
+   },
+   {
+    "authorId": "2054427485",
+    "name": "Alexandre Dias"
+   },
+   {
+    "authorId": "1424330686",
+    "name": "J. Batistoti"
+   },
+   {
+    "authorId": "2498212868",
+    "name": "Maurício de Souza"
+   },
+   {
+    "authorId": "146709762",
+    "name": "Felipe David Georges Gomes"
+   },
+   {
+    "authorId": "50644386",
+    "name": "A. Ramos"
+   },
+   {
+    "authorId": "3141973",
+    "name": "L. Jorge"
+   },
+   {
+    "authorId": "2530664",
+    "name": "V. Liesenberg"
+   },
+   {
+    "authorId": "2124950899",
+    "name": "Jonathan Li"
+   },
+   {
+    "authorId": "8452952",
+    "name": "Ling-Fei Ma"
+   },
+   {
+    "authorId": "9720187",
+    "name": "J. Marcato"
+   },
+   {
+    "authorId": "1685701",
+    "name": "W. Gonçalves"
+   }
+  ],
+  "abstract": "Abstract Accurately mapping croplands is an important prerequisite for precision farming since it assists in field management, yield-prediction, and environmental management. Crops are sensitive to planting patterns and some have a limited capacity to compensate for gaps within a row. Optical imaging with sensors mounted on Unmanned Aerial Vehicles (UAV) is a cost-effective option for capturing images covering croplands nowadays. However, visual inspection of such images can be a challenging and biased task, specifically for detecting plants and rows on a one-step basis. Thus, developing an architecture capable of simultaneously extracting plant individually and plantation-rows from UAV-images is yet an important demand to support the management of agricultural systems. In this paper, we propose a novel deep learning method based on a Convolutional Neural Network (CNN) that simultaneously detects and geolocates plantation-rows while counting its plants considering highly-dense plantation configurations. The experimental setup was evaluated in (a) a cornfield (Zea mays L.) with different growth stages (i.e. recently planted and mature plants) and in a (b) Citrus orchard (Citrus Sinensis Pera). Both datasets characterize different plant density scenarios, in different locations, with different types of crops, and from different sensors and dates. This scheme was used to prove the robustness of the proposed approach, allowing a broader discussion of the method. A two-branch architecture was implemented in our CNN method, where the information obtained within the plantation-row is updated into the plant detection branch and retro-feed to the row branch; which are then refined by a Multi-Stage Refinement method. In the corn plantation datasets (with both growth phases – young and mature), our approach returned a mean absolute error (MAE) of 6.224 plants per image patch, a mean relative error (MRE) of 0.1038, precision and recall values of 0.856, and 0.905, respectively, and an F-measure equal to 0.876. These results were superior to the results from other deep networks (HRNet, Faster R-CNN, and RetinaNet) evaluated with the same task and dataset. For the plantation-row detection, our approach returned precision, recall, and F-measure scores of 0.913, 0.941, and 0.925, respectively. To test the robustness of our model with a different type of agriculture, we performed the same task in the citrus orchard dataset. It returned an MAE equal to 1.409 citrus-trees per patch, MRE of 0.0615, precision of 0.922, recall of 0.911, and F-measure of 0.965. For the citrus plantation-row detection, our approach resulted in precision, recall, and F-measure scores equal to 0.965, 0.970, and 0.964, respectively. The proposed method achieved state-of-the-art performance for counting and geolocating plants and plant-rows in UAV images from different types of crops. The method proposed here may be applied to future decision-making models and could contribute to the sustainable management of agricultural systems."
+ },
+ "Osco2021rev": {
+  "paperId": "6a78801c67313c67e20c76375d6a704964f50abb",
+  "externalIds": {
+   "DBLP": "journals/corr/abs-2101-10861",
+   "ArXiv": "2101.10861",
+   "DOI": "10.1016/j.jag.2021.102456",
+   "CorpusId": 231709807
+  },
+  "publicationVenue": {
+   "id": "4502a19c-ac5e-45a7-9302-2f7b3bcdc0b7",
+   "name": "International Journal of Applied Earth Observation and Geoinformation",
+   "type": "journal",
+   "alternate_names": [
+    "Itc Journal",
+    "Itc J",
+    "Int J Appl Earth Obs Geoinformation"
+   ],
+   "issn": "0303-2434",
+   "alternate_issns": [
+    "1569-8432"
+   ],
+   "url": "http://www.sciencedirect.com/science/journal/03032434",
+   "alternate_urls": [
+    "http://www.elsevier.com/locate/jag"
+   ]
+  },
+  "title": "A Review on Deep Learning in UAV Remote Sensing",
+  "venue": "International Journal of Applied Earth Observation and Geoinformation",
+  "year": 2021,
+  "citationCount": 505,
+  "openAccessPdf": {
+   "url": "https://www.sciencedirect.com/science/article/pii/S030324342100163X/pdf",
+   "status": "GOLD",
+   "license": "CCBYNCND",
+   "disclaimer": "Notice: Paper or abstract available at https://arxiv.org/abs/2101.10861, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+  },
+  "publicationTypes": [
+   "JournalArticle",
+   "Review"
+  ],
+  "authors": [
+   {
+    "authorId": "1879063052",
+    "name": "L. Osco"
+   },
+   {
+    "authorId": "9720187",
+    "name": "J. Marcato"
+   },
+   {
+    "authorId": "50644386",
+    "name": "A. Ramos"
+   },
+   {
+    "authorId": "134293205",
+    "name": "L. A. de Castro Jorge"
+   },
+   {
+    "authorId": "2039229343",
+    "name": "S. Fatholahi"
+   },
+   {
+    "authorId": "2484372971",
+    "name": "Jonathan de Andrade Silva"
+   },
+   {
+    "authorId": "2408711",
+    "name": "E. Matsubara"
+   },
+   {
+    "authorId": "2061909",
+    "name": "H. Pistori"
+   },
+   {
+    "authorId": "1685701",
+    "name": "W. Gonçalves"
+   },
+   {
+    "authorId": "2124950899",
+    "name": "Jonathan Li"
+   }
+  ],
+  "abstract": "Deep Neural Networks (DNNs) learn representation from data with an impressive capability, and brought important breakthroughs for processing images, time-series, natural language, audio, video, and many others. In the remote sensing field, surveys and literature revisions specifically involving DNNs algorithms' applications have been conducted in an attempt to summarize the amount of information produced in its subfields. Recently, Unmanned Aerial Vehicles (UAV) based applications have dominated aerial sensing research. However, a literature revision that combines both\"deep learning\"and\"UAV remote sensing\"thematics has not yet been conducted. The motivation for our work was to present a comprehensive review of the fundamentals of Deep Learning (DL) applied in UAV-based imagery. We focused mainly on describing classification and regression techniques used in recent applications with UAV-acquired data. For that, a total of 232 papers published in international scientific journal databases was examined. We gathered the published material and evaluated their characteristics regarding application, sensor, and technique used. We relate how DL presents promising results and has the potential for processing tasks associated with UAV-based image data. Lastly, we project future perspectives, commentating on prominent DL paths to be explored in the UAV remote sensing field. Our revision consists of a friendly-approach to introduce, commentate, and summarize the state-of-the-art in UAV-based image applications with DNNs algorithms in diverse subfields of remote sensing, grouping it in the environmental, urban, and agricultural contexts."
+ },
+ "Shiu2023": {
+  "paperId": "9dcff24cfb6aaba8aa0c370b46d56fdcd9b1a89b",
+  "externalIds": {
+   "DBLP": "journals/remotesensing/ShiuLC23",
+   "DOI": "10.3390/rs15030814",
+   "CorpusId": 256527679
+  },
+  "publicationVenue": {
+   "id": "8e1bd4b5-d5b2-4e22-ba0a-01fe5568d472",
+   "name": "Remote Sensing",
+   "type": "journal",
+   "alternate_names": [
+    "Remote Sens"
+   ],
+   "issn": "2315-4675",
+   "alternate_issns": [
+    "2072-4292"
+   ],
+   "url": "http://www.e-helvetica.nb.admin.ch/directAccess?callnumber=bel-169233",
+   "alternate_urls": [
+    "https://www.mdpi.com/journal/remotesensing",
+    "http://www.mdpi.com/journal/remotesensing",
+    "http://nbn-resolving.de/urn/resolver.pl?urn=urn:nbn:ch:bel-169233"
+   ]
+  },
+  "title": "Pineapples' Detection and Segmentation Based on Faster and Mask R-CNN in UAV Imagery",
+  "venue": "Remote Sensing",
+  "year": 2023,
+  "citationCount": 31,
+  "openAccessPdf": {
+   "url": "https://www.mdpi.com/2072-4292/15/3/814/pdf?version=1675905448",
+   "status": "GOLD",
+   "license": "CCBY",
+   "disclaimer": "Notice: Paper or abstract available at https://api.unpaywall.org/v2/10.3390/rs15030814?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.3390/rs15030814, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+  },
+  "publicationTypes": [
+   "JournalArticle"
+  ],
+  "authors": [
+   {
+    "authorId": "1714826",
+    "name": "Yi-Shiang Shiu"
+   },
+   {
+    "authorId": "145564374",
+    "name": "Re-Yang Lee"
+   },
+   {
+    "authorId": "2112350982",
+    "name": "Yen-Ching Chang"
+   }
+  ],
+  "abstract": "Early production warnings are usually labor-intensive, even with remote sensing techniques in highly intensive but fragmented growing areas with various phenological stages. This study used high-resolution unmanned aerial vehicle (UAV) images with a ground sampling distance (GSD) of 3 cm to detect the plant body of pineapples. The detection targets were mature fruits mainly covered with two kinds of sun protection materials—round plastic covers and nets—which could be used to predict the yield in the next two to three months. For round plastic covers (hereafter referred to as wearing a hat), the Faster R-CNN was used to locate and count the number of mature fruits based on input image tiles with a size of 256 × 256 pixels. In the case of intersection-over-union (IoU) > 0.5, the F1-score of the hat wearer detection results was 0.849, the average precision (AP) was 0.739, the precision was 0.990, and the recall was 0.743. We used the Mask R-CNN model for other mature fruits to delineate the fields covered with nets based on input image tiles with a size of 2000 × 2000 pixels and a mean IoU (mIoU) of 0.613. Zonal statistics summed up the area with the number of fields wearing a hat and covered with nets. Then, the thresholding procedure was used to solve the potential issue of farmers’ harvesting in different batches. In pineapple cultivation fields, the zonal results revealed that the overall classification accuracy is 97.46%, and the kappa coefficient is 0.908. The results were expected to demonstrate the critical factors of yield estimation and provide researchers and agricultural administration with similar applications to give early warnings regarding production and adjustments to marketing."
+ },
+ "Lai2023": {
+  "paperId": "6c4690ea6828cf2ced00537263bcc1ceb2999bfb",
+  "externalIds": {
+   "DOI": "10.3390/app13042691",
+   "CorpusId": 257074652
+  },
+  "publicationVenue": {
+   "id": "136edf8d-0f88-4c2c-830f-461c6a9b842e",
+   "name": "Applied Sciences",
+   "type": "journal",
+   "alternate_names": [
+    "Appl Sci"
+   ],
+   "issn": "2076-3417",
+   "url": "http://www.e-helvetica.nb.admin.ch/directAccess?callnumber=bel-217814",
+   "alternate_urls": [
+    "http://www.mathem.pub.ro/apps/",
+    "https://www.mdpi.com/journal/applsci",
+    "http://nbn-resolving.de/urn/resolver.pl?urn=urn:nbn:ch:bel-217814"
+   ]
+  },
+  "title": "A Pineapple Target Detection Method in a Field Environment Based on Improved YOLOv7",
+  "venue": "Applied Sciences",
+  "year": 2023,
+  "citationCount": 62,
+  "openAccessPdf": {
+   "url": "https://www.mdpi.com/2076-3417/13/4/2691/pdf?version=1677032012",
+   "status": "GOLD",
+   "license": "CCBY",
+   "disclaimer": "Notice: Paper or abstract available at https://api.unpaywall.org/v2/10.3390/app13042691?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.3390/app13042691, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+  },
+  "publicationTypes": null,
+  "authors": [
+   {
+    "authorId": "2209011592",
+    "name": "Yuhao Lai"
+   },
+   {
+    "authorId": "50397373",
+    "name": "Ruijun Ma"
+   },
+   {
+    "authorId": "2209009350",
+    "name": "Yu Chen"
+   },
+   {
+    "authorId": "2209108853",
+    "name": "Tao Wan"
+   },
+   {
+    "authorId": "2209114633",
+    "name": "Rui Jiao"
+   },
+   {
+    "authorId": "2209133946",
+    "name": "Huandong He"
+   }
+  ],
+  "abstract": "The accurate detection of pineapples of different maturity levels in a complex field environment is the key step to achieving the early yield estimation and mechanized picking of pineapple. This study proposes a target detection model based on the improved YOLOv7 to achieve the accurate detection and maturity classification of pineapples in the field. First, the attention mechanism SimAM is inserted into the structure of the original YOLOv7 network to improve the feature extraction ability of the model. Then, the max-pooling convolution (MPConv) structure is improved to reduce the feature loss in the downsampling process. Finally, the non-maximum suppression (NMS) algorithm is replaced by the soft-NMS algorithm, with a better effect at improving the detection effect when pineapple is in occlusion or overlaps. According to the test, the mean average precision (mAP) and recall of the model proposed in this paper are 95.82% and 89.83%, which are 2.71% and 3.41% higher than those of the original YOLOv7, respectively. The maturity classification accuracy of the model and the detection performance under six different field scenarios were analyzed quantitatively. This method provides an effective scheme for the vision system of the field pineapple picking robot."
+ },
+ "Bah2018": {
+  "paperId": "e0ed214707db6786ba4489b0922aeb5d5d4cdde4",
+  "externalIds": {
+   "MAG": "2898498213",
+   "DBLP": "journals/remotesensing/BahHC18",
+   "DOI": "10.3390/RS10111690",
+   "CorpusId": 56482176
+  },
+  "publicationVenue": {
+   "id": "8e1bd4b5-d5b2-4e22-ba0a-01fe5568d472",
+   "name": "Remote Sensing",
+   "type": "journal",
+   "alternate_names": [
+    "Remote Sens"
+   ],
+   "issn": "2315-4675",
+   "alternate_issns": [
+    "2072-4292"
+   ],
+   "url": "http://www.e-helvetica.nb.admin.ch/directAccess?callnumber=bel-169233",
+   "alternate_urls": [
+    "https://www.mdpi.com/journal/remotesensing",
+    "http://www.mdpi.com/journal/remotesensing",
+    "http://nbn-resolving.de/urn/resolver.pl?urn=urn:nbn:ch:bel-169233"
+   ]
+  },
+  "title": "Deep Learning with Unsupervised Data Labeling for Weed Detection in Line Crops in UAV Images",
+  "venue": "Remote Sensing",
+  "year": 2018,
+  "citationCount": 299,
+  "openAccessPdf": {
+   "url": "https://www.mdpi.com/2072-4292/10/11/1690/pdf?version=1540548877",
+   "status": "GOLD",
+   "license": "CCBY",
+   "disclaimer": "Notice: Paper or abstract available at https://api.unpaywall.org/v2/10.3390/RS10111690?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.3390/RS10111690, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+  },
+  "publicationTypes": [
+   "JournalArticle"
+  ],
+  "authors": [
+   {
+    "authorId": "2289878631",
+    "name": "M. Bah"
+   },
+   {
+    "authorId": "1822411",
+    "name": "A. Hafiane"
+   },
+   {
+    "authorId": "34775571",
+    "name": "R. Canals"
+   }
+  ],
+  "abstract": "In recent years, weeds have been responsible for most agricultural yield losses. To deal with this threat, farmers resort to spraying the fields uniformly with herbicides. This method not only requires huge quantities of herbicides but impacts the environment and human health. One way to reduce the cost and environmental impact is to allocate the right doses of herbicide to the right place and at the right time (precision agriculture). Nowadays, unmanned aerial vehicles (UAVs) are becoming an interesting acquisition system for weed localization and management due to their ability to obtain images of the entire agricultural field with a very high spatial resolution and at a low cost. However, despite significant advances in UAV acquisition systems, the automatic detection of weeds remains a challenging problem because of their strong similarity to the crops. Recently, a deep learning approach has shown impressive results in different complex classification problems. However, this approach needs a certain amount of training data, and creating large agricultural datasets with pixel-level annotations by an expert is an extremely time-consuming task. In this paper, we propose a novel fully automatic learning method using convolutional neuronal networks (CNNs) with an unsupervised training dataset collection for weed detection from UAV images. The proposed method comprises three main phases. First, we automatically detect the crop rows and use them to identify the inter-row weeds. In the second phase, inter-row weeds are used to constitute the training dataset. Finally, we perform CNNs on this dataset to build a model able to detect the crop and the weeds in the images. The results obtained are comparable to those of traditional supervised training data labeling, with differences in accuracy of 1.5% in the spinach field and 6% in the bean field."
+ },
+ "Kamilaris2018": {
+  "paperId": "518a7c79968a56d63a691d42f8378be6c776167e",
+  "externalIds": {
+   "DBLP": "journals/cea/KamilarisP18",
+   "MAG": "2790979755",
+   "ArXiv": "1807.11809",
+   "DOI": "10.1016/j.compag.2018.02.016",
+   "CorpusId": 206907269
+  },
+  "publicationVenue": {
+   "id": "80fdf70e-8520-4bb7-b387-3abebc9970b7",
+   "name": "Computers and Electronics in Agriculture",
+   "type": "journal",
+   "alternate_names": [
+    "Comput Electron Agric"
+   ],
+   "issn": "0168-1699",
+   "url": "http://www.elsevier.com/wps/find/journaldescription.cws_home/503304/description#description",
+   "alternate_urls": [
+    "http://www.sciencedirect.com/science/journal/01681699"
+   ]
+  },
+  "title": "Deep learning in agriculture: A survey",
+  "venue": "Computers and Electronics in Agriculture",
+  "year": 2018,
+  "citationCount": 4758,
+  "openAccessPdf": {
+   "url": "https://arxiv.org/pdf/1807.11809",
+   "status": "GREEN",
+   "license": null,
+   "disclaimer": "Notice: Paper or abstract available at https://arxiv.org/abs/1807.11809, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+  },
+  "publicationTypes": [
+   "JournalArticle",
+   "Review"
+  ],
+  "authors": [
+   {
+    "authorId": "1764301",
+    "name": "A. Kamilaris"
+   },
+   {
+    "authorId": "1398263014",
+    "name": "F. Prenafeta-Boldú"
+   }
+  ],
+  "abstract": "Abstract Deep learning constitutes a recent, modern technique for image processing and data analysis, with promising results and large potential. As deep learning has been successfully applied in various domains, it has recently entered also the domain of agriculture. In this paper, we perform a survey of 40 research efforts that employ deep learning techniques, applied to various agricultural and food production challenges. We examine the particular agricultural problems under study, the specific models and frameworks employed, the sources, nature and pre-processing of data used, and the overall performance achieved according to the metrics used at each work under study. Moreover, we study comparisons of deep learning with other existing popular techniques, in respect to differences in classification or regression performance. Our findings indicate that deep learning provides high accuracy, outperforming existing commonly used image processing techniques."
+ },
+ "Tang2023": {
+  "paperId": "7849b19c4d2cee88843b3941987061f132e2c918",
+  "externalIds": {
+   "DBLP": "journals/remotesensing/TangNZGC24",
+   "DOI": "10.3390/rs16010149",
+   "CorpusId": 266653673
+  },
+  "publicationVenue": {
+   "id": "8e1bd4b5-d5b2-4e22-ba0a-01fe5568d472",
+   "name": "Remote Sensing",
+   "type": "journal",
+   "alternate_names": [
+    "Remote Sens"
+   ],
+   "issn": "2315-4675",
+   "alternate_issns": [
+    "2072-4292"
+   ],
+   "url": "http://www.e-helvetica.nb.admin.ch/directAccess?callnumber=bel-169233",
+   "alternate_urls": [
+    "https://www.mdpi.com/journal/remotesensing",
+    "http://www.mdpi.com/journal/remotesensing",
+    "http://nbn-resolving.de/urn/resolver.pl?urn=urn:nbn:ch:bel-169233"
+   ]
+  },
+  "title": "A Survey of Object Detection for UAVs Based on Deep Learning",
+  "venue": "Remote Sensing",
+  "year": 2023,
+  "citationCount": 254,
+  "openAccessPdf": {
+   "url": "https://www.mdpi.com/2072-4292/16/1/149/pdf?version=1703842366",
+   "status": "GOLD",
+   "license": "CCBY",
+   "disclaimer": "Notice: Paper or abstract available at https://api.unpaywall.org/v2/10.3390/rs16010149?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.3390/rs16010149, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+  },
+  "publicationTypes": [
+   "JournalArticle",
+   "Review"
+  ],
+  "authors": [
+   {
+    "authorId": "2065465713",
+    "name": "Guang-yi Tang"
+   },
+   {
+    "authorId": "9970626",
+    "name": "Jian-Jun Ni"
+   },
+   {
+    "authorId": "2277431999",
+    "name": "Yong-Hao Zhao"
+   },
+   {
+    "authorId": "2277101437",
+    "name": "Yang Gu"
+   },
+   {
+    "authorId": "1500399226",
+    "name": "Wei-Dong Cao"
+   }
+  ],
+  "abstract": "With the rapid development of object detection technology for unmanned aerial vehicles (UAVs), it is convenient to collect data from UAV aerial photographs. They have a wide range of applications in several fields, such as monitoring, geological exploration, precision agriculture, and disaster early warning. In recent years, many methods based on artificial intelligence have been proposed for UAV object detection, and deep learning is a key area in this field. Significant progress has been achieved in the area of deep-learning-based UAV object detection. Thus, this paper presents a review of recent research on deep-learning-based UAV object detection. This survey provides an overview of the development of UAVs and summarizes the deep-learning-based methods in object detection for UAVs. In addition, the key issues in UAV object detection are analyzed, such as small object detection, object detection under complex backgrounds, object rotation, scale change, and category imbalance problems. Then, some representative solutions based on deep learning for these issues are summarized. Finally, future research directions in the field of UAV object detection are discussed."
+ },
+ "Muhammad2023": {
+  "paperId": "82eded0a8ec8ed0aa1c77839dae42207e74b2aab",
+  "externalIds": {
+   "PubMedCentral": "10669158",
+   "DOI": "10.3389/fpls.2023.1280496",
+   "CorpusId": 265084068,
+   "PubMed": "38023884"
+  },
+  "publicationVenue": {
+   "id": "e110cc75-cd00-4b7f-968c-fd70b464a553",
+   "name": "Frontiers in Plant Science",
+   "type": "journal",
+   "alternate_names": [
+    "Front Plant Sci"
+   ],
+   "issn": "1664-462X",
+   "url": "http://www.frontiersin.org/about/journalseries",
+   "alternate_urls": [
+    "http://www.frontiersin.org/plant_science",
+    "https://www.frontiersin.org/journals/plant-science",
+    "http://journal.frontiersin.org/journal/plant-science"
+   ]
+  },
+  "title": "Harnessing the power of diffusion models for plant disease image augmentation",
+  "venue": "Frontiers in Plant Science",
+  "year": 2023,
+  "citationCount": 53,
+  "openAccessPdf": {
+   "url": "https://doi.org/10.3389/fpls.2023.1280496",
+   "status": "GOLD",
+   "license": "CCBY",
+   "disclaimer": "Notice: Paper or abstract available at https://pmc.ncbi.nlm.nih.gov/articles/PMC10669158, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+  },
+  "publicationTypes": [
+   "JournalArticle"
+  ],
+  "authors": [
+   {
+    "authorId": "2231795523",
+    "name": "A. Muhammad"
+   },
+   {
+    "authorId": "2097093579",
+    "name": "Zafar Salman"
+   },
+   {
+    "authorId": "2152547358",
+    "name": "Kiseong Lee"
+   },
+   {
+    "authorId": "2266223150",
+    "name": "Dongil Han"
+   }
+  ],
+  "abstract": "Introduction The challenges associated with data availability, class imbalance, and the need for data augmentation are well-recognized in the field of plant disease detection. The collection of large-scale datasets for plant diseases is particularly demanding due to seasonal and geographical constraints, leading to significant cost and time investments. Traditional data augmentation techniques, such as cropping, resizing, and rotation, have been largely supplanted by more advanced methods. In particular, the utilization of Generative Adversarial Networks (GANs) for the creation of realistic synthetic images has become a focal point of contemporary research, addressing issues related to data scarcity and class imbalance in the training of deep learning models. Recently, the emergence of diffusion models has captivated the scientific community, offering superior and realistic output compared to GANs. Despite these advancements, the application of diffusion models in the domain of plant science remains an unexplored frontier, presenting an opportunity for groundbreaking contributions. Methods In this study, we delve into the principles of diffusion technology, contrasting its methodology and performance with state-of-the-art GAN solutions, specifically examining the guided inference model of GANs, named InstaGAN, and a diffusion-based model, RePaint. Both models utilize segmentation masks to guide the generation process, albeit with distinct principles. For a fair comparison, a subset of the PlantVillage dataset is used, containing two disease classes of tomato leaves and three disease classes of grape leaf diseases, as results on these classes have been published in other publications. Results Quantitatively, RePaint demonstrated superior performance over InstaGAN, with average Fréchet Inception Distance (FID) score of 138.28 and Kernel Inception Distance (KID) score of 0.089 ± (0.002), compared to InstaGAN’s average FID and KID scores of 206.02 and 0.159 ± (0.004) respectively. Additionally, RePaint’s FID scores for grape leaf diseases were 69.05, outperforming other published methods such as DCGAN (309.376), LeafGAN (178.256), and InstaGAN (114.28). For tomato leaf diseases, RePaint achieved an FID score of 161.35, surpassing other methods like WGAN (226.08), SAGAN (229.7233), and InstaGAN (236.61). Discussion This study offers valuable insights into the potential of diffusion models for data augmentation in plant disease detection, paving the way for future research in this promising field."
+ },
+ "Deng2023": {
+  "paperId": "371556ec5ef203c1254c274310995c321488221c",
+  "externalIds": {
+   "ArXiv": "2312.03996",
+   "DBLP": "journals/corr/abs-2312-03996",
+   "DOI": "10.48550/arXiv.2312.03996",
+   "CorpusId": 266051814
+  },
+  "publicationVenue": {
+   "id": "1901e811-ee72-4b20-8f7e-de08cd395a10",
+   "name": "arXiv.org",
+   "alternate_names": [
+    "ArXiv"
+   ],
+   "issn": "2331-8422",
+   "url": "https://arxiv.org"
+  },
+  "title": "Stable diffusion for Data Augmentation in COCO and Weed Datasets",
+  "venue": "arXiv.org",
+  "year": 2023,
+  "citationCount": 3,
+  "openAccessPdf": {
+   "url": "",
+   "status": null,
+   "license": null,
+   "disclaimer": "Notice: Paper or abstract available at https://arxiv.org/abs/2312.03996, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+  },
+  "publicationTypes": [
+   "JournalArticle"
+  ],
+  "authors": [
+   {
+    "authorId": "2267336972",
+    "name": "Boyang Deng"
+   }
+  ],
+  "abstract": "Generative models have increasingly impacted various tasks, from computer vision to interior design and beyond. Stable Diffusion, a powerful diffusion model, enables the creation of high-resolution images with intricate details from text prompts or reference images. An intriguing challenge lies in improving performance for small datasets with image-sparse categories. This study explores the effectiveness of Stable Diffusion by evaluating seven common categories and three widespread weed species. Synthetic images were generated using three Stable Diffusion-based techniques: Image-to-Image Translation, DreamBooth, and ControlNet, each with distinct focuses. Classification and detection tasks were then performed on these synthetic images, and their performance was compared to models trained on original images. Promising results were achieved for certain classes, demonstrating the potential of Stable Diffusion in enhancing image-sparse datasets. This foundational study may accelerate the adaptation of diffusion models across various domains."
+ },
+ "XieLi2024": {
+  "paperId": "69ecc0cf271e330e8f89aa6419ee6df6299610d4",
+  "externalIds": {
+   "DOI": "10.1109/bip63158.2024.10885396",
+   "CorpusId": 276443588
+  },
+  "publicationVenue": null,
+  "title": "Simple Object Detection Framework without Training",
+  "venue": "2024 IEEE 6th International Conference on BioInspired Processing (BIP)",
+  "year": 2024,
+  "citationCount": 4,
+  "openAccessPdf": {
+   "url": "",
+   "status": "CLOSED",
+   "license": null,
+   "disclaimer": "Notice: Paper or abstract available at https://api.unpaywall.org/v2/10.1109/bip63158.2024.10885396?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.1109/bip63158.2024.10885396, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+  },
+  "publicationTypes": [
+   "Conference"
+  ],
+  "authors": [
+   {
+    "authorId": "2278092358",
+    "name": "Danny Xie-Li"
+   },
+   {
+    "authorId": "1413929197",
+    "name": "Fabián Fallas-Moya"
+   },
+   {
+    "authorId": "2274932631",
+    "name": "Saúl Calderón-Ramírez"
+   }
+  ],
+  "abstract": "This research introduces a simple framework for Object Detection (OD) based on few-shot methods and Visual Foundation Models (VFM). The framework comprises of three core modules: (i) object proposal, (ii) embedding creation, and (iii) object classification. We evaluated six distinct VFMs to generate the object proposals. We compared the performances of four feature extractors to optimize the object representation, including convolutional neural networks and transformer-based models. Furthermore, we investigated four few-shot methods for classifying objects using minimal labeled data. Our framework provides a scalable and cost-effective solution, specifically applied to OD for pineapple localization in the drone imagery of large pineapple fields, where labeled data are scarce and expensive."
+ },
+ "Girshick2014": {
+  "paperId": "2f4df08d9072fc2ac181b7fced6a245315ce05c8",
+  "externalIds": {
+   "DBLP": "journals/corr/GirshickDDM13",
+   "MAG": "2951638509",
+   "ArXiv": "1311.2524",
+   "DOI": "10.1109/CVPR.2014.81",
+   "CorpusId": 215827080
+  },
+  "publicationVenue": null,
+  "title": "Rich Feature Hierarchies for Accurate Object Detection and Semantic Segmentation",
+  "venue": "2014 IEEE Conference on Computer Vision and Pattern Recognition",
+  "year": 2013,
+  "citationCount": 29645,
+  "openAccessPdf": {
+   "url": "https://arxiv.org/pdf/1311.2524",
+   "status": "GREEN",
+   "license": null,
+   "disclaimer": "Notice: Paper or abstract available at https://arxiv.org/abs/1311.2524, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+  },
+  "publicationTypes": [
+   "JournalArticle",
+   "Conference"
+  ],
+  "authors": [
+   {
+    "authorId": "2983898",
+    "name": "Ross B. Girshick"
+   },
+   {
+    "authorId": "7408951",
+    "name": "J. Donahue"
+   },
+   {
+    "authorId": "1753210",
+    "name": "Trevor Darrell"
+   },
+   {
+    "authorId": "153652147",
+    "name": "J. Malik"
+   }
+  ],
+  "abstract": "Object detection performance, as measured on the canonical PASCAL VOC dataset, has plateaued in the last few years. The best-performing methods are complex ensemble systems that typically combine multiple low-level image features with high-level context. In this paper, we propose a simple and scalable detection algorithm that improves mean average precision (mAP) by more than 30% relative to the previous best result on VOC 2012 -- achieving a mAP of 53.3%. Our approach combines two key insights: (1) one can apply high-capacity convolutional neural networks (CNNs) to bottom-up region proposals in order to localize and segment objects and (2) when labeled training data is scarce, supervised pre-training for an auxiliary task, followed by domain-specific fine-tuning, yields a significant performance boost. Since we combine region proposals with CNNs, we call our method R-CNN: Regions with CNN features. We also present experiments that provide insight into what the network learns, revealing a rich hierarchy of image features. Source code for the complete system is available at http://www.cs.berkeley.edu/~rbg/rcnn."
+ },
+ "Ren2017": {
+  "paperId": "424561d8585ff8ebce7d5d07de8dbf7aae5e7270",
+  "externalIds": {
+   "MAG": "2953106684",
+   "DBLP": "journals/pami/RenHG017",
+   "ArXiv": "1506.01497",
+   "DOI": "10.1109/TPAMI.2016.2577031",
+   "CorpusId": 10328909,
+   "PubMed": "27295650"
+  },
+  "publicationVenue": {
+   "id": "25248f80-fe99-48e5-9b8e-9baef3b8e23b",
+   "name": "IEEE Transactions on Pattern Analysis and Machine Intelligence",
+   "type": "journal",
+   "alternate_names": [
+    "IEEE Trans Pattern Anal Mach Intell"
+   ],
+   "issn": "0162-8828",
+   "url": "http://www.computer.org/tpami/",
+   "alternate_urls": [
+    "http://www.computer.org/portal/web/tpami",
+    "http://ieeexplore.ieee.org/servlet/opac?punumber=34"
+   ]
+  },
+  "title": "Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks",
+  "venue": "IEEE Transactions on Pattern Analysis and Machine Intelligence",
+  "year": 2015,
+  "citationCount": 76499,
+  "openAccessPdf": {
+   "url": "https://arxiv.org/pdf/1506.01497",
+   "status": "GREEN",
+   "license": null,
+   "disclaimer": "Notice: Paper or abstract available at https://arxiv.org/abs/1506.01497, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+  },
+  "publicationTypes": [
+   "JournalArticle"
+  ],
+  "authors": [
+   {
+    "authorId": "3080683",
+    "name": "Shaoqing Ren"
+   },
+   {
+    "authorId": "39353098",
+    "name": "Kaiming He"
+   },
+   {
+    "authorId": "2983898",
+    "name": "Ross B. Girshick"
+   },
+   {
+    "authorId": "2032184078",
+    "name": "Jian Sun"
+   }
+  ],
+  "abstract": "State-of-the-art object detection networks depend on region proposal algorithms to hypothesize object locations. Advances like SPPnet and Fast R-CNN have reduced the running time of these detection networks, exposing region proposal computation as a bottleneck. In this work, we introduce a Region Proposal Network (RPN) that shares full-image convolutional features with the detection network, thus enabling nearly cost-free region proposals. An RPN is a fully convolutional network that simultaneously predicts object bounds and objectness scores at each position. The RPN is trained end-to-end to generate high-quality region proposals, which are used by Fast R-CNN for detection. We further merge RPN and Fast R-CNN into a single network by sharing their convolutional features---using the recently popular terminology of neural networks with 'attention' mechanisms, the RPN component tells the unified network where to look. For the very deep VGG-16 model, our detection system has a frame rate of 5fps (including all steps) on a GPU, while achieving state-of-the-art object detection accuracy on PASCAL VOC 2007, 2012, and MS COCO datasets with only 300 proposals per image. In ILSVRC and COCO 2015 competitions, Faster R-CNN and RPN are the foundations of the 1st-place winning entries in several tracks. Code has been made publicly available"
+ },
+ "Redmon2016": {
+  "paperId": "f8e79ac0ea341056ef20f2616628b3e964764cfd",
+  "externalIds": {
+   "ArXiv": "1506.02640",
+   "MAG": "2963037989",
+   "DBLP": "conf/cvpr/RedmonDGF16",
+   "DOI": "10.1109/CVPR.2016.91",
+   "CorpusId": 206594738
+  },
+  "publicationVenue": {
+   "id": "768b87bb-8a18-4d9c-a161-4d483c776bcf",
+   "name": "Computer Vision and Pattern Recognition",
+   "type": "conference",
+   "alternate_names": [
+    "CVPR",
+    "Comput Vis Pattern Recognit"
+   ],
+   "issn": "1063-6919",
+   "url": "https://ieeexplore.ieee.org/xpl/conhome.jsp?punumber=1000147",
+   "alternate_urls": [
+    "https://en.wikipedia.org/wiki/Conference_on_Computer_Vision_and_Pattern_Recognition"
+   ]
+  },
+  "title": "You Only Look Once: Unified, Real-Time Object Detection",
+  "venue": "Computer Vision and Pattern Recognition",
+  "year": 2015,
+  "citationCount": 48942,
+  "openAccessPdf": {
+   "url": "https://arxiv.org/pdf/1506.02640",
+   "status": "GREEN",
+   "license": null,
+   "disclaimer": "Notice: Paper or abstract available at https://arxiv.org/abs/1506.02640, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+  },
+  "publicationTypes": [
+   "JournalArticle",
+   "Conference"
+  ],
+  "authors": [
+   {
+    "authorId": "40497777",
+    "name": "J. Redmon"
+   },
+   {
+    "authorId": "2038685",
+    "name": "S. Divvala"
+   },
+   {
+    "authorId": "2983898",
+    "name": "Ross B. Girshick"
+   },
+   {
+    "authorId": "143787583",
+    "name": "Ali Farhadi"
+   }
+  ],
+  "abstract": "We present YOLO, a new approach to object detection. Prior work on object detection repurposes classifiers to perform detection. Instead, we frame object detection as a regression problem to spatially separated bounding boxes and associated class probabilities. A single neural network predicts bounding boxes and class probabilities directly from full images in one evaluation. Since the whole detection pipeline is a single network, it can be optimized end-to-end directly on detection performance. Our unified architecture is extremely fast. Our base YOLO model processes images in real-time at 45 frames per second. A smaller version of the network, Fast YOLO, processes an astounding 155 frames per second while still achieving double the mAP of other real-time detectors. Compared to state-of-the-art detection systems, YOLO makes more localization errors but is less likely to predict false positives on background. Finally, YOLO learns very general representations of objects. It outperforms other detection methods, including DPM and R-CNN, when generalizing from natural images to other domains like artwork."
+ },
+ "Viola2001": {
+  "paperId": "dc6ea0e30e46163b706f2f8bdc9c67ca87f83d63",
+  "externalIds": {
+   "DBLP": "conf/cvpr/ViolaJ01",
+   "MAG": "2164598857",
+   "DOI": "10.1109/CVPR.2001.990517",
+   "CorpusId": 2715202
+  },
+  "publicationVenue": null,
+  "title": "Rapid object detection using a boosted cascade of simple features",
+  "venue": "Proceedings of the 2001 IEEE Computer Society Conference on Computer Vision and Pattern Recognition. CVPR 2001",
+  "year": 2001,
+  "citationCount": 2232,
+  "openAccessPdf": {
+   "url": "",
+   "status": "CLOSED",
+   "license": null,
+   "disclaimer": "Notice: The following paper fields have been elided by the publisher: {'abstract'}. Paper or abstract available at https://api.unpaywall.org/v2/10.1109/CVPR.2001.990517?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.1109/CVPR.2001.990517, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+  },
+  "publicationTypes": [
+   "JournalArticle",
+   "Conference"
+  ],
+  "authors": [
+   {
+    "authorId": "2247495712",
+    "name": "Paul A. Viola"
+   },
+   {
+    "authorId": "145319478",
+    "name": "Michael J. Jones"
+   }
+  ],
+  "abstract": null
+ },
+ "Dalal2005": {
+  "paperId": "e8b12467bdc20bde976750b8a28decdb33246d1d",
+  "externalIds": {
+   "DBLP": "conf/cvpr/DalalT05",
+   "MAG": "2161969291",
+   "DOI": "10.1109/CVPR.2005.177",
+   "CorpusId": 206590483
+  },
+  "publicationVenue": {
+   "id": "768b87bb-8a18-4d9c-a161-4d483c776bcf",
+   "name": "Computer Vision and Pattern Recognition",
+   "type": "conference",
+   "alternate_names": [
+    "CVPR",
+    "Comput Vis Pattern Recognit"
+   ],
+   "issn": "1063-6919",
+   "url": "https://ieeexplore.ieee.org/xpl/conhome.jsp?punumber=1000147",
+   "alternate_urls": [
+    "https://en.wikipedia.org/wiki/Conference_on_Computer_Vision_and_Pattern_Recognition"
+   ]
+  },
+  "title": "Histograms of oriented gradients for human detection",
+  "venue": "Computer Vision and Pattern Recognition",
+  "year": 2005,
+  "citationCount": 36125,
+  "openAccessPdf": {
+   "url": "https://inria.hal.science/inria-00548512",
+   "status": "GREEN",
+   "license": "other-oa",
+   "disclaimer": "Notice: The following paper fields have been elided by the publisher: {'abstract'}. Paper or abstract available at https://api.unpaywall.org/v2/10.1109/CVPR.2005.177?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.1109/CVPR.2005.177, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+  },
+  "publicationTypes": [
+   "JournalArticle",
+   "Conference",
+   "Review"
+  ],
+  "authors": [
+   {
+    "authorId": "48950628",
+    "name": "Navneet Dalal"
+   },
+   {
+    "authorId": "1756114",
+    "name": "B. Triggs"
+   }
+  ],
+  "abstract": null
+ },
+ "Shafiee2017": {
+  "paperId": "7ba50b1edfb7f9497c8d663ed4adea4227a33c8a",
+  "externalIds": {
+   "MAG": "2755268668",
+   "ArXiv": "1709.05943",
+   "DBLP": "journals/corr/abs-1709-05943",
+   "DOI": "10.15353/VSNL.V3I1.171",
+   "CorpusId": 6246369
+  },
+  "publicationVenue": {
+   "id": "1901e811-ee72-4b20-8f7e-de08cd395a10",
+   "name": "arXiv.org",
+   "alternate_names": [
+    "ArXiv"
+   ],
+   "issn": "2331-8422",
+   "url": "https://arxiv.org"
+  },
+  "title": "Fast YOLO: A Fast You Only Look Once System for Real-time Embedded Object Detection in Video",
+  "venue": "arXiv.org",
+  "year": 2017,
+  "citationCount": 399,
+  "openAccessPdf": {
+   "url": "https://doi.org/10.15353/vsnl.v3i1.171",
+   "status": "GOLD",
+   "license": null,
+   "disclaimer": "Notice: Paper or abstract available at https://arxiv.org/abs/1709.05943, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+  },
+  "publicationTypes": [
+   "JournalArticle"
+  ],
+  "authors": [
+   {
+    "authorId": "35371895",
+    "name": "M. Shafiee"
+   },
+   {
+    "authorId": "26320034",
+    "name": "Brendan Chywl"
+   },
+   {
+    "authorId": "144741008",
+    "name": "Francis Li"
+   },
+   {
+    "authorId": "144821966",
+    "name": "A. Wong"
+   }
+  ],
+  "abstract": "Object detection is considered one of the most challenging problems in this field of computer vision, as it involves the combination of object classification and object localization within a scene. Recently, deep neural networks (DNNs) have been demonstrated to achieve superior object detection performance compared to other approaches, with YOLOv2 (an improved You Only Look Once model) being one of the state-of-the-art in DNN-based object detection methods in terms of both speed and accuracy. Although YOLOv2 can achieve real-time performance on a powerful GPU, it still remains very challenging for leveraging this approach for real-time object detection in video on embedded computing devices with limited computational power and limited memory. In this paper, we propose a new framework called Fast YOLO, a fast You Only Look Once framework which accelerates YOLOv2 to be able to perform object detection in video on embedded devices in a real-time manner. First, we leverage the evolutionary deep intelligence framework to evolve the YOLOv2 network architecture and produce an optimized architecture (referred to as O-YOLOv2 here) that has 2.8X fewer parameters with just a ~2% IOU drop. To further reduce power consumption on embedded devices while maintaining performance, a motion-adaptive inference method is introduced into the proposed Fast YOLO framework to reduce the frequency of deep inference with O-YOLOv2 based on temporal motion characteristics. Experimental results show that the proposed Fast YOLO framework can reduce the number of deep inferences by an average of 38.13%, and an average speedup of ~3.3X for objection detection in video compared to the original YOLOv2, leading Fast YOLO to run an average of ~18FPS on a Nvidia Jetson TX1 embedded system."
+ },
+ "Machefer2020": {
+  "paperId": "6379901660d58831c788f6fa3f5d36aa2a3bc2f7",
+  "externalIds": {
+   "DBLP": "journals/remotesensing/MacheferLBHS20",
+   "MAG": "3090825734",
+   "DOI": "10.3390/rs12183015",
+   "CorpusId": 221980730
+  },
+  "publicationVenue": {
+   "id": "8e1bd4b5-d5b2-4e22-ba0a-01fe5568d472",
+   "name": "Remote Sensing",
+   "type": "journal",
+   "alternate_names": [
+    "Remote Sens"
+   ],
+   "issn": "2315-4675",
+   "alternate_issns": [
+    "2072-4292"
+   ],
+   "url": "http://www.e-helvetica.nb.admin.ch/directAccess?callnumber=bel-169233",
+   "alternate_urls": [
+    "https://www.mdpi.com/journal/remotesensing",
+    "http://www.mdpi.com/journal/remotesensing",
+    "http://nbn-resolving.de/urn/resolver.pl?urn=urn:nbn:ch:bel-169233"
+   ]
+  },
+  "title": "Mask R-CNN Refitting Strategy for Plant Counting and Sizing in UAV Imagery",
+  "venue": "Remote Sensing",
+  "year": 2020,
+  "citationCount": 111,
+  "openAccessPdf": {
+   "url": "https://www.mdpi.com/2072-4292/12/18/3015/pdf",
+   "status": "GOLD",
+   "license": "CCBY",
+   "disclaimer": "Notice: Paper or abstract available at https://api.unpaywall.org/v2/10.3390/rs12183015?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.3390/rs12183015, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+  },
+  "publicationTypes": [
+   "JournalArticle"
+  ],
+  "authors": [
+   {
+    "authorId": "1973319439",
+    "name": "Mélissande Machefer"
+   },
+   {
+    "authorId": "51313795",
+    "name": "F. Lemarchand"
+   },
+   {
+    "authorId": "1973311948",
+    "name": "Virginie Bonnefond"
+   },
+   {
+    "authorId": "1973291388",
+    "name": "Alasdair Hitchins"
+   },
+   {
+    "authorId": "1726550",
+    "name": "P. Sidiropoulos"
+   }
+  ],
+  "abstract": "This work introduces a method that combines remote sensing and deep learning into a framework that is tailored for accurate, reliable and efficient counting and sizing of plants in aerial images. The investigated task focuses on two low-density crops, potato and lettuce. This double objective of counting and sizing is achieved through the detection and segmentation of individual plants by fine-tuning an existing deep learning architecture called Mask R-CNN. This paper includes a thorough discussion on the optimal parametrisation to adapt the Mask R-CNN architecture to this novel task. As we examine the correlation of the Mask R-CNN performance to the annotation volume and granularity (coarse or refined) of remotely sensed images of plants, we conclude that transfer learning can be effectively used to reduce the required amount of labelled data. Indeed, a previously trained Mask R-CNN on a low-density crop can improve performances after training on new crops. Once trained for a given crop, the Mask R-CNN solution is shown to outperform a manually-tuned computer vision algorithm. Model performances are assessed using intuitive metrics such as Mean Average Precision (mAP) from Intersection over Union (IoU) of the masks for individual plant segmentation and Multiple Object Tracking Accuracy (MOTA) for detection. The presented model reaches an mAP of 0.418 for potato plants and 0.660 for lettuces for the individual plant segmentation task. In detection, we obtain a MOTA of 0.781 for potato plants and 0.918 for lettuces."
+ }
+}

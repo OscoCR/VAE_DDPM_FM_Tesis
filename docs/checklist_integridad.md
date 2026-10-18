@@ -1,7 +1,7 @@
 # Lista de verificación de integridad (propuesta de tesis, entrega 23-oct-2026)
 
 Estado: [x] hecho y verificado, [ ] pendiente, [~] parcial.
-Última actualización: 11-oct-2026.
+Última actualización: 18-oct-2026.
 
 ## A. Uso de herramientas de IA
 - [ ] Preguntar al asesor (reunión del lunes 12-oct) qué se permite en la propuesta y cómo se declara.
@@ -20,7 +20,7 @@ Leyenda: Meta = autores, título y año verificados en arXiv; Resumen = se leyó
 | Sehwag2025 | [x] | [x] (sección 6.2 leída) | [x] leído por el autor |
 | Gonzalez2026 (paper del grupo) | [x] | [x] (texto leído) | [x] leído por el autor |
 | Kingma2014, vandenOord2017, Ho2020, Lipman2023, Goodfellow2014, Isola2017, Heusel2017, Binkowski2018 | [x] | n/a (clásicos) | [x] leídos por el autor |
-| Paszke2019, Kingma2015, Loshchilov2019, Loshchilov2017, He2016, Wu2018, Ronneberger2015 | [ ] límite de arXiv | n/a | [ ] |
+| Paszke2019, Kingma2015, Loshchilov2019, Loshchilov2017, He2016, Wu2018, Ronneberger2015 | [x] verificados en Semantic Scholar (18-oct) | n/a | [ ] |
 | Goodfellow2016, Rumelhart1986, LeCun1998, Higgins2017 | [ ] confirmar en editorial | n/a | [ ] |
 
 - [ ] Confirmar las sedes (ICLR, NeurIPS, CVPR, ICML, ICCV) de todas las entradas.
@@ -76,3 +76,13 @@ Leyenda: Meta = autores, título y año verificados en arXiv; Resumen = se leyó
 ## H. Versiones del documento
 - [ ] v1 para retroalimentación del asesor: congelar el estado actual (commit con etiqueta `v1-feedback` y PDF compilado en Overleaf).
 - [ ] Registrar los cambios que pida el asesor y aplicarlos en v2.
+
+## E. Background ampliado (18-oct-2026)
+- [x] Nuevas subsecciones: motivación (conteo con UAV), detección clásica y YOLO, problema de los datos, imágenes sintéticas, línea del grupo.
+- [x] 26 referencias nuevas en `biblio.bib`; metadatos comprobados en Semantic Scholar y nombres tal como los indexa la fuente.
+- [x] Búsqueda complementaria registrada: `docs/s2/topic_search_s2_2026-10-18.csv` (14 consultas) y descrita en "Complementary searches" de c1.tex.
+- [ ] Leer los papers nuevos (columna "Leer yo" en `literature_map.md`) y confirmar cada afirmación.
+- [x] Propuestas de otros compañeros (Fernando, Martín, general): no se citan, no tienen que ver con la tesis. Solo se cita la línea de Danny, Gonzalez y Fabián (XieLi2024, Gonzalez2026).
+- [x] Búsqueda de novedad (S1 a S5) repetida en Semantic Scholar (18-oct): texto y tabla en c1.tex; datos en `docs/s2/`.
+- [ ] Leer los resúmenes de los 49 registros que cumplen C1, C2 y C3 (`screening_s2_2026-10-18.csv`, filtrar C1=C2=1 y C3) y confirmar que ninguno responde la pregunta; leer Fallah2026 y Dombrowski2026.
+- [ ] Decidir si se menciona Fallah2026 en el Problem de c2.tex (hoy la frase de novedad dice que 'no se ha estudiado' en el régimen de pocos datos homogéneos y multimodales: sigue siendo cierta, pero un jurado puede citar a Fallah).
