@@ -101,3 +101,14 @@ Leyenda: Meta = autores, título y año verificados en arXiv; Resumen = se leyó
 - [x] Paper BIP 2025 leído: no evalúa generación; respalda beta = 0.001; describe la colección (Upala Agrícola, vista cenital, 2 m).
 - [x] Procedencia del dataset descrita en c4.tex con cita a Gonzalez2026 y XieLi2025VAE.
 - [ ] Confirmar con el asesor que nuestro `.h5` es exactamente el mismo subconjunto (quién armó el `.h5` y con qué grabaciones).
+
+## H. Capítulo IV escrito (18-oct, noche): decisiones tomadas por defecto, por confirmar
+- [x] c4.tex: dataset, pipeline, factores A-F, parámetros fijos, evaluación, etapas 0 a 3, diseño 2^(6-2) resolución IV (E=ABC, F=BCD; I=ABCE=BCDF=ADEF), análisis, presupuesto, amenazas. Alias y poder verificados por cálculo.
+- [ ] Confirmar: nivel del enmascarado (25%), punto de partida común (VAE RGB-D), etapa 0 con 5 réplicas de la celda base, margen de equivalencia provisional de 5 puntos de FID, 3 semillas por celda.
+- [ ] Código pendiente: interruptor "sin capa variacional" (decoder determinista) y semillas distintas por réplica (hoy seed 42 fijo).
+- [ ] Preguntar al asesor si el FID de 400 imágenes es suficiente o conviene generar más.
+
+## I. Decisiones del 18-oct (noche) confirmadas por el usuario
+- [x] Enmascarado en el tamizaje: 50% (25% y 0 en la etapa 2). [x] Todo desde cero (Tesis II: no reciclar nada de lo preliminar); épocas fijas del VAE (~100) a confirmar en la etapa 0. [x] 3 semillas por celda, justificadas por análisis de potencia.
+- [x] Citas agregadas: Colas2018 (cuántas semillas, potencia), Bouthillier2021 (varianza en benchmarks), Agarwal2021 (pocas corridas), Hurlbert1984 (pseudorreplicación), Chong2020 (sesgo del FID).
+- [ ] Leer Colas2018 y Chong2020 completos antes de la defensa. [ ] Decidir si se usa FID infinito (extrapolado) además de KID.

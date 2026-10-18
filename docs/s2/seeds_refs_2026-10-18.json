@@ -1,0 +1,284 @@
+{
+ "Colas2018": {
+  "paperId": "789510820bb369802d58b733ef1c9dc531a609ed",
+  "externalIds": {
+   "MAG": "2809256243",
+   "ArXiv": "1806.08295",
+   "DBLP": "journals/corr/abs-1806-08295",
+   "CorpusId": 49350736
+  },
+  "publicationVenue": {
+   "id": "1901e811-ee72-4b20-8f7e-de08cd395a10",
+   "name": "arXiv.org",
+   "alternate_names": [
+    "ArXiv"
+   ],
+   "issn": "2331-8422",
+   "url": "https://arxiv.org"
+  },
+  "title": "How Many Random Seeds? Statistical Power Analysis in Deep Reinforcement Learning Experiments",
+  "venue": "arXiv.org",
+  "year": 2018,
+  "citationCount": 141,
+  "openAccessPdf": {
+   "url": "",
+   "status": null,
+   "license": null,
+   "disclaimer": "Notice: Paper or abstract available at https://arxiv.org/abs/1806.08295, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+  },
+  "publicationTypes": [
+   "JournalArticle",
+   "Review"
+  ],
+  "authors": [
+   {
+    "authorId": "102281182",
+    "name": "Cédric Colas"
+   },
+   {
+    "authorId": "3211142",
+    "name": "Olivier Sigaud"
+   },
+   {
+    "authorId": "1720664",
+    "name": "P. Oudeyer"
+   }
+  ],
+  "abstract": "Consistently checking the statistical significance of experimental results is one of the mandatory methodological steps to address the so-called \"reproducibility crisis\" in deep reinforcement learning. In this tutorial paper, we explain how the number of random seeds relates to the probabilities of statistical errors. For both the t-test and the bootstrap confidence interval test, we recall theoretical guidelines to determine the number of random seeds one should use to provide a statistically significant comparison of the performance of two algorithms. Finally, we discuss the influence of deviations from the assumptions usually made by statistical tests. We show that they can lead to inaccurate evaluations of statistical errors and provide guidelines to counter these negative effects. We make our code available to perform the tests 1 ."
+ },
+ "Bouthillier2021": {
+  "paperId": "9ceae85a0bd4231cd2efe14884c40b7bc04d3dac",
+  "externalIds": {
+   "ArXiv": "2103.03098",
+   "DBLP": "journals/corr/abs-2103-03098",
+   "CorpusId": 232110457
+  },
+  "publicationVenue": {
+   "id": "3bcf77b3-860b-4dd7-84ae-9fe9414c6c6a",
+   "name": "Conference on Machine Learning and Systems",
+   "type": "conference",
+   "alternate_names": [
+    "MLSys",
+    "Conf Mach Learn Syst"
+   ],
+   "url": "https://mlsys.org/"
+  },
+  "title": "Accounting for Variance in Machine Learning Benchmarks",
+  "venue": "Conference on Machine Learning and Systems",
+  "year": 2021,
+  "citationCount": 336,
+  "openAccessPdf": {
+   "url": "",
+   "status": null,
+   "license": null,
+   "disclaimer": "Notice: Paper or abstract available at https://arxiv.org/abs/2103.03098, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+  },
+  "publicationTypes": [
+   "JournalArticle"
+  ],
+  "authors": [
+   {
+    "authorId": "2900675",
+    "name": "Xavier Bouthillier"
+   },
+   {
+    "authorId": "2097176461",
+    "name": "Pierre Delaunay"
+   },
+   {
+    "authorId": "1760944",
+    "name": "Mirko Bronzi"
+   },
+   {
+    "authorId": "49860096",
+    "name": "Assya Trofimov"
+   },
+   {
+    "authorId": "2051891988",
+    "name": "B. Nichyporuk"
+   },
+   {
+    "authorId": "2073094612",
+    "name": "Justin Szeto"
+   },
+   {
+    "authorId": "2051892157",
+    "name": "Naz Sepah"
+   },
+   {
+    "authorId": "34885007",
+    "name": "Edward Raff"
+   },
+   {
+    "authorId": "51054293",
+    "name": "Kanika Madan"
+   },
+   {
+    "authorId": "2961618",
+    "name": "Vikram S. Voleti"
+   },
+   {
+    "authorId": "3127597",
+    "name": "Samira Ebrahimi Kahou"
+   },
+   {
+    "authorId": "1748421",
+    "name": "Vincent Michalski"
+   },
+   {
+    "authorId": "1862138",
+    "name": "Dmitriy Serdyuk"
+   },
+   {
+    "authorId": "1699104",
+    "name": "T. Arbel"
+   },
+   {
+    "authorId": "1972076",
+    "name": "C. Pal"
+   },
+   {
+    "authorId": "143965475",
+    "name": "G. Varoquaux"
+   },
+   {
+    "authorId": "120247189",
+    "name": "Pascal Vincent"
+   }
+  ],
+  "abstract": "Strong empirical evidence that one machine-learning algorithm A outperforms another one B ideally calls for multiple trials optimizing the learning pipeline over sources of variation such as data sampling, data augmentation, parameter initialization, and hyperparameters choices. This is prohibitively expensive, and corners are cut to reach conclusions. We model the whole benchmarking process, revealing that variance due to data sampling, parameter initialization and hyperparameter choice impact markedly the results. We analyze the predominant comparison methods used today in the light of this variance. We show a counter-intuitive result that adding more sources of variation to an imperfect estimator approaches better the ideal estimator at a 51 times reduction in compute cost. Building on these results, we study the error rate of detecting improvements, on five different deep-learning tasks/architectures. This study leads us to propose recommendations for performance comparisons."
+ },
+ "Agarwal2021": {
+  "paperId": "558ca2e8c7eb56edd77a52b084e6cc24dffe5bcd",
+  "externalIds": {
+   "DBLP": "conf/nips/AgarwalSCCB21",
+   "ArXiv": "2108.13264",
+   "CorpusId": 237353084
+  },
+  "publicationVenue": {
+   "id": "d9720b90-d60b-48bc-9df8-87a30b9a60dd",
+   "name": "Neural Information Processing Systems",
+   "type": "conference",
+   "alternate_names": [
+    "Neural Inf Process Syst",
+    "NeurIPS",
+    "NIPS"
+   ],
+   "url": "http://neurips.cc/"
+  },
+  "title": "Deep Reinforcement Learning at the Edge of the Statistical Precipice",
+  "venue": "Neural Information Processing Systems",
+  "year": 2021,
+  "citationCount": 1104,
+  "openAccessPdf": {
+   "url": "",
+   "status": null,
+   "license": null,
+   "disclaimer": "Notice: Paper or abstract available at https://arxiv.org/abs/2108.13264, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+  },
+  "publicationTypes": [
+   "JournalArticle"
+  ],
+  "authors": [
+   {
+    "authorId": "29767024",
+    "name": "Rishabh Agarwal"
+   },
+   {
+    "authorId": "51881243",
+    "name": "Max Schwarzer"
+   },
+   {
+    "authorId": "39163115",
+    "name": "P. S. Castro"
+   },
+   {
+    "authorId": "1760871",
+    "name": "Aaron C. Courville"
+   },
+   {
+    "authorId": "1792298",
+    "name": "Marc G. Bellemare"
+   }
+  ],
+  "abstract": "Deep reinforcement learning (RL) algorithms are predominantly evaluated by comparing their relative performance on a large suite of tasks. Most published results on deep RL benchmarks compare point estimates of aggregate performance such as mean and median scores across tasks, ignoring the statistical uncertainty implied by the use of a finite number of training runs. Beginning with the Arcade Learning Environment (ALE), the shift towards computationally-demanding benchmarks has led to the practice of evaluating only a small number of runs per task, exacerbating the statistical uncertainty in point estimates. In this paper, we argue that reliable evaluation in the few run deep RL regime cannot ignore the uncertainty in results without running the risk of slowing down progress in the field. We illustrate this point using a case study on the Atari 100k benchmark, where we find substantial discrepancies between conclusions drawn from point estimates alone versus a more thorough statistical analysis. With the aim of increasing the field's confidence in reported results with a handful of runs, we advocate for reporting interval estimates of aggregate performance and propose performance profiles to account for the variability in results, as well as present more robust and efficient aggregate metrics, such as interquartile mean scores, to achieve small uncertainty in results. Using such statistical tools, we scrutinize performance evaluations of existing algorithms on other widely used RL benchmarks including the ALE, Procgen, and the DeepMind Control Suite, again revealing discrepancies in prior comparisons. Our findings call for a change in how we evaluate performance in deep RL, for which we present a more rigorous evaluation methodology, accompanied with an open-source library rliable, to prevent unreliable results from stagnating the field."
+ },
+ "Hurlbert1984": {
+  "paperId": "1f062c71580d2978d8688b805cb383c29e237f2f",
+  "externalIds": {
+   "MAG": "2139156166",
+   "DOI": "10.2307/1942661",
+   "CorpusId": 34407684
+  },
+  "publicationVenue": null,
+  "title": "Pseudoreplication and the Design of Ecological Field Experiments",
+  "venue": "",
+  "year": 1984,
+  "citationCount": 8529,
+  "openAccessPdf": {
+   "url": "",
+   "status": "CLOSED",
+   "license": null,
+   "disclaimer": "Notice: The following paper fields have been elided by the publisher: {'abstract'}. Paper or abstract available at https://api.unpaywall.org/v2/10.2307/1942661?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.2307/1942661, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+  },
+  "publicationTypes": [
+   "Review"
+  ],
+  "authors": [
+   {
+    "authorId": "5082300",
+    "name": "S. H. Hurlbert"
+   }
+  ],
+  "abstract": null
+ },
+ "Chong2020": {
+  "paperId": "d7015a7c12550b5138181f4d054ea7dbe9022bed",
+  "externalIds": {
+   "MAG": "2985516053",
+   "DBLP": "journals/corr/abs-1911-07023",
+   "ArXiv": "1911.07023",
+   "DOI": "10.1109/cvpr42600.2020.00611",
+   "CorpusId": 208138613
+  },
+  "publicationVenue": {
+   "id": "768b87bb-8a18-4d9c-a161-4d483c776bcf",
+   "name": "Computer Vision and Pattern Recognition",
+   "type": "conference",
+   "alternate_names": [
+    "CVPR",
+    "Comput Vis Pattern Recognit"
+   ],
+   "issn": "1063-6919",
+   "url": "https://ieeexplore.ieee.org/xpl/conhome.jsp?punumber=1000147",
+   "alternate_urls": [
+    "https://en.wikipedia.org/wiki/Conference_on_Computer_Vision_and_Pattern_Recognition"
+   ]
+  },
+  "title": "Effectively Unbiased FID and Inception Score and Where to Find Them",
+  "venue": "Computer Vision and Pattern Recognition",
+  "year": 2019,
+  "citationCount": 290,
+  "openAccessPdf": {
+   "url": "https://arxiv.org/pdf/1911.07023",
+   "status": "GREEN",
+   "license": null,
+   "disclaimer": "Notice: Paper or abstract available at https://arxiv.org/abs/1911.07023, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+  },
+  "publicationTypes": [
+   "JournalArticle",
+   "Conference"
+  ],
+  "authors": [
+   {
+    "authorId": "50615993",
+    "name": "M. Chong"
+   },
+   {
+    "authorId": "144016256",
+    "name": "D. Forsyth"
+   }
+  ],
+  "abstract": "This paper shows that two commonly used evaluation metrics for generative models, the Fréchet Inception Distance (FID) and the Inception Score (IS), are biased -- the expected value of the score computed for a finite sample set is not the true value of the score. Worse, the paper shows that the bias term depends on the particular model being evaluated, so model A may get a better score than model B simply because model A's bias term is smaller. This effect cannot be fixed by evaluating at a fixed number of samples. This means all comparisons using FID or IS as currently computed are unreliable. We then show how to extrapolate the score to obtain an effectively bias-free estimate of scores computed with an infinite number of samples, which we term FID Infinity and IS Infinity. In turn, this effectively bias-free estimate requires good estimates of scores with a finite number of samples. We show that using Quasi-Monte Carlo integration notably improves estimates of FID and IS for finite sample sets. Our extrapolated scores are simple, drop-in replacements for the finite sample scores. Additionally, we show that using low discrepancy sequence in GAN training offers small improvements in the resulting generator."
+ }
+}
