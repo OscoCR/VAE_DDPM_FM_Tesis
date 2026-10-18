@@ -2,7 +2,86 @@
 
 \chapter{Workplan}
 
- \section{Tasks}
- \section{Schedule}
+This chapter organizes the work needed to carry out the experimental design of Chapter~IV. The work is planned for about six months, 26 weeks, counted from the start of the research phase; the durations are estimates in weeks and are not tied to calendar dates (Figure~\ref{fig:gantt}).
 
+\section{Tasks}
 
+\subsection{Proposal and Literature}
+
+\begin{itemize}
+  \item Finish the research proposal: related work, the state of the art, and the corrections requested by the advisor.
+  \item Keep the literature search up to date with the strings and sources of Chapter~II, and read in full the works that are closest to the hypothesis.
+\end{itemize}
+
+\subsection{Code and Infrastructure}
+
+\begin{itemize}
+  \item Add a switch that turns off the variational output layer of the decoder, so that factor E can be tested.
+  \item Make every replicate use its own seed for the VAE and for the generator, and record the seeds.
+  \item Integrate masking and image selection in the training of the VAE as factors that can be switched on and off from the configuration.
+  \item Write the evaluation scripts (FID, KID, PSNR, SSIM, and the FID of the reconstructions) so that every run is evaluated in the same way.
+  \item Generate the fractional design, check its aliasing, and randomize the order of the runs; write the analysis script in R.
+  \item Define the workflow of the cluster: at most four jobs at a time, evaluation after each run, and archiving or deletion of checkpoints to respect the storage quota.
+\end{itemize}
+
+\subsection{Stage 0: Noise and Convergence}
+
+Train five replicates of the base cell, check that the VAE converges with the fixed number of epochs, estimate the standard deviation of the FID between independent runs, and set the margin of the equivalence tests.
+
+\subsection{Stage 1: Screening}
+
+Run the $2^{6-2}$ design with DDPM and three replicates per cell (48 runs), evaluate every run, and analyze the results with the analysis of variance, the equivalence tests, and the correlation between reconstruction and generation.
+
+\subsection{Stage 2: Refinement}
+
+Choose the factors that showed an effect and study them with a full factorial design and more levels, resolving the interactions that were aliased in Stage 1.
+
+\subsection{Stage 3: Confirmation with Flow Matching}
+
+Repeat the factors that mattered with Flow Matching in a small full factorial design, to check that the effect does not depend on the generator.
+
+\subsection{Optional Work}
+
+\begin{itemize}
+  \item If time permits, prototype a pretrained self-supervised encoder (DINO) as an alternative latent space (objective 5).
+  \item If the research exchange at the University of Osnabr\"uck is approved, a month of it (weeks 18 to 21) would apply the optimizations found to a second crop with UAV imagery, using the computing resources of the host group.
+\end{itemize}
+
+\subsection{Paper and Thesis}
+
+Write a paper with the results of the study (objective 6) and write the thesis, starting the drafting in parallel with the experiments.
+
+\section{Schedule}
+
+Table~\ref{tab:schedule} shows the phases with their duration and the computing time they need. The computing times come from the budget of Chapter~IV (about 26 hours per generator and about 14 hours per VAE trained from scratch, with four jobs in parallel); the durations include time for the queue of the cluster and for runs that must be repeated.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{p{0.30\textwidth}p{0.12\textwidth}p{0.22\textwidth}p{0.26\textwidth}}
+\hline
+\textbf{Phase} & \textbf{Weeks} & \textbf{Computing} & \textbf{Output} \\
+\hline
+Code and infrastructure & 1 to 3 & -- & Switch, seeds, scripts, design \\
+Stage 0: noise and convergence & 4 to 5 & about 200 GPU hours (4 days) & Standard deviation, epochs, margin \\
+Stage 1: screening & 6 to 10 & about 1\,900 GPU hours (20 days) & 48 evaluated runs \\
+Analysis of Stage 1 & 11 to 12 & -- & Factors that matter \\
+Stage 2: refinement & 13 to 15 & about 700 GPU hours (8 days)\textsuperscript{a} & Effects and interactions \\
+Stage 3: confirmation & 16 to 17 & about 420 GPU hours (5 days) & Check with Flow Matching \\
+Final analysis and paper & 18 to 21 & -- & Paper draft \\
+Thesis writing and review & 22 to 26 & -- & Thesis \\
+Optional: research exchange & 18 to 21 & host group & Cross-crop check \\
+\hline
+\end{tabular}
+\caption{Phases of the work. \textsuperscript{a}Estimate that depends on the factors selected in Stage 1. The writing of the thesis starts in parallel with Stage 1, the optional DINO extension takes place in weeks 11 to 17, and the optional exchange in weeks 18 to 21.}
+\label{tab:schedule}
+\end{table}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.95\textwidth]{Imagenes/gantt_workplan.png}
+\caption{Workplan in estimated weeks. Filled bars are planned work; pale bars with an outline are parallel or optional work.}
+\label{fig:gantt}
+\end{figure}
+
+The total is about 26 weeks, six months. The main risks are the availability of the cluster, which limits the work to four jobs at a time, the storage quota, and runs that fail or diverge; if the standard deviation measured in Stage 0 is larger than expected, the number of replicates of Stage 1 is increased, and the schedule is extended accordingly.

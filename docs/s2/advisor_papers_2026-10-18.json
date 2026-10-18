@@ -1,0 +1,460 @@
+[
+ {
+  "paperId": "a9b64a033a2bcbc00ae476ce5c2c87eab8bcb45c",
+  "externalIds": {
+   "DBLP": "conf/gecco/Gonzalez-Hernandez26",
+   "DOI": "10.1145/3795101.3814709",
+   "CorpusId": 291085427
+  },
+  "title": "Peeling Back the Pixels: Stabilizing Latent Diffusion for Data-Efficient Generation of Pineapple Fields",
+  "venue": "GECCO Companion",
+  "year": 2026,
+  "citationCount": 0,
+  "openAccessPdf": {
+   "url": "https://doi.org/10.1145/3795101.3814709",
+   "status": "HYBRID",
+   "license": "CCBY",
+   "disclaimer": "Notice: Paper or abstract available at https://api.unpaywall.org/v2/10.1145/3795101.3814709?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.1145/3795101.3814709, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+  },
+  "authors": [
+   {
+    "authorId": "1500523527",
+    "name": "Manfred González-Hernández"
+   },
+   {
+    "authorId": "2432606494",
+    "name": "Danny Xie-Li"
+   },
+   {
+    "authorId": "1413929197",
+    "name": "Fabián Fallas-Moya"
+   },
+   {
+    "authorId": "2486720581",
+    "name": "Sebastián Rojas Gónzalez"
+   },
+   {
+    "authorId": "2426172",
+    "name": "I. Couckuyt"
+   }
+  ],
+  "abstract": "While Latent Diffusion Models (LDMs) excel at synthetic data generation, they suffer from severe training instability on the small, homogeneous UAV datasets typical of precision agriculture. In this work, we investigate these architectural bottlenecks by training a Denoising Diffusion Probabilistic Model (DDPM) from scratch on constrained pineapple plantation imagery. Our systematic comparison reveals that continuous latent spaces (β-VAE) preserve complex crop structures, whereas discrete architectures (VQ-VAE) fail under scarce data conditions. Additionally, we demonstrate that replacing destabilizing global attention mechanisms with a purely convolutional U-Net backbone ensures smooth convergence in repetitive visual domains. Ultimately, combining this robust architecture with DDIM sampling yields a stable, highly efficient framework for low-data agricultural image synthesis. Code and models will be available at https://github.com/imagine-laboratory/Latent-Diffusion."
+ },
+ {
+  "paperId": "b07afde47531b5010b9f267b751de4bc339bf051",
+  "externalIds": {
+   "DBLP": "conf/gecco/Fallas-MoyaXA26",
+   "DOI": "10.1145/3795101.3814670",
+   "CorpusId": 291085556
+  },
+  "title": "From Semantic Reasoning to Geometric Precision: Optimizing Multimodal Foundation Models via Custom Prompting and Parameter-Efficient Fine-Tuning for Crop Counting",
+  "venue": "GECCO Companion",
+  "year": 2026,
+  "citationCount": 0,
+  "openAccessPdf": {
+   "url": "https://doi.org/10.1145/3795101.3814670",
+   "status": "HYBRID",
+   "license": "CCBY",
+   "disclaimer": "Notice: Paper or abstract available at https://api.unpaywall.org/v2/10.1145/3795101.3814670?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.1145/3795101.3814670, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+  },
+  "authors": [
+   {
+    "authorId": "1413929197",
+    "name": "Fabián Fallas-Moya"
+   },
+   {
+    "authorId": "2432606494",
+    "name": "Danny Xie-Li"
+   },
+   {
+    "authorId": "2423277320",
+    "name": "Nixon Agüero-Elizondo"
+   }
+  ],
+  "abstract": "Precision agriculture increasingly relies on drone-based monitoring; however, traditional deep learning models often require extensive labeled datasets to maintain accuracy. This paper presents a comparative study of multimodal foundation models against state-of-the-art detectors, including YOLOv11 and RT-DETR, for crop detection under limited data samples. We evaluate the Segment Anything Model (SAM) 3 and the Qwen 3 and 3.5 series using Low-Rank Adaption (LoRA), a parameter-efficient fine-tuning technique on a specialized pineapple plantation dataset. Our results show that while foundation models match or exceed classical detectors with only 5 and 10 training images, a significant \"localization gap\" exists in Large Language Models' reasoning capabilities. Specifically, the Qwen \"Thinking\" (or reasoning-based) variants introduce spatial noise that degrades coordinate precision. Conversely, SAM-based pipelines coupled with RT-DETR offer the most robust few-shot performance. These findings demonstrate that while multimodal models provide a scalable alternative to exhaustive manual labeling, bridging the gap between semantic reasoning and geometric precision remains critical for industrial-grade autonomous farming."
+ },
+ {
+  "paperId": "73589a7a4407a18e702281c14368eacb67042328",
+  "externalIds": {
+   "DBLP": "conf/cvpr/Xie-LiF25",
+   "DOI": "10.1109/CVPRW67362.2025.00012",
+   "CorpusId": 280017035
+  },
+  "title": "PineSORT: A Simple Online Real-Time Tracking Framework for Drone Videos in Agriculture",
+  "venue": "2025 IEEE/CVF Conference on Computer Vision and Pattern Recognition Workshops (CVPRW)",
+  "year": 2025,
+  "citationCount": 5,
+  "openAccessPdf": {
+   "url": "https://www.kerwa.ucr.ac.cr/bitstreams/e6886bd8-7ed9-4f46-b574-9d066006527c/download",
+   "status": "GREEN",
+   "license": "CCBY",
+   "disclaimer": "Notice: Paper or abstract available at https://api.unpaywall.org/v2/10.1109/CVPRW67362.2025.00012?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.1109/CVPRW67362.2025.00012, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+  },
+  "authors": [
+   {
+    "authorId": "2278092358",
+    "name": "Danny Xie-Li"
+   },
+   {
+    "authorId": "1413929197",
+    "name": "Fabián Fallas-Moya"
+   }
+  ],
+  "abstract": "We introduce PineSORT, a novel Multiple Object Tracking (MOT) system for drone-based agricultural monitoring, specifically tracking pineapples for yield estimation. Our approach tackles key challenges such as repetitive patterns, similar object appearances, low frame rates, and drone motion effects. PineSORT enhances the tracking accuracy with motion direction cost, camera motion compensation, a three-stage association strategy, and overlap management. To handle large displacements, we propose an ORBbased camera compensation technique that significantly improves the Association Accuracy (AssA). Evaluated via 5-fold cross-validation against BoTSORT and AgriSORT, PineSORT achieves statistically significant gains in our Identity-Switch Penalized IDF1 (ISP-IDF1) metric, along with gains in IDF1 (Identity F1 Score), HOTA (Higher Order Tracking Accuracy) and AssA. These results confirm its effectiveness in tracking low-FPS drone footage, making it a valuable tool for precision agriculture."
+ },
+ {
+  "paperId": "88a85d11603034645e9b91d8512ea8ad6643957f",
+  "externalIds": {
+   "DOI": "10.18845/tm.v38i2.7166",
+   "CorpusId": 277655688
+  },
+  "title": "Adding a teaching “assistant”: improving the quality of pseudo-labels for semi-supervised object detection",
+  "venue": "Revista Tecnología en Marcha",
+  "year": 2025,
+  "citationCount": 1,
+  "openAccessPdf": {
+   "url": "https://revistas.tec.ac.cr/index.php/tec_marcha/article/download/7166/7695",
+   "status": "GOLD",
+   "license": "CCBYNCND",
+   "disclaimer": "Notice: Paper or abstract available at https://api.unpaywall.org/v2/10.18845/tm.v38i2.7166?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.18845/tm.v38i2.7166, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+  },
+  "authors": [
+   {
+    "authorId": "1413929197",
+    "name": "Fabián Fallas-Moya"
+   },
+   {
+    "authorId": "2278097773",
+    "name": "Amir Sadovnik"
+   },
+   {
+    "authorId": "2164352979",
+    "name": "Quan Zhou"
+   },
+   {
+    "authorId": "2281745297",
+    "name": "Konstantinos Georgiou"
+   },
+   {
+    "authorId": "2278084701",
+    "name": "Hairong Qi"
+   }
+  ],
+  "abstract": "This paper focuses on semi-supervised object detection (SS-OD) for its tolerance to small amounts of training samples, which is common in real-world applications. Pseudo-label-based approaches have been the mainstream for SS-OD. In this paper, we first show the impact of accurate pseudo-labeling and the challenge of producing such labels. In contrast to prior research that predominantly focused on refining the main model to enhance localization, this paper introduces a novel strategy, where a standalone “Teaching Assistant” or simply “Assistant” is involved in the popular Teacher/Student paradigm to improve the quality of pseudo-labels. This “Assistant” can be plugged into any existing Teacher/Student-based framework without having to fine-tune the original Teacher/Student model. We exploit two “Assistant” models, both of which center around the non-maximum suppression (NMS) method -- a popular technique used to select only the promising bounding boxes. The first “Assistant” model is referred to as the “pre-NMS” assistant that refines the candidate bounding box scores for a better set of inputs to the NMS process. The second “Assistant” model is referred to as the “post-NMS” assistant which takes advantage of SOTA segmentation models to improve the output from the NMS process. We thoroughly evaluate the performance of pre-NMS vs. post-NMS and the impact of improved pseudo-labels on the OD performance. Experimental results on the COCO dataset demonstrate that post-NMS is better than SOTA methods."
+ },
+ {
+  "paperId": "69ecc0cf271e330e8f89aa6419ee6df6299610d4",
+  "externalIds": {
+   "DOI": "10.1109/bip63158.2024.10885396",
+   "CorpusId": 276443588
+  },
+  "title": "Simple Object Detection Framework without Training",
+  "venue": "2024 IEEE 6th International Conference on BioInspired Processing (BIP)",
+  "year": 2024,
+  "citationCount": 4,
+  "openAccessPdf": {
+   "url": "",
+   "status": "CLOSED",
+   "license": null,
+   "disclaimer": "Notice: Paper or abstract available at https://api.unpaywall.org/v2/10.1109/bip63158.2024.10885396?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.1109/bip63158.2024.10885396, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+  },
+  "authors": [
+   {
+    "authorId": "2278092358",
+    "name": "Danny Xie-Li"
+   },
+   {
+    "authorId": "1413929197",
+    "name": "Fabián Fallas-Moya"
+   },
+   {
+    "authorId": "2274932631",
+    "name": "Saúl Calderón-Ramírez"
+   }
+  ],
+  "abstract": "This research introduces a simple framework for Object Detection (OD) based on few-shot methods and Visual Foundation Models (VFM). The framework comprises of three core modules: (i) object proposal, (ii) embedding creation, and (iii) object classification. We evaluated six distinct VFMs to generate the object proposals. We compared the performances of four feature extractors to optimize the object representation, including convolutional neural networks and transformer-based models. Furthermore, we investigated four few-shot methods for classifying objects using minimal labeled data. Our framework provides a scalable and cost-effective solution, specifically applied to OD for pineapple localization in the drone imagery of large pineapple fields, where labeled data are scarce and expensive."
+ },
+ {
+  "paperId": "4bc51cf7b4914c4b67aea5124ac0e7f4b6710c9b",
+  "externalIds": {
+   "DBLP": "conf/icmla/FallasMoyaRSQ23",
+   "DOI": "10.1109/ICMLA58977.2023.00247",
+   "CorpusId": 268548254
+  },
+  "title": "Object Detection in Pineapple Fields Drone Imagery Using Few Shot Learning and the Segment Anything Model",
+  "venue": "International Conference on Machine Learning and Applications",
+  "year": 2023,
+  "citationCount": 7,
+  "openAccessPdf": {
+   "url": "",
+   "status": "CLOSED",
+   "license": null,
+   "disclaimer": "Notice: Paper or abstract available at https://api.unpaywall.org/v2/10.1109/ICMLA58977.2023.00247?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.1109/ICMLA58977.2023.00247, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+  },
+  "authors": [
+   {
+    "authorId": "1413929197",
+    "name": "Fabián Fallas-Moya"
+   },
+   {
+    "authorId": "2274932631",
+    "name": "Saúl Calderón-Ramírez"
+   },
+   {
+    "authorId": "2278097773",
+    "name": "Amir Sadovnik"
+   },
+   {
+    "authorId": "2278084701",
+    "name": "Hairong Qi"
+   }
+  ],
+  "abstract": "Deep Learning Object Detection relies on extensive, manual annotation of datasets, a time-consuming and costly process prone to human inconsistencies. Auto-labeling using Visual Foundation Models offers a promising alternative but often falls short in object detection tasks. This research introduces a novel framework that uses the Segment Anything Model (SAM) with minimal annotated images to create an effective object detector. Despite the capabilities of Visual Foundation Models in downstream tasks, our research reveals their poor performance in object detection when operating within a different domain. Additionally, we demonstrate that with only a few labeled images, we can create a much better and simpler object detection system. We also prove that our model outperforms the best existing object detectors when it comes to analyzing drone images taken in pineapple fields."
+ },
+ {
+  "paperId": "eab08e419577e5959452b8fa89467c184833a277",
+  "externalIds": {
+   "DOI": "10.1109/BIP60195.2023.10379335",
+   "CorpusId": 266795777
+  },
+  "title": "Evaluation of the Influence of Multispectral Imaging for Object Detection in Pineapple Crops",
+  "venue": "2023 IEEE 5th International Conference on BioInspired Processing (BIP)",
+  "year": 2023,
+  "citationCount": 6,
+  "openAccessPdf": {
+   "url": "",
+   "status": "CLOSED",
+   "license": null,
+   "disclaimer": "Notice: Paper or abstract available at https://api.unpaywall.org/v2/10.1109/BIP60195.2023.10379335?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.1109/BIP60195.2023.10379335, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+  },
+  "authors": [
+   {
+    "authorId": "1500523527",
+    "name": "Manfred González-Hernández"
+   },
+   {
+    "authorId": "1413929197",
+    "name": "Fabián Fallas-Moya"
+   },
+   {
+    "authorId": "2278097741",
+    "name": "Werner Rodriguez-Montero"
+   },
+   {
+    "authorId": "2278092358",
+    "name": "Danny Xie-Li"
+   },
+   {
+    "authorId": "2278101233",
+    "name": "Bryan Román-Solano"
+   },
+   {
+    "authorId": "2278101139",
+    "name": "Francini Corrales-Garro"
+   },
+   {
+    "authorId": "2278097773",
+    "name": "Amir Sadovnik"
+   },
+   {
+    "authorId": "2278084701",
+    "name": "Hairong Qi"
+   }
+  ],
+  "abstract": "Normally, most studies related to Object Detection focus only on RGB images. However, this research explores the feasibility of utilizing multispectral drone images, incorporating RGB channels with near-infrared, and red-edge channels, to perform Object Detection (OD) using drone images of pineapple crops. There are two main challenges when dealing with multi-spectral images. The first challenge is related to the alignment of the images when dealing with different cameras. Multispectral image alignment corrects for camera position and exposure time differences. We use SIFT and ORB for feature-based exposure matching after initial phase alignment. The second challenge is how to incorporate the extra channels into the RGB images, also known as channel fusion. Here, we studied two fusion techniques: early and late fusion. These techniques offer a comprehensive perspective on the potential of multispectral data to enhance object detection accuracy, although the anticipated leap in performance compared to conventional RGB imagery faced challenges. Finally, this research proves that using the correct alignment images process, considering the Vegetation Indexes, and also using the early fusion technique can assist in getting better results in order to improve the precision agriculture techniques."
+ },
+ {
+  "paperId": "e489af6a244020c1e828b617dd396ade29d85c5e",
+  "externalIds": {
+   "PubMedCentral": "8784018",
+   "DOI": "10.7717/peerj.12831",
+   "CorpusId": 246128407,
+   "PubMed": "35116204"
+  },
+  "title": "Fast, low-memory detection and localization of large, polymorphic inversions from SNPs",
+  "venue": "PeerJ",
+  "year": 2022,
+  "citationCount": 7,
+  "openAccessPdf": {
+   "url": "https://doi.org/10.7717/peerj.12831",
+   "status": "GOLD",
+   "license": "CCBY",
+   "disclaimer": "Notice: Paper or abstract available at https://pmc.ncbi.nlm.nih.gov/articles/PMC8784018, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+  },
+  "authors": [
+   {
+    "authorId": "2818291",
+    "name": "R. J. Nowling"
+   },
+   {
+    "authorId": "1413929197",
+    "name": "Fabián Fallas-Moya"
+   },
+   {
+    "authorId": "1803066",
+    "name": "Amir Sadovnik"
+   },
+   {
+    "authorId": "2120282921",
+    "name": "Scott J. Emrich"
+   },
+   {
+    "authorId": "2100008866",
+    "name": "M. Aleck"
+   },
+   {
+    "authorId": "2150757224",
+    "name": "Daniel Leskiewicz"
+   },
+   {
+    "authorId": "2142371208",
+    "name": "John G. Peters"
+   }
+  ],
+  "abstract": "Background Large (>1 Mb), polymorphic inversions have substantial impacts on population structure and maintenance of genotypes. These large inversions can be detected from single nucleotide polymorphism (SNP) data using unsupervised learning techniques like PCA. Construction and analysis of a feature matrix from millions of SNPs requires large amount of memory and limits the sizes of data sets that can be analyzed. Methods We propose using feature hashing construct a feature matrix from a VCF file of SNPs for reducing memory usage. The matrix is constructed in a streaming fashion such that the entire VCF file is never loaded into memory at one time. Results When evaluated on Anopheles mosquito and Drosophila fly data sets, our approach reduced memory usage by 97% with minimal reductions in accuracy for inversion detection and localization tasks. Conclusion With these changes, inversions in larger data sets can be analyzed easily and efficiently on common laptop and desktop computers. Our method is publicly available through our open-source inversion analysis software, Asaph."
+ },
+ {
+  "paperId": "26e819344ea99fc9e40f60bea8fd80270550f882",
+  "externalIds": {
+   "DBLP": "conf/icmla/Fallas-MoyaGS21",
+   "DOI": "10.1109/ICMLA52953.2021.00249",
+   "CorpusId": 246290639
+  },
+  "title": "Size Does Matter: Overcoming Limitations during Training when using a Feature Pyramid Network",
+  "venue": "International Conference on Machine Learning and Applications",
+  "year": 2021,
+  "citationCount": 8,
+  "openAccessPdf": {
+   "url": "",
+   "status": "CLOSED",
+   "license": null,
+   "disclaimer": "Notice: Paper or abstract available at https://api.unpaywall.org/v2/10.1109/ICMLA52953.2021.00249?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.1109/ICMLA52953.2021.00249, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+  },
+  "authors": [
+   {
+    "authorId": "1413929197",
+    "name": "Fabián Fallas-Moya"
+   },
+   {
+    "authorId": "1500523527",
+    "name": "Manfred González-Hernández"
+   },
+   {
+    "authorId": "1803066",
+    "name": "Amir Sadovnik"
+   }
+  ],
+  "abstract": "State-of-the-art object detectors need to be trained with a wide variety of data in order to perform well in real-world problems. Training-data-diversity is very important to achieve good generalization. However, there are scenarios where we have training data with certain limitations. One such scenario is when the objects of the testing set have a different size (discrepancy) from the objects used during training. Another scenario is when we have high-resolution images with a dimension that is not supported by the model. To address these problems, we propose a novel pipeline that is able to handle high-resolution images by cropping the original image into sub-images and put them back in the end. Also, in the case of the discrepancy of object sizes, we propose two different techniques based on scaling the image up and down in order to have an acceptable performance. In addition, we also use the information from the Feature Pyramid Network to remove false-positives. Our proposed methods overcome state-of-the-art data augmentation policies and our models can generalize to different object sizes even though limited data is provided."
+ },
+ {
+  "paperId": "2a3956294a0968392b58e64075018ca17a730721",
+  "externalIds": {
+   "DOI": "10.1109/BIP53678.2021.9612782",
+   "CorpusId": 244406116
+  },
+  "title": "Automated Detection and Localization of Genome Inversions using Principal Component Analysis",
+  "venue": "2021 IEEE 3rd International Conference on BioInspired Processing (BIP)",
+  "year": 2021,
+  "citationCount": 0,
+  "openAccessPdf": {
+   "url": "https://www.kerwa.ucr.ac.cr/items/0ee7e625-7871-4b9c-8603-878820bb40f4/request-a-copy?bitstream=05083b92-0d49-4b8e-b59f-c6124632e646",
+   "status": "GREEN",
+   "license": "CCBY",
+   "disclaimer": "Notice: Paper or abstract available at https://api.unpaywall.org/v2/10.1109/BIP53678.2021.9612782?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.1109/BIP53678.2021.9612782, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+  },
+  "authors": [
+   {
+    "authorId": "1413929197",
+    "name": "Fabián Fallas-Moya"
+   },
+   {
+    "authorId": "2818291",
+    "name": "R. J. Nowling"
+   },
+   {
+    "authorId": "2120282921",
+    "name": "Scott J. Emrich"
+   },
+   {
+    "authorId": "1803066",
+    "name": "Amir Sadovnik"
+   }
+  ],
+  "abstract": "Inversions occur when sections of a chromosome (DNA molecule) are completely reversed end-to-end. Large inversions (multiple megabases in length) can be detected, localized, and genotyped using principal component analysis (PCA) of single nucleotide polymorphisms (SNPs). However, detection and localization tasks are performed and interpreted manually. We propose a novel pipeline for the detection and localization tasks in an automated manner. We compare our results with manual analysis for localization and show that our algorithm can achieve a similarity score of 0.95 on average. For the classification task, we achieve an accuracy of 0.88 as compared to manual classification. Our results suggest that our proposed methods are fast and accurate for these tasks and can be used as tools for detection and localization."
+ },
+ {
+  "paperId": "91c803371cb528b4a7f6e79c6be6f708a57532e4",
+  "externalIds": {
+   "DBLP": "conf/clei/Fallas-MoyaDSS21",
+   "DOI": "10.1109/CLEI53233.2021.9640031",
+   "CorpusId": 245387953
+  },
+  "title": "Measuring the Impact of Memory Replay in Training Pacman Agents using Reinforcement Learning",
+  "venue": "Latin American Computing Conference / Conferencia Latinoamericana En Informatica",
+  "year": 2021,
+  "citationCount": 3,
+  "openAccessPdf": {
+   "url": "",
+   "status": null,
+   "license": null,
+   "disclaimer": "Notice: Paper or abstract available at https://api.unpaywall.org/v2/10.1109/CLEI53233.2021.9640031?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.1109/CLEI53233.2021.9640031, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+  },
+  "authors": [
+   {
+    "authorId": "1413929197",
+    "name": "Fabián Fallas-Moya"
+   },
+   {
+    "authorId": "1693379362",
+    "name": "Jeremiah Duncan"
+   },
+   {
+    "authorId": "2069869408",
+    "name": "T. Samuel"
+   },
+   {
+    "authorId": "1803066",
+    "name": "Amir Sadovnik"
+   }
+  ],
+  "abstract": "Reinforcement Learning has been widely applied to play classic games where the agents learn the rules by playing the game by themselves. Recent works in general Reinforcement Learning use many improvements such as memory replay to boost the results and training time but we have not found research that focuses on the impact of memory replay in agents that play simple classic video games. In this research, we present an analysis of the impact of three different techniques of memory replay in the performance of a Deep Q-Learning model using different levels of difficulty of the Pacman video game. Also, we propose a multi-channel image - a novel way to create input tensors for training the model - inspired by one-hot encoding, and we show in the experiment section that the performance is improved by using this idea. We find that our model is able to learn faster than previous work and is even able to learn how to consistently win on the mediumClassic board after only 3,000 training episodes, previously thought to take much longer."
+ },
+ {
+  "paperId": "d55fed8457d7ae1b86bfa2e769d9b53bb76aceb4",
+  "externalIds": {
+   "CorpusId": 277668957
+  },
+  "title": "Agregar un “asistente” de aprendizaje: mejorando la calidad de pseudo-etiquetas para la detección de objectos semi-supervisada Adding a teaching “assistant”: improving the quality of pseudo-labels for semi-supervised object detection",
+  "venue": "",
+  "year": null,
+  "citationCount": 0,
+  "openAccessPdf": {
+   "url": "",
+   "status": null,
+   "license": null
+  },
+  "authors": [
+   {
+    "authorId": "1413929197",
+    "name": "Fabián Fallas-Moya"
+   },
+   {
+    "authorId": "2278097773",
+    "name": "Amir Sadovnik"
+   },
+   {
+    "authorId": "2116289606",
+    "name": "Quan Zhou"
+   },
+   {
+    "authorId": "2281745297",
+    "name": "Konstantinos Georgiou"
+   },
+   {
+    "authorId": "2278084701",
+    "name": "Hairong Qi"
+   }
+  ],
+  "abstract": null
+ }
+]

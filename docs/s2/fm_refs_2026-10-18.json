@@ -1,0 +1,370 @@
+{
+ "Flow Matching for Generative Modeling": {
+  "paperId": "af68f10ab5078bfc519caae377c90ee6d9c504e9",
+  "externalIds": {
+   "ArXiv": "2210.02747",
+   "DBLP": "journals/corr/abs-2210-02747",
+   "CorpusId": 252734897
+  },
+  "publicationVenue": {
+   "id": "939c6e1d-0d17-4d6e-8a82-66d960df0e40",
+   "name": "International Conference on Learning Representations",
+   "type": "conference",
+   "alternate_names": [
+    "Int Conf Learn Represent",
+    "ICLR"
+   ],
+   "url": "https://iclr.cc/"
+  },
+  "title": "Flow Matching for Generative Modeling",
+  "venue": "International Conference on Learning Representations",
+  "year": 2022,
+  "citationCount": 7072,
+  "openAccessPdf": {
+   "url": "",
+   "status": null,
+   "license": null,
+   "disclaimer": "Notice: Paper or abstract available at https://arxiv.org/abs/2210.02747, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+  },
+  "publicationTypes": [
+   "JournalArticle"
+  ],
+  "authors": [
+   {
+    "authorId": "3232072",
+    "name": "Y. Lipman"
+   },
+   {
+    "authorId": "51466615",
+    "name": "Ricky T. Q. Chen"
+   },
+   {
+    "authorId": "1405681873",
+    "name": "Heli Ben-Hamu"
+   },
+   {
+    "authorId": "1729762",
+    "name": "Maximilian Nickel"
+   },
+   {
+    "authorId": "123542315",
+    "name": "Matt Le"
+   }
+  ],
+  "abstract": "We introduce a new paradigm for generative modeling built on Continuous Normalizing Flows (CNFs), allowing us to train CNFs at unprecedented scale. Specifically, we present the notion of Flow Matching (FM), a simulation-free approach for training CNFs based on regressing vector fields of fixed conditional probability paths. Flow Matching is compatible with a general family of Gaussian probability paths for transforming between noise and data samples -- which subsumes existing diffusion paths as specific instances. Interestingly, we find that employing FM with diffusion paths results in a more robust and stable alternative for training diffusion models. Furthermore, Flow Matching opens the door to training CNFs with other, non-diffusion probability paths. An instance of particular interest is using Optimal Transport (OT) displacement interpolation to define the conditional probability paths. These paths are more efficient than diffusion paths, provide faster training and sampling, and result in better generalization. Training CNFs using Flow Matching on ImageNet leads to consistently better performance than alternative diffusion-based methods in terms of both likelihood and sample quality, and allows fast and reliable sample generation using off-the-shelf numerical ODE solvers."
+ },
+ "Flow Straight and Fast: Learning to Generate and Transfer Data with Rectified Flow": {
+  "paperId": "244054a4254a2147e43a3dad9c124b9b7eb4a04a",
+  "externalIds": {
+   "DBLP": "conf/iclr/LiuG023",
+   "ArXiv": "2209.03003",
+   "DOI": "10.48550/arXiv.2209.03003",
+   "CorpusId": 252111177
+  },
+  "publicationVenue": {
+   "id": "939c6e1d-0d17-4d6e-8a82-66d960df0e40",
+   "name": "International Conference on Learning Representations",
+   "type": "conference",
+   "alternate_names": [
+    "Int Conf Learn Represent",
+    "ICLR"
+   ],
+   "url": "https://iclr.cc/"
+  },
+  "title": "Flow Straight and Fast: Learning to Generate and Transfer Data with Rectified Flow",
+  "venue": "International Conference on Learning Representations",
+  "year": 2022,
+  "citationCount": 4381,
+  "openAccessPdf": {
+   "url": "http://arxiv.org/pdf/2209.03003",
+   "status": "GREEN",
+   "license": null,
+   "disclaimer": "Notice: Paper or abstract available at https://arxiv.org/abs/2209.03003, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+  },
+  "publicationTypes": [
+   "JournalArticle"
+  ],
+  "authors": [
+   {
+    "authorId": "46521757",
+    "name": "Xing-Chao Liu"
+   },
+   {
+    "authorId": "29777869",
+    "name": "Chengyue Gong"
+   },
+   {
+    "authorId": "2165566517",
+    "name": "Qiang Liu"
+   }
+  ],
+  "abstract": "We present rectified flow, a surprisingly simple approach to learning (neural) ordinary differential equation (ODE) models to transport between two empirically observed distributions \\pi_0 and \\pi_1, hence providing a unified solution to generative modeling and domain transfer, among various other tasks involving distribution transport. The idea of rectified flow is to learn the ODE to follow the straight paths connecting the points drawn from \\pi_0 and \\pi_1 as much as possible. This is achieved by solving a straightforward nonlinear least squares optimization problem, which can be easily scaled to large models without introducing extra parameters beyond standard supervised learning. The straight paths are special and preferred because they are the shortest paths between two points, and can be simulated exactly without time discretization and hence yield computationally efficient models. We show that the procedure of learning a rectified flow from data, called rectification, turns an arbitrary coupling of \\pi_0 and \\pi_1 to a new deterministic coupling with provably non-increasing convex transport costs. In addition, recursively applying rectification allows us to obtain a sequence of flows with increasingly straight paths, which can be simulated accurately with coarse time discretization in the inference phase. In empirical studies, we show that rectified flow performs superbly on image generation, image-to-image translation, and domain adaptation. In particular, on image generation and translation, our method yields nearly straight flows that give high quality results even with a single Euler discretization step."
+ },
+ "Scaling Rectified Flow Transformers for High-Resolution Image Synthesis": {
+  "paperId": "41a66997ce0a366bba3becf7c3f37c9aebb13fbd",
+  "externalIds": {
+   "ArXiv": "2403.03206",
+   "DBLP": "journals/corr/abs-2403-03206",
+   "DOI": "10.48550/arXiv.2403.03206",
+   "CorpusId": 268247980
+  },
+  "publicationVenue": {
+   "id": "fc0a208c-acb7-47dc-a0d4-af8190e21d29",
+   "name": "International Conference on Machine Learning",
+   "type": "conference",
+   "alternate_names": [
+    "ICML",
+    "Int Conf Mach Learn"
+   ],
+   "url": "https://icml.cc/"
+  },
+  "title": "Scaling Rectified Flow Transformers for High-Resolution Image Synthesis",
+  "venue": "International Conference on Machine Learning",
+  "year": 2024,
+  "citationCount": 4994,
+  "openAccessPdf": {
+   "url": "",
+   "status": null,
+   "license": null,
+   "disclaimer": "Notice: Paper or abstract available at https://arxiv.org/abs/2403.03206, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+  },
+  "publicationTypes": [
+   "JournalArticle",
+   "Conference"
+  ],
+  "authors": [
+   {
+    "authorId": "35175531",
+    "name": "Patrick Esser"
+   },
+   {
+    "authorId": "3411322",
+    "name": "S. Kulal"
+   },
+   {
+    "authorId": "119843260",
+    "name": "A. Blattmann"
+   },
+   {
+    "authorId": "2316859494",
+    "name": "Rahim Entezari"
+   },
+   {
+    "authorId": "2188737195",
+    "name": "Jonas Muller"
+   },
+   {
+    "authorId": "2289994508",
+    "name": "Harry Saini"
+   },
+   {
+    "authorId": "2290013499",
+    "name": "Yam Levi"
+   },
+   {
+    "authorId": "2053482699",
+    "name": "Dominik Lorenz"
+   },
+   {
+    "authorId": "40562186",
+    "name": "Axel Sauer"
+   },
+   {
+    "authorId": "2290014125",
+    "name": "Frederic Boesel"
+   },
+   {
+    "authorId": "2221125727",
+    "name": "Dustin Podell"
+   },
+   {
+    "authorId": "102541178",
+    "name": "Tim Dockhorn"
+   },
+   {
+    "authorId": "2221127565",
+    "name": "Zion English"
+   },
+   {
+    "authorId": "2221126982",
+    "name": "Kyle Lacey"
+   },
+   {
+    "authorId": "2290014122",
+    "name": "Alex Goodwin"
+   },
+   {
+    "authorId": "2290014387",
+    "name": "Yannik Marek"
+   },
+   {
+    "authorId": "1660819540",
+    "name": "Robin Rombach"
+   }
+  ],
+  "abstract": "Diffusion models create data from noise by inverting the forward paths of data towards noise and have emerged as a powerful generative modeling technique for high-dimensional, perceptual data such as images and videos. Rectified flow is a recent generative model formulation that connects data and noise in a straight line. Despite its better theoretical properties and conceptual simplicity, it is not yet decisively established as standard practice. In this work, we improve existing noise sampling techniques for training rectified flow models by biasing them towards perceptually relevant scales. Through a large-scale study, we demonstrate the superior performance of this approach compared to established diffusion formulations for high-resolution text-to-image synthesis. Additionally, we present a novel transformer-based architecture for text-to-image generation that uses separate weights for the two modalities and enables a bidirectional flow of information between image and text tokens, improving text comprehension, typography, and human preference ratings. We demonstrate that this architecture follows predictable scaling trends and correlates lower validation loss to improved text-to-image synthesis as measured by various metrics and human evaluations. Our largest models outperform state-of-the-art models, and we will make our experimental data, code, and model weights publicly available."
+ },
+ "SiT: Exploring Flow and Diffusion-based Generative Models with Scalable Interpolant Transformers": {
+  "paperId": "1eac5d12f30697aa74d66f4026fb662c5d51bd43",
+  "externalIds": {
+   "ArXiv": "2401.08740",
+   "DBLP": "conf/eccv/MaGABVX24",
+   "DOI": "10.48550/arXiv.2401.08740",
+   "CorpusId": 267027717
+  },
+  "publicationVenue": {
+   "id": "167fa0ca-e88a-4ef7-a16f-bc66c457c806",
+   "name": "European Conference on Computer Vision",
+   "type": "conference",
+   "alternate_names": [
+    "ECCV",
+    "Eur Conf Comput Vis"
+   ],
+   "url": "https://link.springer.com/conference/eccv"
+  },
+  "title": "SiT: Exploring Flow and Diffusion-based Generative Models with Scalable Interpolant Transformers",
+  "venue": "European Conference on Computer Vision",
+  "year": 2024,
+  "citationCount": 820,
+  "openAccessPdf": {
+   "url": "",
+   "status": null,
+   "license": null,
+   "disclaimer": "Notice: Paper or abstract available at https://arxiv.org/abs/2401.08740, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+  },
+  "publicationTypes": [
+   "JournalArticle",
+   "Conference"
+  ],
+  "authors": [
+   {
+    "authorId": "2279750963",
+    "name": "Nan-Ye Ma"
+   },
+   {
+    "authorId": "2279751634",
+    "name": "Mark Goldstein"
+   },
+   {
+    "authorId": "27590460",
+    "name": "M. Albergo"
+   },
+   {
+    "authorId": "12061674",
+    "name": "N. M. Boffi"
+   },
+   {
+    "authorId": "2244622633",
+    "name": "Eric Vanden-Eijnden"
+   },
+   {
+    "authorId": "2282918539",
+    "name": "Sai-Ning Xie"
+   }
+  ],
+  "abstract": "We present Scalable Interpolant Transformers (SiT), a family of generative models built on the backbone of Diffusion Transformers (DiT). The interpolant framework, which allows for connecting two distributions in a more flexible way than standard diffusion models, makes possible a modular study of various design choices impacting generative models built on dynamical transport: learning in discrete or continuous time, the objective function, the interpolant that connects the distributions, and deterministic or stochastic sampling. By carefully introducing the above ingredients, SiT surpasses DiT uniformly across model sizes on the conditional ImageNet 256x256 and 512x512 benchmark using the exact same model structure, number of parameters, and GFLOPs. By exploring various diffusion coefficients, which can be tuned separately from learning, SiT achieves an FID-50K score of 2.06 and 2.62, respectively."
+ },
+ "Denoising Diffusion Implicit Models": {
+  "paperId": "014576b866078524286802b1d0e18628520aa886",
+  "externalIds": {
+   "ArXiv": "2010.02502",
+   "MAG": "3092442149",
+   "DBLP": "journals/corr/abs-2010-02502",
+   "CorpusId": 222140788
+  },
+  "publicationVenue": {
+   "id": "939c6e1d-0d17-4d6e-8a82-66d960df0e40",
+   "name": "International Conference on Learning Representations",
+   "type": "conference",
+   "alternate_names": [
+    "Int Conf Learn Represent",
+    "ICLR"
+   ],
+   "url": "https://iclr.cc/"
+  },
+  "title": "Denoising Diffusion Implicit Models",
+  "venue": "International Conference on Learning Representations",
+  "year": 2020,
+  "citationCount": 13989,
+  "openAccessPdf": {
+   "url": "",
+   "status": null,
+   "license": null,
+   "disclaimer": "Notice: Paper or abstract available at https://arxiv.org/abs/2010.02502, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+  },
+  "publicationTypes": [
+   "JournalArticle"
+  ],
+  "authors": [
+   {
+    "authorId": "51453887",
+    "name": "Jiaming Song"
+   },
+   {
+    "authorId": "83262128",
+    "name": "Chenlin Meng"
+   },
+   {
+    "authorId": "2490652",
+    "name": "Stefano Ermon"
+   }
+  ],
+  "abstract": "Denoising diffusion probabilistic models (DDPMs) have achieved high quality image generation without adversarial training, yet they require simulating a Markov chain for many steps to produce a sample. To accelerate sampling, we present denoising diffusion implicit models (DDIMs), a more efficient class of iterative implicit probabilistic models with the same training procedure as DDPMs. In DDPMs, the generative process is defined as the reverse of a Markovian diffusion process. We construct a class of non-Markovian diffusion processes that lead to the same training objective, but whose reverse process can be much faster to sample from. We empirically demonstrate that DDIMs can produce high quality samples $10 \\times$ to $50 \\times$ faster in terms of wall-clock time compared to DDPMs, allow us to trade off computation for sample quality, and can perform semantically meaningful image interpolation directly in the latent space."
+ },
+ "Image quality assessment: from error visibility to structural similarity": {
+  "paperId": "eae2e0fa72e898c289365c0af16daf57a7a6cf40",
+  "externalIds": {
+   "DBLP": "journals/tip/WangBSS04",
+   "MAG": "2133665775",
+   "DOI": "10.1109/TIP.2003.819861",
+   "CorpusId": 207761262,
+   "PubMed": "15376593"
+  },
+  "publicationVenue": {
+   "id": "e117fa7f-05b7-4dd6-b64b-0a0a7c0393d8",
+   "name": "IEEE Transactions on Image Processing",
+   "type": "journal",
+   "alternate_names": [
+    "IEEE Trans Image Process"
+   ],
+   "issn": "1057-7149",
+   "url": "http://ieeexplore.ieee.org/servlet/opac?punumber=83",
+   "alternate_urls": [
+    "https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=83"
+   ]
+  },
+  "title": "Image quality assessment: from error visibility to structural similarity",
+  "venue": "IEEE Transactions on Image Processing",
+  "year": 2004,
+  "citationCount": 60714,
+  "openAccessPdf": {
+   "url": "http://www.cns.nyu.edu/~zwang/files/papers/ssim.pdf",
+   "status": "GREEN",
+   "license": null,
+   "disclaimer": "Notice: The following paper fields have been elided by the publisher: {'abstract'}. Paper or abstract available at https://api.unpaywall.org/v2/10.1109/TIP.2003.819861?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.1109/TIP.2003.819861, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+  },
+  "publicationTypes": [
+   "Study",
+   "JournalArticle"
+  ],
+  "authors": [
+   {
+    "authorId": "41210105",
+    "name": "Zhou Wang"
+   },
+   {
+    "authorId": "1747569",
+    "name": "A. Bovik"
+   },
+   {
+    "authorId": "2387140",
+    "name": "H. Sheikh"
+   },
+   {
+    "authorId": "1689350",
+    "name": "Eero P. Simoncelli"
+   }
+  ],
+  "abstract": null
+ }
+}

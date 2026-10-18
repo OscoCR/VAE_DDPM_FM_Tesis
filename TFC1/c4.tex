@@ -12,7 +12,14 @@ The dataset used in this work contains 4\,908 frames, stored with their estimate
 
 \subsection{Pipeline}
 
-The pipeline has two stages. A $\beta$-VAE compresses a $256\times256$ random crop of the frame, with the depth channel when it is part of the input, into a latent of shape $4\times32\times32$ \cite{Kingma2014,Higgins2017}. A generator then learns to produce latents from noise, and the decoder of the VAE turns them into images \cite{Rombach2022}. Two generators are used: DDPM, trained with 1\,000 steps \cite{Ho2020}, and Flow Matching with a linear path, sampled with 50 Euler steps \cite{Lipman2023}. Both use a convolutional U-Net without attention layers, which was shown to train stably on small homogeneous datasets \cite{Gonzalez2026}. The training recipe of the generators is the one that resulted from the audit of Chapter~V: 500 epochs with AdamW, a learning rate of $10^{-4}$ with a single cosine decay, gradient clipping at 1.0, and the scale of the latent estimated from 16 batches. Images are decoded with the mean of the output layer of the decoder, not with a sample.
+The pipeline has two stages. A $\beta$-VAE compresses a $256\times256$ random crop of the frame, with the depth channel when it is part of the input, into a latent of shape $4\times32\times32$ \cite{Kingma2014,Higgins2017}. A generator then learns to produce latents from noise, and the decoder of the VAE turns them into images \cite{Rombach2022}. Two generators are used: DDPM, trained with 1\,000 steps \cite{Ho2020}, and Flow Matching with a linear path, sampled with 50 Euler steps \cite{Lipman2023}. Both use a convolutional U-Net without attention layers, which was shown to train stably on small homogeneous datasets \cite{Gonzalez2026}. The training recipe of the generators is the one that resulted from the audit of Chapter~V: 500 epochs with AdamW, a learning rate of $10^{-4}$ with a single cosine decay, gradient clipping at 1.0, and the scale of the latent estimated from 16 batches. Images are decoded with the mean of the output layer of the decoder, not with a sample. Figure~\ref{fig:pipeline} summarizes the pipeline: the factors act on the VAE, and the latents of the training set are used to train both generators.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.98\textwidth]{Imagenes/pipeline_diagram.png}
+\caption{Pipeline of the experiments. The six factors are varied on the VAE; its latents are then used to train DDPM and Flow Matching, and the generated latents are decoded and evaluated.}
+\label{fig:pipeline}
+\end{figure}
 
 \subsection{Factors and Fixed Parameters}
 
@@ -64,7 +71,15 @@ Split of the data & by capture blocks, fixed seed \\
 
 \subsection{Evaluation}
 
-The main response is the Fr\'echet Inception Distance (FID) of the generated images, and the secondary response is the Kernel Inception Distance (KID) \cite{Heusel2017,Binkowski2018}. The reconstruction of every VAE is also measured on the 346 test images with PSNR and SSIM, and with the FID of the reconstructed images, which is what is needed to answer whether a better reconstruction leads to a better generation (RQ3). The reference set and the number of generated images are the same in every comparison. The FID computed on a finite sample is biased, and the bias depends on the model that is evaluated \cite{Chong2020}, so two models can be ranked differently only because of the size of their bias; for this reason the KID, which is unbiased, is analyzed in parallel, and a conclusion is drawn only when both agree.
+The main response is the Fr\'echet Inception Distance (FID) of the generated images, and the secondary response is the Kernel Inception Distance (KID) \cite{Heusel2017,Binkowski2018}. The reconstruction of every VAE is also measured on the 346 test images with PSNR and SSIM, and with the FID of the reconstructed images, which is what is needed to answer whether a better reconstruction leads to a better generation (RQ3). The peak signal-to-noise ratio is computed from the mean squared error between an image $x$ and its reconstruction $\hat{x}$,
+\begin{equation}
+\mathrm{PSNR}=10\log_{10}\frac{\mathrm{MAX}^{2}}{\mathrm{MSE}(x,\hat{x})},
+\end{equation}
+where $\mathrm{MAX}$ is the largest value of a pixel, here 1 because the images lie in $[0,1]$. The structural similarity index compares luminance, contrast, and structure in local windows \cite{Wang2004},
+\begin{equation}
+\mathrm{SSIM}(x,\hat{x})=\frac{(2\mu_x\mu_{\hat{x}}+c_1)(2\sigma_{x\hat{x}}+c_2)}{(\mu_x^{2}+\mu_{\hat{x}}^{2}+c_1)(\sigma_x^{2}+\sigma_{\hat{x}}^{2}+c_2)},
+\end{equation}
+with the local means $\mu$, variances $\sigma^{2}$, and covariance $\sigma_{x\hat{x}}$, and small constants $c_1$ and $c_2$ that stabilize the division. For both, higher is better, and they are reported separately for the color channels and for the depth channel. The reference set and the number of generated images are the same in every comparison. The FID computed on a finite sample is biased, and the bias depends on the model that is evaluated \cite{Chong2020}, so two models can be ranked differently only because of the size of their bias; for this reason the KID, which is unbiased, is analyzed in parallel, and a conclusion is drawn only when both agree.
 
 \section{Design of Experiments}
 

@@ -112,3 +112,16 @@ Leyenda: Meta = autores, título y año verificados en arXiv; Resumen = se leyó
 - [x] Enmascarado en el tamizaje: 50% (25% y 0 en la etapa 2). [x] Todo desde cero (Tesis II: no reciclar nada de lo preliminar); épocas fijas del VAE (~100) a confirmar en la etapa 0. [x] 3 semillas por celda, justificadas por análisis de potencia.
 - [x] Citas agregadas: Colas2018 (cuántas semillas, potencia), Bouthillier2021 (varianza en benchmarks), Agarwal2021 (pocas corridas), Hurlbert1984 (pseudorreplicación), Chong2020 (sesgo del FID).
 - [ ] Leer Colas2018 y Chong2020 completos antes de la defensa. [ ] Decidir si se usa FID infinito (extrapolado) además de KID.
+
+## J. Plan de trabajo escrito (18-oct, noche)
+- [x] c6.tex: tareas (propuesta, código, etapas 0 a 3, extensión y escritura) y cronograma de ~26 semanas con cómputo por fase.
+- [x] Plan de 6 meses (26 semanas, sin fechas) con Gantt suave (`Imagenes/gantt_workplan.png`, script `docs/s2/draw_gantt.py`); intercambio en Osnabrück como opcional (semanas 18 a 21).
+- [ ] Compilar TODO en Overleaf (nunca se ha compilado) y corregir errores de LaTeX.
+
+## K. Estado del arte y figuras (18-oct, noche)
+- [x] Related Work escrito (~1 050 palabras, 5 subsecciones + tabla de posicionamiento) con Flow Matching y publicaciones del asesor.
+- [x] Figura del pipeline (`Imagenes/pipeline_diagram.png`, script `docs/s2/draw_pipeline.py`); PSNR y SSIM definidos con ecuaciones en c4.tex.
+- [ ] (Usuario) Verificar las referencias del marco teórico sin confirmar (Goodfellow2016, Rumelhart1986, LeCun1998, Higgins2017) y compilar, al terminar todo.
+- [ ] Contexto aplicado en la Introducción (país, proyecto): pospuesto por el usuario.
+- [ ] Resumen y conclusiones: pendientes. Muestras del dataset como figura: pendiente.
+- [ ] Leer los papers del estado del arte antes de la defensa (Esser2024, Ma2024, Kong2026, Lee2025LDMAE, Chen2025 y los del profe).

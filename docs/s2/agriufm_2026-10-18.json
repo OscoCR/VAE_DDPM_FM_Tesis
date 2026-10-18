@@ -1,0 +1,63 @@
+{
+ "paperId": "61098930dab560fab0c586e04148672f67d5dfa3",
+ "externalIds": {
+  "DOI": "10.3390/agriculture16161777",
+  "CorpusId": 291308460
+ },
+ "publicationVenue": {
+  "id": "182090fa-e886-41f3-8590-443a006fb02f",
+  "name": "Agriculture",
+  "type": "journal",
+  "issn": "0002-1695",
+  "alternate_issns": [
+   "1412-4262",
+   "0551-3677",
+   "2170-1059",
+   "2077-0472"
+  ],
+  "url": "http://www.degruyter.com/view/j/agri",
+  "alternate_urls": [
+   "https://www.mdpi.com/journal/agriculture",
+   "http://www.e-helvetica.nb.admin.ch/directAccess?callnumber=bel-217909",
+   "http://nbn-resolving.de/urn/resolver.pl?urn=urn:nbn:ch:bel-217909",
+   "https://www.agriculture.sk/",
+   "https://revue-agro.univ-setif.dz/"
+  ]
+ },
+ "title": "AgriUFM: Unconditional-Flow-Matching-Based Generative Model for Creating Image–Mask Pairs of Agricultural Pests and Disease",
+ "venue": "Agriculture",
+ "year": 2026,
+ "citationCount": 0,
+ "openAccessPdf": {
+  "url": "https://doi.org/10.3390/agriculture16161777",
+  "status": "GOLD",
+  "license": "CCBY",
+  "disclaimer": "Notice: Paper or abstract available at https://api.unpaywall.org/v2/10.3390/agriculture16161777?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.3390/agriculture16161777, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+ },
+ "publicationTypes": [
+  "JournalArticle"
+ ],
+ "authors": [
+  {
+   "authorId": "2448172567",
+   "name": "Haocheng Kong"
+  },
+  {
+   "authorId": "2267374304",
+   "name": "Lei Liu"
+  },
+  {
+   "authorId": "2448216998",
+   "name": "Haotian Bai"
+  },
+  {
+   "authorId": "2108748056",
+   "name": "Xiaoyu Li"
+  },
+  {
+   "authorId": "46941577",
+   "name": "Yuefeng Du"
+  }
+ ],
+ "abstract": "Pests and diseases are key biological stress factors affecting crop yield and quality. Semantic segmentation enables pixel-level localization and severity characterization, but its performance and generalization are constrained by the high cost of high-quality pixel-level annotations, limited labeled samples, and class imbalance in agricultural datasets. We propose AgriUFM, an unconditional flow-matching framework for joint image–mask generation in agricultural pest and disease scenarios. By learning a unified continuous probability flow over the joint distribution, the framework is designed to promote structural co-evolution and spatial consistency between generated RGB images and masks. Across four evaluated datasets, AgriUFM achieved lower FID and rFID than the evaluated GAN- and diffusion-based comparators, whereas IS performance was dataset-dependent. Within the evaluated ablation configurations, uniform time sampling with 25 sampling steps and the midpoint ODE solver yielded the most favourable observed quality–efficiency trade-off. Under the held-out test protocol, the joint UFM strategy achieved higher image–mask correspondence than the M2I and I2M conditional variants. In the evaluated downstream settings, AgriUFM-generated augmentation improved MIoU and PA for U-Net and TransUNet. These results indicate that joint distribution modelling is a promising approach for structurally coherent generative augmentation in the agricultural imaging tasks studied."
+}

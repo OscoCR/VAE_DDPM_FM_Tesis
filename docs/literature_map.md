@@ -136,3 +136,18 @@ Pendiente: abrir y leer Fallah2026 y Dombrowski2026.
 - `XieLi2025VAE` (BIP 2025, 6 páginas; PDF en OneDrive/Maestria/Tesis/Papers): compara beta-VAE (beta = 0, 0.001, 0.1, 1, 10) y VQ-VAE (codebook 128/256, dimensión 64/128) con unas 4 000 imágenes de Upala Agrícola (1920x1080, vista cenital de 90 grados, reducidas a 256x256), validación cruzada de 5 pliegues, 400 épocas, lote 4, Adam 1e-4. Mide reconstrucción (FD, precision, recall, autenticidad, SSIM) y separación de plantas y fondo en el latente (PCA + t-SNE). Resultado: un beta intermedio (0.001) da el mejor balance; el VQ-VAE separa bien fondo y plantas. Un VAE preentrenado de difusión latente generaliza mal (FD 1159.9). NO evalúa generación. El README de su repositorio pide citarlo a quien use el dataset. No cambia la afirmación de novedad, que es sobre generación.
 - `Gonzalez2026` y `XieLi2025VAE` describen la misma colección de grabaciones (Upala Agrícola, vista cenital, 2 m). Nuestro `.h5` (cuadros 1920x1088, colección "vertical") es consistente con eso; falta confirmar con el asesor que es exactamente el mismo subconjunto.
 - `XieLi2025PineSORT` (CVPRW 2025): seguimiento de piñas en video de drone para estimar rendimiento, validado con 5 pliegues frente a BoTSORT y AgriSORT; resumen leído.
+
+
+## Estado del arte (Related Work) y publicaciones del profe, 18-oct-2026 (noche)
+Metadatos comprobados en Semantic Scholar (nombres como los indexa la fuente); resúmenes leídos de la API. Búsquedas en `docs/s2/` (`fm_refs`, `advisor_papers`, `fm_absence_queries`).
+| Clave | Qué se afirma en el texto | Fuente (resumen) |
+|---|---|---|
+| Lipman2023, Liu2023 | Flow Matching: regresión de campos de vectores de caminos fijos, más robusto y estable con caminos de difusión; rectified flow: trayectorias rectas, modelos eficientes | Resúmenes |
+| Esser2024, Ma2024 | A gran escala, rectified flow supera a formulaciones de difusión en texto a imagen; SiT supera a DiT con la misma arquitectura | Resúmenes |
+| Song2021 | DDIM: mismo entrenamiento, muestreo 10 a 50 veces más rápido | Resumen |
+| Kong2026 (AgriUFM) | Flow Matching para pares imagen-máscara de plagas y enfermedades: menor FID que GAN y difusión en 4 datasets, mejora la segmentación | Resumen. No es imagen aérea |
+| Lee2025LDMAE, Chen2025, He2022 | LDMAE: propiedades de un autoencoder para LDM; MAETok: forma variacional no necesaria; MAE: enmascarar 75% | Resúmenes |
+| Fallas2023, Gonzalez2023MS, Fallas2026Count, Fallas2025Pseudo | Publicaciones del profe: detección en piña con pocos ejemplos y SAM; multiespectral con fusión temprana; conteo con modelos fundacionales y 5 a 10 imágenes; calidad de pseudoetiquetas | Resúmenes |
+| Wang2004 | SSIM | Metadatos; sin resumen en la API |
+No se citaron (resumen no confirma lo que se creía): REGLUE (el resumen no habla del peso de KL) y Latent Denoising Diffusion GAN (resumen truncado, no confirma lo del GAN sin KL). Las dos candidatas quedan descartadas hasta leer el paper.
+Búsquedas de ausencia: 4 consultas de Flow Matching con agricultura, pocos datos e imágenes aéreas; solo apareció AgriUFM. Registradas en c2.tex (Complementary searches).
