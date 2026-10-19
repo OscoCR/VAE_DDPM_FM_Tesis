@@ -75,7 +75,7 @@ To experimentally evaluate the effect of varying the training data and the struc
   \item A convolutional VAE with a 4$\times$32$\times$32 latent space and two generators: DDPM and Flow Matching, both with a convolutional U-Net without attention.
   \item Quality measured with FID and KID on generated images and a fixed reference set; reconstruction measured with MSE and PSNR.
   \item Core of the study: objectives 1 to 4. Extension, if time permits: objective 5.
-  \item Extension: validation in other domains with small, homogeneous datasets, such as medical images, is left as an extension of the study and is not part of the core.
+  \item Extension: validation on a second UAV crop, or in other domains with small, homogeneous datasets, such as medical images, is left as an extension of the study and is not part of the core.
 \end{itemize}
 
 \subsection{Limitations}
@@ -85,6 +85,6 @@ To experimentally evaluate the effect of varying the training data and the struc
   \item Depth is a relative monocular estimate, not a sensor measurement.
   \item The number of seeds per condition is bounded by the computational cost (about 26 GPU hours per training run).
   \item FID is computed with a limited number of generated images (400), so it is accompanied by KID and confidence intervals.
-  \item The results correspond to one crop and one dataset; their generalization to other domains is not evaluated.
+  \item The results correspond to one crop and one dataset; their generalization to a second crop or to other domains is not evaluated.
   \item The data preparation, the input of the VAE, and the evaluation protocol differ from those of the work this proposal builds on \cite{Gonzalez2026}, so the values of FID and KID are not directly comparable with the Fr\'echet Distance reported there.
 \end{itemize}

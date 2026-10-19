@@ -1,5 +1,11 @@
 \renewcommand{\baselinestretch}{1.5}
 \chapter*{\centering \large ABSTRACT} % No numerado, centrado
-\addcontentsline{toc}{chapter}{ABSTRACT} 
+\addcontentsline{toc}{chapter}{ABSTRACT}
 \markboth{ABSTRACT}{ABSTRACT} % encabezado
-\lipsum[2-4]
+
+Plant counting from drone images needs annotated data that are few, homogeneous, and costly to label. Generating synthetic images with latent diffusion models is a way to enrich such datasets, but their quality depends on the autoencoder that defines the latent space, whose design is usually decided by manual experimentation. This proposal studies how treatments of the training data of a variational autoencoder (augmentation, random masking, selection of images, and the modality of the input, RGB or RGB with depth) and modifications of its structure (a variational output layer and an adversarial loss) affect the quality of aerial pineapple images generated with DDPM and Flow Matching, from a small, homogeneous, and multimodal dataset.
+
+The hypothesis is that these treatments and modifications reduce the FID and the KID with respect to a base VAE. It is tested with an experimental design in stages: a fractional factorial screening with replicates, a refinement of the factors that matter, and a confirmation with Flow Matching, analyzed with analysis of variance and equivalence tests. Preliminary experiments, preceded by an audit of the inherited training pipeline that corrected seven problems, show that the differences between configurations are of the size of the variability between checkpoints of a single run, and that the depth channel is the only consistent signal; this motivates the use of replicates. The expected result is evidence of which treatments and modifications matter, and which do not, for generating aerial agricultural imagery from few data.
+
+\vspace{0.5cm}
+\noindent\textbf{Keywords:} latent diffusion, variational autoencoder, Flow Matching, UAV imagery, small datasets, factorial design.

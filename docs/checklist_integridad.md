@@ -129,3 +129,8 @@ Leyenda: Meta = autores, título y año verificados en arXiv; Resumen = se leyó
 ## L. Redacción de afirmaciones de ausencia (18-oct, noche)
 - [x] Las afirmaciones del tipo "ninguno", "no hay" o "no se ha estudiado" llevan "hasta donde sabemos", "según la búsqueda de octubre de 2026" o "entre los registros recuperados". Aplicado en c2, c3 y c5.
 - [ ] Regla para cualquier texto nuevo: voz impersonal (sin "we" ni "our"); toda ausencia se respalda con "according to the literature reviewed" o "according to the search of October 2026", nunca con "to the best of our knowledge".
+
+## M. Resumen y conclusiones (18-oct, noche)
+- [x] Resumen redactado (abstract.tex, ~250 palabras, con palabras clave). Revisar con el asesor.
+- [ ] Conclusiones: se construyen junto con el usuario, con sus palabras (él pidió no recibirlas hechas). Pendiente de sus respuestas a 4 preguntas guía.
+- [x] Osnabrück: se QUITÓ como objetivo, entregable y pregunta (compromisos). Queda solo como posibilidad: "validación en un segundo cultivo" en alcance, trabajo opcional del plan y Gantt, sin nombrar la institución. Si se aprueba el intercambio, se puede subir a objetivo después.
