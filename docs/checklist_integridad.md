@@ -134,3 +134,11 @@ Leyenda: Meta = autores, título y año verificados en arXiv; Resumen = se leyó
 - [x] Resumen redactado (abstract.tex, ~250 palabras, con palabras clave). Revisar con el asesor.
 - [ ] Conclusiones: se construyen junto con el usuario, con sus palabras (él pidió no recibirlas hechas). Pendiente de sus respuestas a 4 preguntas guía.
 - [x] Osnabrück: se QUITÓ como objetivo, entregable y pregunta (compromisos). Queda solo como posibilidad: "validación en un segundo cultivo" en alcance, trabajo opcional del plan y Gantt, sin nombrar la institución. Si se aprueba el intercambio, se puede subir a objetivo después.
+
+## N. Conclusiones pospuestas (18-oct, noche)
+- [x] Conclusiones pospuestas por el usuario; capítulo desactivado en General.tex; borrador guardado en `docs/conclusiones_borrador.md`.
+- [x] Revisión estática antes de compilar: paquetes (float, graphicx, amsmath, booktabs, apacite) presentes, 0 caracteres no ASCII, llaves y entornos balanceados, 0 caracteres especiales sin escapar, 3 figuras existen, todas las citas y referencias cruzadas resuelven. Falta la compilación real en Overleaf.
+
+## O. 20-oct-2026
+- [x] El asesor confirmó que las conclusiones no son necesarias; el capítulo queda desactivado. El asesor lee el archivo el 21-oct.
+- [ ] Compilar en Overleaf y exportar el PDF; revisar el PDF página por página (tablas anchas, figuras, referencias).
