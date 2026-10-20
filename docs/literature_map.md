@@ -151,3 +151,6 @@ Metadatos comprobados en Semantic Scholar (nombres como los indexa la fuente); r
 | Wang2004 | SSIM | Metadatos; sin resumen en la API |
 No se citaron (resumen no confirma lo que se creía): REGLUE (el resumen no habla del peso de KL) y Latent Denoising Diffusion GAN (resumen truncado, no confirma lo del GAN sin KL). Las dos candidatas quedan descartadas hasta leer el paper.
 Búsquedas de ausencia: 4 consultas de Flow Matching con agricultura, pocos datos e imágenes aéreas; solo apareció AgriUFM. Registradas en c2.tex (Complementary searches).
+
+## Referencias del marco teórico: verificación final (20-oct-2026)
+Rumelhart1986 (Nature 323(6088):533-536, 1986; DOI 10.1038/323533a0) y LeCun1998 (Proc. IEEE 86(11):2278-2324, 1998; DOI 10.1109/5.726791): comprobadas en Crossref; se agregaron DOI y número. Higgins2017 (beta-VAE, ICLR 2017; 8 autores): comprobada en Semantic Scholar. Goodfellow2016 (libro, MIT Press, 2016): autores, editorial y año corroborados por una reseña que lo cita en Semantic Scholar; es un libro, sin DOI. Quedan todas las referencias del documento con metadatos verificados. Pendiente de la verificación de metadatos de Paszke2019, Kingma2015, Loshchilov2019, Loshchilov2017, He2016, Wu2018, Ronneberger2015: ya verificadas el 18-oct en Semantic Scholar.

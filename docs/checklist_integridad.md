@@ -142,3 +142,10 @@ Leyenda: Meta = autores, título y año verificados en arXiv; Resumen = se leyó
 ## O. 20-oct-2026
 - [x] El asesor confirmó que las conclusiones no son necesarias; el capítulo queda desactivado. El asesor lee el archivo el 21-oct.
 - [ ] Compilar en Overleaf y exportar el PDF; revisar el PDF página por página (tablas anchas, figuras, referencias).
+
+## P. 20-oct-2026
+- [x] Uso de IA: el asesor dijo que se permite para redacción y mejora del texto, no para hacer el proyecto. Declaración agregada al final del documento (General.tex), con los usos reales: redacción, búsqueda y verificación de literatura, revisión de código y apoyo en la ejecución, discusión del diseño, generación de figuras por scripts. Conviene comentarle al asesor que el apoyo fue más amplio que solo redacción.
+- [x] Referencias Goodfellow2016, Rumelhart1986, LeCun1998 y Higgins2017 verificadas.
+- [x] Declaración de IA: el punto (iv) se reformuló como "comparar alternativas de diseño y análisis, entre las que el autor eligió". Acordado: comentárselo al asesor explícitamente en la reunión y obtener su visto bueno; si no lo aprueba, ajustar la declaración.
+- [x] Título de la carátula en \LARGE (antes \Huge).
+- [ ] (Opcional) Hoja de defensa de una página con cada decisión del diseño y su porqué en palabras del usuario.
