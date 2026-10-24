@@ -14,6 +14,9 @@ The problem addressed by this proposal is to determine how varying the training 
 
 \section{Hypothesis}
 
+% usar cursiva para resaltar el texto de la hipótesis... es que luego vienen dos párrafos que la complementan, pero visiblemente debe resaltar el texto que corresponde solamente a la hipótesis! no sé, cursive, centrada, ahí le haces cabeza.
+
+%Por cierto, la hipótesis debe estar en un solo párrafo, es más claro, yo asumo que los demás párrafos están apoyando lo que dice la hipótesis!
 \textbf{Hypothesis.} Treatments of the training data of the VAE and modifications of its structure reduce the FID and the KID of aerial pineapple images generated through latent diffusion (DDPM and Flow Matching), compared with a base VAE trained only with random crops, on a small, homogeneous, and multimodal dataset.
 
 The treatments considered are data augmentation, random masking, image selection, and modality (with or without a depth channel); the modifications are a variational output layer and an adversarial loss with a GAN-style discriminator.
@@ -33,7 +36,7 @@ To experimentally evaluate the effect of varying the training data and the struc
   \item To compare treatments of the VAE input data: augmentation, random masking, image selection, and modality (RGB and RGB with depth).
   \item To compare structural modifications of the VAE: variational layer, adversarial loss (GAN), and regularization.
   \item To statistically analyze, with several seeds, the relationship between the reconstruction quality of the VAE and the generation quality (FID/KID).
-  \item To experiment with a pretrained self-supervised encoder (DINO) as an alternative latent space.
+  \item To explore the feasibility of using a pretrained self-supervised encoder (DINO) as an alternative latent space representation for image generation under limited training data, and to compare its performance witht the VAE baseline.
   \item To write a paper with the results of the study.
 \end{enumerate}
 
