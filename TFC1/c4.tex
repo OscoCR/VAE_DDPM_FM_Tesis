@@ -12,7 +12,7 @@ The dataset used in this work contains 4\,908 frames, stored with their estimate
 
 \subsection{Pipeline}
 
-The pipeline has two stages. A $\beta$-VAE compresses a $256\times256$ random crop of the frame, with the depth channel when it is part of the input, into a latent of shape $4\times32\times32$ \cite{Kingma2014,Higgins2017}. A generator then learns to produce latents from noise, and the decoder of the VAE turns them into images \cite{Rombach2022}. Two generators are used: DDPM, trained with 1\,000 steps \cite{Ho2020}, and Flow Matching with a linear path, sampled with 50 Euler steps \cite{Lipman2023}. Both use a convolutional U-Net without attention layers, which was shown to train stably on small homogeneous datasets \cite{Gonzalez2026}. The training recipe of the generators is the one that resulted from the audit of Chapter~V: 500 epochs with AdamW, a learning rate of $10^{-4}$ with a single cosine decay, gradient clipping at 1.0, and the scale of the latent estimated from 16 batches. Images are decoded with the mean of the output layer of the decoder, not with a sample. Figure~\ref{fig:pipeline} summarizes the pipeline: the factors act on the VAE, and the latents of the training set are used to train both generators.
+The pipeline has two stages. A $\beta$-VAE compresses a $256\times256$ random crop of the frame, with the depth channel when it is part of the input, into a latent of shape $4\times32\times32$ \cite{Kingma2014,Higgins2017}. A generator then learns to produce latents from noise, and the decoder of the VAE turns them into images \cite{Rombach2022}. Two generators are used: DDPM, trained with 1\,000 steps \cite{Ho2020}, and Flow Matching (FM) with a linear path, sampled with 50 Euler steps \cite{Lipman2023}. Both use a convolutional U-Net without attention layers, which was shown to train stably on small homogeneous datasets \cite{Gonzalez2026}. The training recipe of the generators is the one that resulted from the audit of Annex~\ref{app:audit}: 500 epochs with AdamW, a learning rate of $10^{-4}$ with a single cosine decay, gradient clipping at 1.0, and the scale of the latent estimated from 16 batches. Images are decoded with the mean of the output layer of the decoder, not with a sample. Figure~\ref{fig:pipeline} summarizes the pipeline: the factors act on the VAE, and the latents of the training set are used to train both generators.
 
 \begin{figure}[H]
 \centering
@@ -61,7 +61,7 @@ Latent and crop & $4\times32\times32$ and $256\times256$ \\
 Generator (main experiment) & DDPM, U-Net without attention, 500 epochs \\
 Checkpoint evaluated & final, fixed in advance \\
 Decoding & mean of the output layer \\
-Evaluation & 400 generated images; fixed set of real reference images \\
+Evaluation & $N>2\,048$ generated images per model, chosen in Stage~0; fixed reference set of more than 2\,048 real crops \\
 Split of the data & by capture blocks, fixed seed \\
 \hline
 \end{tabular}
@@ -71,7 +71,7 @@ Split of the data & by capture blocks, fixed seed \\
 
 \subsection{Evaluation}
 
-The main response is the Fr\'echet Inception Distance (FID) of the generated images, and the secondary response is the Kernel Inception Distance (KID) \cite{Heusel2017,Binkowski2018}. The reconstruction of every VAE is also measured on the 346 test images with PSNR and SSIM, and with the FID of the reconstructed images, which is what is needed to answer whether a better reconstruction leads to a better generation (RQ3). The peak signal-to-noise ratio is computed from the mean squared error between an image $x$ and its reconstruction $\hat{x}$,
+The main response is the Fr\'echet Inception Distance (FID) of the generated images, and the secondary response is the Kernel Inception Distance (KID) \cite{Heusel2017,Binkowski2018}. The reconstruction of every VAE is also measured on the 346 test images with PSNR and SSIM, and with the FID of the reconstructed images, which is what is needed to answer whether a better reconstruction leads to a better generation (objective 4). The peak signal-to-noise ratio is computed from the mean squared error between an image $x$ and its reconstruction $\hat{x}$,
 \begin{equation}
 \mathrm{PSNR}=10\log_{10}\frac{\mathrm{MAX}^{2}}{\mathrm{MSE}(x,\hat{x})},
 \end{equation}
@@ -80,6 +80,10 @@ where $\mathrm{MAX}$ is the largest value of a pixel, here 1 because the images 
 \mathrm{SSIM}(x,\hat{x})=\frac{(2\mu_x\mu_{\hat{x}}+c_1)(2\sigma_{x\hat{x}}+c_2)}{(\mu_x^{2}+\mu_{\hat{x}}^{2}+c_1)(\sigma_x^{2}+\sigma_{\hat{x}}^{2}+c_2)},
 \end{equation}
 with the local means $\mu$, variances $\sigma^{2}$, and covariance $\sigma_{x\hat{x}}$, and small constants $c_1$ and $c_2$ that stabilize the division. For both, higher is better, and they are reported separately for the color channels and for the depth channel. The reference set and the number of generated images are the same in every comparison. The FID computed on a finite sample is biased, and the bias depends on the model that is evaluated \cite{Chong2020}, so two models can be ranked differently only because of the size of their bias; for this reason the KID, which is unbiased, is analyzed in parallel, and a conclusion is drawn only when both agree.
+
+\textbf{Why these metrics.} The study compares configurations of the VAE under the same protocol, so what it needs from a metric is to order sets of generated images by their closeness to the real distribution, with a noise that can be measured; neither absolute quality nor usefulness in a downstream task is claimed. The FID and the KID meet this need as two estimators of the same distance between the Inception features of the real and generated images: the FID is the standard, which allows comparison with other works, including the previous work of the group \cite{Gonzalez2026}, and the KID is unbiased and does not assume that the features are normal \cite{Binkowski2018}; a conclusion is drawn only when both agree. Since Inception is trained on ImageNet and can be a limited judge of generated images \cite{Stein2023}, both metrics are also computed with the features of DINOv2, a self-supervised network \cite{Oquab2023}, as a check of robustness that is defined before the experiments; the rank correlation between the two feature extractors across the cells of Stage 1 is reported, and a disagreement is reported as a limitation. PSNR and SSIM complete the evaluation for the reconstruction. The metrics have limits that bound the conclusions: they do not detect the memorization of training images \cite{Stein2023}, the FID and the KID are computed on the RGB channels only, so the depth channel of the generated images is not evaluated (that of the reconstructions is, with the PSNR), and they do not measure the usefulness of the images for counting, which is left as future work (Chapter~III). Samples of the generated images are shown with the results to check by inspection what the metrics summarize.
+
+\textbf{Number of images.} The FID and the KID of a model are computed on a finite sample of $N$ generated images. A finite sample adds a bias that decreases as $1/N$ and a sampling noise whose variance also decreases with $N$ \cite{Chong2020}, and this noise adds to the variation between independently trained models. Since the unit of replication is the trained model, as explained for the replicates below, $N$ does not increase the degrees of freedom of the analysis; it only reduces the noise of each observation, and the bias that remains at the chosen $N$ is handled with the KID, as described above. $N$ is therefore the smallest value that meets three conditions: (i) $N>2\,048$, the dimension of the Inception features, so that their covariance matrix has full rank, a condition that also applies to the reference set, which is made of more than 2\,048 random crops of the training split, extracted once; (ii) the standard deviation of the FID due to sampling, estimated in Stage~0 from independent samples of the same models, is at most one third of the standard deviation between runs, which inflates the latter by about 5\%; and (iii) the cost of sampling fits in the budget. The experiments of Chapter~V used 400 images, a value fixed by the cost of sampling without a prior analysis, so their FID and KID are not comparable with those of the main experiments.
 
 \section{Design of Experiments}
 
@@ -91,14 +95,14 @@ Six factors cannot be studied with every combination: a full factorial design wo
   \item \textbf{Stage 0: measuring the noise.} Five replicates of the base cell, each with its own seed for the VAE and the generator. They give the standard deviation $\sigma$ of the FID between independent runs, which sets the power of the following stages and the margin used in the equivalence tests. The runs are reused as the base cell of Stage 1.
   \item \textbf{Stage 1: screening with DDPM.} Nothing is reused from the preliminary experiments: every VAE and every generator is trained from scratch with the corrected pipeline, and the preliminary results only inform the design. A fractional factorial design $2^{6-2}$ of resolution IV, with 16 cells and three replicates per cell (48 runs). It answers which of the six factors have an effect on the FID.
   \item \textbf{Stage 2: refinement.} A full factorial design with the factors that showed an effect, now with more levels where it makes sense (for example, 0, 25, and 50\% of masking).
-  \item \textbf{Stage 3: confirmation with Flow Matching.} The factors that mattered are repeated with Flow Matching in a small full factorial design (for example, $2^3$ cells with two replicates), to check that the effect does not depend on the generator.
+  \item \textbf{Stage 3: confirmation with Flow Matching.} The factors that mattered are repeated with FM in a small full factorial design (for example, $2^3$ cells with two replicates), to check that the effect does not depend on the generator.
 \end{enumerate}
 
 \subsection{Fractional Factorial Design}
 
 The $2^{6-2}$ design is generated by $E=ABC$ and $F=BCD$, with defining relation $I=ABCE=BCDF=ADEF$. Every word has four letters, so the design has resolution IV: the main effects, which are those of the hypothesis, are aliased only with interactions of three factors, and the interactions of two factors are aliased with one another in the groups $\{AB,CE\}$, $\{AC,BE\}$, $\{AD,EF\}$, $\{AF,DE\}$, $\{BD,CF\}$, $\{BF,CD\}$, and $\{AE,BC,DF\}$. The base cell, with every factor at its first level, belongs to the fraction. An effect of the adversarial loss that depends on the modality (the interaction $DF$) cannot be told apart from $AE$ and $BC$ in this stage; if it appears, Stage 2 resolves it.
 
-Each replicate is a complete run of the pipeline with different seeds, from the training of the VAE to the training of the generator, so the variation of the VAE enters the estimate of the noise. The 400 images generated by one model give one FID, so they are not replicates: treating them as such is pseudoreplication \cite{Hurlbert1984}, and the unit of replication is the independently trained model. The order of the runs is randomized, and the node and GPU of each run are recorded.
+Each replicate is a complete run of the pipeline with different seeds, from the training of the VAE to the training of the generator, so the variation of the VAE enters the estimate of the noise. The $N$ images generated by one model give one FID, so they are not replicates: treating them as such is pseudoreplication \cite{Hurlbert1984}, and the unit of replication is the independently trained model. The order of the runs is randomized, and the node and GPU of each run are recorded.
 
 \subsection{Statistical Analysis}
 
@@ -106,18 +110,36 @@ The analysis is fixed before the runs. For each stage, the FID is fitted with a 
 
 A non-significant result is not read as the absence of an effect. For each factor, an equivalence test (two one-sided tests) checks whether the effect lies within a margin $\Delta$ that is fixed after Stage 0 and before Stage 1; provisionally, $\Delta=5$ FID points, about 3\% of the FID of the base VAE. In this way, a factor without effect is reported as an effect smaller than $\Delta$, and not as an inconclusive result.
 
-To answer RQ3, the reconstruction metrics and the FID of every cell are compared with a rank correlation across the cells, together with its confidence interval. The number of replicates follows a statistical power analysis, which relates the number of random seeds to the probabilities of the errors of the test \cite{Colas2018}, and the variance due to initialization and data order must be part of the noise estimate \cite{Bouthillier2021}; with few runs, intervals are preferred to point estimates \cite{Agarwal2021}. Three replicates per cell leave 32 degrees of freedom for the error, and, if the standard deviation between runs were 5 FID points, they would allow to detect main effects of about 4 points with a power of 0.8; the real value is obtained in Stage 0, and the number of replicates is adjusted if it differs.
+To address objective 4, the reconstruction metrics and the FID of every cell are compared with a rank correlation across the cells, together with its confidence interval. The number of replicates follows a statistical power analysis, which relates the number of random seeds to the probabilities of the errors of the test \cite{Colas2018}, and the variance due to initialization and data order must be part of the noise estimate \cite{Bouthillier2021}; with few runs, intervals are preferred to point estimates \cite{Agarwal2021}. The number of replicates per cell, $r$, is the smallest that detects, with a power of 0.8, an effect of the size of the margin $\Delta$. Each factor is estimated by comparing the mean FID of the $8r$ runs in which it is on against the $8r$ in which it is off (24 against 24 when $r=3$); the other factors are on in half of each group and cancel out. The standard error of this comparison is $\sigma\sqrt{2/(8r)}$, about $0.29\,\sigma$ when $r=3$, so it decreases only with $\sqrt{r}$ while the cost grows linearly (Table~\ref{tab:replicates}). With a provisional $\sigma=5$ FID points, $r=3$ leaves 32 degrees of freedom for the error, detects main effects of about 4.2 points, and has a power of 0.92 to show that a factor without effect is equivalent to zero within $\Delta=5$; if $\sigma$ were 8, $r=6$ would be needed. The value of $\sigma$ is measured in Stage 0, but five runs give a rough estimate (four degrees of freedom), so the decision is revised with the estimate of Stage 1, which has 32 degrees of freedom: if the interval of a factor is too wide to decide against $\Delta$, that is, the result is inconclusive, one more replicate is added to every cell (a block of 16 runs, about 640 GPU hours). The replicates are also spent where they are needed: the factors that matter in Stage 1 are studied in Stage 2 with more replicates. Three replicates are the planning value, not a limit: the schedule of Chapter~VI leaves room for up to five, and $r$ is raised if the $\sigma$ measured in Stage~0 requires it; going from three to five replicates improves the detectable effect by about one FID point at the cost of 13 more days of computation, which is justified only if $\sigma$ is larger than expected.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{rrrrrr}
+\hline
+$r$ & \textbf{Runs} & \textbf{GPU hours} & \textbf{Days} & \textbf{Effect detected, $\sigma=5$} & \textbf{Effect detected, $\sigma=8$} \\
+\hline
+2 & 32 & 1\,280 & 13 & 5.3 & 8.4 \\
+3 & 48 & 1\,920 & 20 & 4.2 & 6.7 \\
+4 & 64 & 2\,560 & 27 & 3.6 & 5.7 \\
+5 & 80 & 3\,200 & 33 & 3.2 & 5.1 \\
+6 & 96 & 3\,840 & 40 & 2.9 & 4.6 \\
+\hline
+\end{tabular}
+\caption{Cost of the screening and smallest main effect detected, in FID points, as a function of the replicates per cell $r$ (power 0.8, two-sided test with $\alpha=0.05$, without adjustment for multiple comparisons, which lowers the power). Each run (VAE and generator) takes about 40 GPU hours, with four jobs in parallel.}
+\label{tab:replicates}
+\end{table}
 
 \subsection{Budget}
 
-Stage 1 requires 48 generators (about 26 hours each) and 48 VAEs trained from scratch (about 14 hours each), about 1\,900 GPU hours in total, which is about 20 days when four jobs run in parallel. Stage 0 adds two runs to the base cell, and Stage 3 about 16 generators. Because each checkpoint takes about 2.3~GB, every run is evaluated and then archived or deleted, so the storage quota of the cluster is not exceeded.
+Stage 1 requires 48 generators (about 26 hours each) and 48 VAEs trained from scratch (about 14 hours each), about 1\,900 GPU hours in total, which is about 20 days when four jobs run in parallel. Stage 0 adds two runs to the base cell, and Stage 3 about 16 generators. These figures do not include the sampling of the generated images, whose cost depends on $N$ (between 9 and 27 seconds per image with the 1\,000-step DDPM sampled one image at a time, as in the preliminary experiments) and which is reduced by sampling in batches (Chapter~VI). Because each checkpoint takes about 2.3~GB, every run is evaluated and then archived or deleted, so the storage quota of the cluster is not exceeded.
 
 \subsection{Threats to Validity}
 
 \begin{itemize}
   \item The study uses a single dataset of a single crop, and the depth is an estimate, not a measurement.
-  \item The FID computed on 400 images is biased and noisy \cite{Chong2020}, which is why it is accompanied by the KID, by replicates, and by confidence intervals.
+  \item The FID computed on a finite number of images is biased and noisy \cite{Chong2020}, which is why $N$ is chosen in Stage~0 and why it is accompanied by the KID, by replicates, and by confidence intervals.
   \item The fractional design mixes some interactions of two factors; the groups are known in advance and resolved in Stage 2.
   \item The fixed parameters (for example, the weight of the adversarial loss and the number of epochs) may interact with the factors; they are reported so that the results can be interpreted within them.
-  \item The conclusions about generation are conditioned on the DDPM of Stage 1 and are checked on Flow Matching only for the factors that mattered.
+  \item The conclusions about generation are conditioned on the DDPM of Stage 1 and are checked on FM only for the factors that mattered.
 \end{itemize}
