@@ -1,0 +1,27 @@
+\renewcommand{\baselinestretch}{1.5}
+
+\chapter{Audit of the Training Pipeline}\label{app:audit}
+
+Before comparing configurations, the training and generation code inherited from the base repository was audited. Seven problems were found, most of them present since the first commit of the base repository, and all were corrected (Table~\ref{tab:audit}).
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{p{0.04\textwidth}p{0.28\textwidth}p{0.38\textwidth}p{0.20\textwidth}}
+\hline
+\textbf{\#} & \textbf{Problem} & \textbf{Evidence} & \textbf{Correction} \\
+\hline
+1 & Learning-rate schedule completed about four cosine cycles and ended near its maximum & The total number of steps was divided by the batch size twice: 44\,800 steps assumed against 353\,600 real steps. The training loss correlates with the faulty curve ($r=0.75$) & Schedule computed from the real number of steps \\
+2 & ``Best'' checkpoint chosen by training loss with a threshold of 0.1 & The selected epochs were arbitrary (DDPM: epoch 485; FM: epochs 1, 2, 11, and 248) & Selection by validation loss \\
+3 & No gradient clipping & The FM run with the augmented VAE diverged near epoch 245 and never recovered (final FID 379) & Gradient clipping \\
+4 & Pixel noise of the variational output layer at generation time & Single-pass MSE rises by 47 to 49\%; the FID of the DDPM generations falls from 173.4 to 155.8 when the mean is decoded & Decoding with the mean \\
+5 & Scale of the latent estimated from 8 images & 0.2153 against 0.2222 estimated from more images (small effect) & Estimated from more batches \\
+6 & The decoder divides its input in place & Reusing the same latent scales it by 5.49 & Input is copied \\
+7 & Uncertainty mixes encoder and decoder noise & With decoder noise only, the correlation between uncertainty and error is still negative (Spearman $-0.36$ for the mean and $-0.51$ for the maximum) & Decoder-only estimate \\
+\hline
+\end{tabular}
+\caption{Problems found in the inherited pipeline.}
+\label{tab:audit}
+\end{table}
+
+The effect of these corrections on the FID is small: with the same VAE, the DDPM went from 155.8 (old recipe, mean decoding) to 160.1 (corrected recipe), and FM with the best checkpoint from 167.2 to 162.8. What changed is the reliability of the pipeline: a FM model that had silently collapsed now trains stably.
