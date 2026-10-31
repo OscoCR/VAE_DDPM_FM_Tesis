@@ -12,7 +12,7 @@ The dataset used in this work contains 4\,908 frames, stored with their estimate
 
 \subsection{Pipeline}
 
-The pipeline has two stages. A $\beta$-VAE compresses a $256\times256$ random crop of the frame, with the depth channel when it is part of the input, into a latent of shape $4\times32\times32$ \cite{Kingma2014,Higgins2017}. A generator then learns to produce latents from noise, and the decoder of the VAE turns them into images \cite{Rombach2022}. Two generators are used: DDPM, trained with 1\,000 steps \cite{Ho2020}, and Flow Matching (FM) with a linear path, sampled with 50 Euler steps \cite{Lipman2023}. Both use a convolutional U-Net without attention layers, which was shown to train stably on small homogeneous datasets \cite{Gonzalez2026}. The training recipe of the generators is the one that resulted from the audit of Annex~\ref{app:audit}: 500 epochs with AdamW, a learning rate of $10^{-4}$ with a single cosine decay, gradient clipping at 1.0, and the scale of the latent estimated from 16 batches. Images are decoded with the mean of the output layer of the decoder, not with a sample. Figure~\ref{fig:pipeline} summarizes the pipeline: the factors act on the VAE, and the latents of the training set are used to train both generators.
+The pipeline has two stages. A $\beta$-VAE compresses a $256\times256$ random crop of the frame, with the depth channel when it is part of the input, in which case the VAE also reconstructs it, into a latent of shape $4\times32\times32$ \cite{Kingma2014,Higgins2017}. A generator then learns to produce latents from noise, and the decoder of the VAE turns them into images \cite{Rombach2022}. Two generators are used: DDPM, trained with 1\,000 steps \cite{Ho2020}, and Flow Matching (FM) with a linear path, sampled with 50 Euler steps \cite{Lipman2023}. Both use a convolutional U-Net without attention layers, which was shown to train stably on small homogeneous datasets \cite{Gonzalez2026}. The training recipe of the generators is the one that resulted from the audit of Annex~\ref{app:audit}: 500 epochs with AdamW, a learning rate of $10^{-4}$ with a single cosine decay, gradient clipping at 1.0, and the scale of the latent estimated from 16 batches. Images are decoded with the mean of the output layer of the decoder, not with a sample. Figure~\ref{fig:pipeline} summarizes the pipeline: the factors act on the VAE, and the latents of the training set are used to train both generators.
 
 \begin{figure}[H]
 \centering
@@ -23,7 +23,7 @@ The pipeline has two stages. A $\beta$-VAE compresses a $256\times256$ random cr
 
 \subsection{Factors and Fixed Parameters}
 
-The hypothesis is tested through six factors with two levels each (Table~\ref{tab:factors}). The \emph{base} VAE is the one with every factor at its first level: it receives only RGB, is trained with random crops only, and has neither the variational output layer nor the adversarial loss.
+The hypothesis is tested through six factors with two levels each (Table~\ref{tab:factors}). The \emph{base} VAE is the one with every factor at its first level: it receives and reconstructs only RGB, is trained with random crops only, and has neither the variational output layer nor the adversarial loss.
 
 \begin{table}[H]
 \centering
@@ -35,14 +35,16 @@ The hypothesis is tested through six factors with two levels each (Table~\ref{ta
 A & Data augmentation & none & random $90^{\circ}$ rotations and flips \\
 B & Random masking of the input & none & 50\% of the input in blocks of $32\times32$ pixels \\
 C & Image selection & none & images with the largest reconstruction error repeated twice \\
-D & Modality of the input & RGB & RGB and depth \\
+D & Depth modality & RGB & RGB with estimated depth \\
 E & Variational output layer & none (deterministic decoder) & decoder predicts a mean and a variance per pixel \\
 F & Adversarial loss & none & patch discriminator with weight 0.01 \\
 \hline
 \end{tabular}
-\caption{Factors of the experiment. The target of the reconstruction is always the complete RGB-D image, whatever the input.}
+\caption{Factors of the experiment. In the first level of factor D the VAE receives and reconstructs only RGB; in the second level it receives and reconstructs RGB with estimated depth.}
 \label{tab:factors}
 \end{table}
+
+\textbf{Interpretation of factor D.} The depth channel is not measured by a second sensor: it is estimated from the same RGB image by a monocular depth estimator, and it is relative, not metric. It therefore adds no new information about the field; it offers an alternative representation of the visual information that the RGB image already contains. What factor D tests is thus whether giving the VAE this explicit, precomputed geometric representation as an additional input channel, which it also has to reconstruct, helps the generation when the data are few; in the first level, the VAE works only with RGB. The expectation, which is an intuition and not a result, is that the depth separates overlapping leaves, crowns, and soil that are similar in color, so that the latent space can encode the structure of the scene more easily. The preliminary experiments point in this direction, since adding the depth channel to the input of a VAE that already reconstructed it was the only consistent signal (Chapter~V), but they used a single seed and did not compare against a VAE that works only with RGB. The effect could also be null or negative if the errors of the depth estimator, which can be larger on repetitive textures, enter as noise. Because the FID and the KID are computed on the RGB channels, any benefit has to reach the generation through a better latent space.
 
 All the remaining parameters are fixed and reported (Table~\ref{tab:fixed}). In particular, the weight of the KL divergence of the latent is $\beta=0.001$, the value that gave the best balance between reconstruction and structure of the latent space for this plantation \cite{XieLi2025VAE}.
 
