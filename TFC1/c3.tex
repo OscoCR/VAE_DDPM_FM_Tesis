@@ -26,18 +26,11 @@ The problem motivates two research questions, which in turn motivate the hypothe
 \begin{center}
 \begin{minipage}{0.92\textwidth}
 \centering\itshape
-Treatments of the training data and modifications of its structure have a non-zero effect on the Fr\'echet Inception Distance (FID) and the Kernel Inception Distance (KID) of aerial pineapple images generated through latent diffusion (Denoising Diffusion Probabilistic Model, DDPM, and Flow Matching, FM), where the effect is the difference with respect to a base VAE trained only with random crops, on a small, homogeneous, and multimodal dataset.
-
-% Como puse varios comentarios, metí esos comentarios en Chat y me dió esto:
-
-%Treatments of the training data and architectural modifications of a variational autoencoder (VAE), individually or through their interactions, produce measurable differences in the generation quality of latent generative models (DDPM and Flow Matching), as assessed by Fréchet Inception Distance (FID) and Kernel Inception Distance (KID), when trained on small, homogeneous UAV datasets.
-
-% deja más claro y conciso, pero igual, dale una revisada y si ves que se acerca, adáptala
-
+Treatments of the training data and structural modifications of a variational autoencoder (VAE) produce measurable differences in the generation quality of latent generative models (Denoising Diffusion Probabilistic Model, DDPM, and Flow Matching, FM), as assessed by the Fr\'echet Inception Distance (FID) and the Kernel Inception Distance (KID), when trained on a small, homogeneous UAV dataset.
 \end{minipage}
 \end{center}
 
-The treatments considered are data augmentation, random masking, image selection, and modality (with or without a depth channel); the modifications are a variational output layer and an adversarial loss with a GAN-style discriminator.
+The treatments considered are data augmentation, random masking, image selection, and depth modality (RGB, or RGB with estimated depth); the modifications are a variational output layer and an adversarial loss with a GAN-style discriminator. The difference is always measured with respect to a base VAE trained only with random crops. The effect of each treatment and modification is estimated separately, and their interactions are explored as a secondary analysis.
 
 The hypothesis is supported if, across seeds, at least one treatment or modification has a statistically significant effect on the FID, with the KID pointing in the same direction (analysis of variance, with correction for multiple comparisons). It is evaluated first with DDPM, and the effects found are then checked with FM. It is refuted if the effect of every treatment and modification is equivalent to zero within a margin set from the noise measured in Stage 0 (equivalence tests); if neither holds, the evidence is inconclusive for the factors involved.
 
