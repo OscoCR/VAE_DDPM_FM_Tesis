@@ -63,7 +63,7 @@ To experimentally evaluate the effect of varying the training data and the struc
 1. Reproducible baseline & Audit report of the pipeline and of the corrected training recipe; code and configurations. \\
 2. Effect of the data & Family of VAEs trained with each data treatment; comparative table of FID/KID and reconstruction. \\
 3. Effect of the structure & VAEs with variational output layer and GAN; analysis of their effect on reconstruction and generation. \\
-4. Reconstruction versus generation & Statistical analysis (correlations, curves, confidence intervals) with several seeds. \\
+4. Reconstruction versus generation & Scatter plots of the reconstruction metrics (PSNR, SSIM, and FID of the reconstructions, on the color channels) against the FID and the KID of the generations, with the rank correlation and its confidence interval, per cell and per run; the relationship is descriptive and not causal. \\
 5. Alternative latent spaces & Prototype with a self-supervised encoder (DINO) and its comparison with the base VAE. \\
 6. Paper & Manuscript with the results of the study. \\
 \hline
