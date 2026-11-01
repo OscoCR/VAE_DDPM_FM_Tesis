@@ -2,7 +2,7 @@
 
 \chapter{Workplan}
 
-This chapter organizes the work needed to carry out the experimental design of Chapter~IV. The work is planned by calendar month (Figure~\ref{fig:gantt}): the corrections of this proposal take place from November 2026 to January 2027, the research phase starts in February 2027, and the delivery of the thesis is expected about October 2027. The periods are estimates.
+This chapter organizes the work needed to carry out the experimental design of Chapter~IV. The work is planned by calendar month (Figure~\ref{fig:gantt}): the code and the corrections of this proposal take place in November 2026, the experiments of Stages 0 and 1 run in December and January, during the university break, so that the first semester of 2027 is left for the analysis and the writing, and the delivery of the thesis is expected about October 2027. The periods are estimates.
 
 \section{Tasks}
 
@@ -19,6 +19,7 @@ This chapter organizes the work needed to carry out the experimental design of C
   \item Add a switch that turns off the variational output layer of the decoder, so that factor E can be tested.
   \item Make every replicate use its own seed for the VAE and for the generator, and record the seeds.
   \item Integrate masking and image selection in the training of the VAE as factors that can be switched on and off from the configuration.
+  \item Run a short test of the whole pipeline, from the training of the VAE to the evaluation, before the long runs.
   \item Write the evaluation scripts (FID, KID, PSNR, SSIM, and the FID of the reconstructions) so that every run is evaluated in the same way.
   \item Sample the generated images in batches, so that the number of images chosen in Stage~0 is affordable.
   \item Generate the fractional design, check its aliasing, and randomize the order of the runs; write the analysis script in R.
@@ -27,11 +28,11 @@ This chapter organizes the work needed to carry out the experimental design of C
 
 \subsection{Stage 0: Noise and Convergence}
 
-Train five replicates of the base cell, check that the VAE converges with the fixed number of epochs, estimate the standard deviation of the FID between independent runs, set the margin of the equivalence tests, and choose the number of generated images $N$ by comparing the sampling noise of the FID with the variation between runs (Chapter~IV).
+Train twelve replicates of the base cell with DDPM and, on the same VAEs, a Flow Matching generator for each; evaluate every run with all the metrics of the study; check that the VAE converges with the fixed number of epochs, estimate the standard deviation of every metric between independent runs, set the margin of the equivalence tests, and choose the number of generated images $N$ by comparing the sampling noise of the FID with the variation between runs (Chapter~IV).
 
 \subsection{Stage 1: Screening}
 
-Run the $2^{6-2}$ design with DDPM and three replicates per cell (48 runs; the period reserved for this stage leaves room for up to five replicates), evaluate every run, and analyze the results with the analysis of variance, the equivalence tests, and the correlation between reconstruction and generation.
+Run the $2^{6-2}$ design with DDPM and three replicates per cell (48 runs; if the result is inconclusive, an extra block of 16 runs, about a week of computing, fits in February), evaluate every run, and analyze the results with the analysis of variance, the equivalence tests, and the correlation between reconstruction and generation.
 
 \subsection{Stage 2: Refinement}
 
@@ -61,22 +62,23 @@ Table~\ref{tab:schedule} shows the phases with their period and the computing ti
 \small
 \begin{tabular}{p{0.30\textwidth}p{0.17\textwidth}p{0.24\textwidth}p{0.21\textwidth}}
 \hline
-\textbf{Phase} & \textbf{Period (2027)} & \textbf{Computing} & \textbf{Output} \\
+\textbf{Phase} & \textbf{Period} & \textbf{Computing} & \textbf{Output} \\
 \hline
-Proposal and corrections & Nov 2026 to Jan & -- & Approved proposal \\
-Code and infrastructure & Feb to Mar & -- & Switch, seeds, batched sampling, scripts, design \\
-Stage 0: noise and convergence & Apr & about 200 GPU hours (4 days), plus the sampling for $N$ & Standard deviation, epochs, margin, $N$ \\
-Stage 1: screening & May to Jun & about 1\,900 GPU hours (20 days); room for five replicates & 48 evaluated runs \\
-Analysis of Stage 1 & Jul & -- & Factors that matter \\
-Stage 2: refinement & Jul to Aug & about 700 GPU hours (8 days)\textsuperscript{a} & Effects and interactions \\
-Stage 3: confirmation & Aug to Sep & about 420 GPU hours (5 days) & Check with FM \\
-Final analysis and thesis & Sep to Oct & -- & Thesis \\
-Paper and thesis drafting & Feb to Sep (parallel) & -- & Paper draft \\
-Optional: DINO extension & Jul to Sep & -- & Prototype \\
+Proposal and corrections & Nov 2026 & -- & Approved proposal \\
+Code and infrastructure & Nov to early Dec & -- & Switch, seeds, batched sampling, scripts, design, test of the pipeline \\
+Stage 0: noise and convergence & Dec & about 800 GPU hours (8 days), plus the sampling for $N$ & Standard deviation of every metric, epochs, margin, $N$ \\
+Analysis of Stage 0 & late Dec & -- & Replicates, margin, $N$ \\
+Stage 1: screening & Jan to early Feb 2027 & about 1\,900 GPU hours (20 days) & 48 evaluated runs \\
+Analysis of Stage 1 & Feb & -- & Factors that matter \\
+Stage 2: refinement & Feb to Mar & about 700 GPU hours (8 days)\textsuperscript{a} & Effects and interactions \\
+Stage 3: confirmation & Mar to Apr & about 420 GPU hours (5 days) & Check with FM \\
+Final analysis and thesis & Apr to Oct & -- & Thesis \\
+Paper and thesis drafting & Nov to Sep (parallel) & -- & Paper draft \\
+Optional: DINO extension & Apr to Jun & -- & Prototype \\
 Optional: stay in Osnabr\"uck & one month, Apr to Sep & -- & Cross-crop check \\
 \hline
 \end{tabular}
-\caption{Phases of the work. \textsuperscript{a}Estimate that depends on the factors selected in Stage 1. The drafting of the paper starts in February and the results are added as they appear; the stay in Osnabr\"uck is a flexible month.}
+\caption{Phases of the work. \textsuperscript{a}Estimate that depends on the factors selected in Stage 1. The drafting of the paper starts in November and the results are added as they appear; the stay in Osnabr\"uck is a flexible month.}
 \label{tab:schedule}
 \end{table}
 
@@ -87,4 +89,4 @@ Optional: stay in Osnabr\"uck & one month, Apr to Sep & -- & Cross-crop check \\
 \label{fig:gantt}
 \end{figure}
 
-The research phase lasts about eight months, from February to October 2027. The main risks are the availability of the cluster, which limits the work to four jobs at a time, the storage quota, and runs that fail or diverge. Stage 1 is scheduled for May and June because its runs need little attention; if the standard deviation measured in Stage 0 is larger than expected, the number of replicates is increased up to five, which that period allows, and, if more were needed, the schedule would be extended.
+The work lasts about twelve months, from November 2026 to October 2027. The main risks are the availability of the cluster, which limits the work to four jobs at a time, the storage quota, and runs that fail or diverge. Stages 0 and 1 are scheduled for December and January because their runs need little attention and can be followed remotely, which leaves the first semester of 2027 for the analysis; if the standard deviation measured in Stage 0 is larger than expected, the number of replicates is increased with blocks of 16 runs, which February allows, and, if more were needed, the schedule would be extended.

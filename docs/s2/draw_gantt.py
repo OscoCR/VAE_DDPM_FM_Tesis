@@ -8,17 +8,18 @@ PAL = {"code": (186, 214, 235), "s0": (203, 228, 207), "s1": (160, 205, 170), "a
        "s2": (245, 211, 168), "s3": (240, 190, 160), "pap": (214, 200, 230), "wr": (200, 205, 215), "opt": (240, 240, 236)}
 MONTHS = ["Nov", "Dec", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct"]
 # (name, start, end, color key, soft, label); start and end in months counted from 1 November 2026
-ROWS = [("Proposal and corrections", 0, 3, "an", False, "Nov–Jan"),
-        ("Code and infrastructure", 3, 5, "code", False, "Feb–Mar"),
-        ("Stage 0: noise, convergence, N", 5, 6, "s0", False, "Apr"),
-        ("Stage 1: screening (DDPM)", 6, 8, "s1", False, "May–Jun", "room for up to five replicates"),
-        ("Analysis of Stage 1", 8, 8.6, "an", False, "Jul"),
-        ("Stage 2: refinement", 8.6, 9.6, "s2", False, "Jul–Aug"),
-        ("Stage 3: confirmation (FM)", 9.6, 10.4, "s3", False, "Aug–Sep", ""),
-        ("Final analysis and thesis", 10.2, 12, "wr", False, "Sep–Oct"),
-        ("Paper and thesis drafting (parallel)", 3, 11, "wr", True, "from February, results added as they appear"),
-        ("DINO extension (optional)", 8.6, 10.6, "opt", True, "Jul–Sep"),
-        ("Osnabrück stay (optional, one month)", 5, 11, "opt", True, "one month, date to be set (April to September)")]
+ROWS = [("Proposal and corrections", 0, 1, "an", False, "Nov"),
+        ("Code and infrastructure", 0.3, 1.4, "code", False, "Nov to early Dec"),
+        ("Stage 0: noise, convergence, N", 1.4, 1.8, "s0", False, "Dec: twelve replicates, DDPM and FM"),
+        ("Analysis of Stage 0", 1.8, 2.0, "an", False, "Dec"),
+        ("Stage 1: screening (DDPM)", 2.0, 3.2, "s1", False, "Jan to early Feb"),
+        ("Analysis of Stage 1", 3.2, 3.7, "an", False, "Feb"),
+        ("Stage 2: refinement", 3.7, 4.5, "s2", False, "Feb to Mar"),
+        ("Stage 3: confirmation (FM)", 4.5, 5.3, "s3", False, "Mar to Apr"),
+        ("Final analysis and thesis", 5.3, 12, "wr", False, "Apr to Oct"),
+        ("Paper and thesis drafting (parallel)", 0.5, 11, "wr", True, "from November, results added as they appear"),
+        ("DINO extension (optional)", 5.3, 8, "opt", True, "Apr to Jun"),
+        ("Osnabr\u00fcck stay (optional, one month)", 5, 11, "opt", True, "one month, date to be set (April to September)")]
 ROWS = [r if len(r) == 7 else r + ("",) for r in ROWS]
 W, LEFT, TOP, RH = 1700, 560, 165, 66
 MW = (W - LEFT - 40) / 12
