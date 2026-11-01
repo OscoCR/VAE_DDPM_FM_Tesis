@@ -42,7 +42,7 @@ This section presents, in sequential order, the concepts needed to follow the re
 
 A digital image is a grid of pixels. Each pixel stores one intensity value per channel: a color image has three channels (red, green, and blue), and each value is usually an 8-bit integer between 0 and 255. The dataset of this work contains aerial frames of $544\times960$ pixels, and each frame has an associated depth map, a single channel whose values are normalized per image.
 
-In PyTorch \cite{Paszke2019}, an image is represented as a \emph{tensor}, a multidimensional array of numbers that can be moved to a GPU and differentiated automatically. The convention is channels first: an image has shape $(C,H,W)$, and a batch of $N$ images has shape $(N,C,H,W)$. Before training, the integers are converted to floating-point numbers and divided by 255, so that every value lies in $[0,1]$. Table~\ref{tab:shapes} shows how the data change shape along the pipeline.
+In PyTorch \cite{Paszke2019}, an image is represented as a \emph{tensor}, a multidimensional array of numbers that can be moved to a GPU and differentiated automatically. The convention is channels first: an image has shape $(C,H,W)$, and a batch of $N$ images has shape $(N,C,H,W)$. Before training, the integers are converted to floating-point numbers and divided by 255, so that every value lies in $[0,1]$. Table~\ref{tab:shapes} shows how the data change shape along the pipeline, and Figure~\ref{fig:tensor} illustrates it with a crop of the dataset.
 
 \begin{table}[H]
 \centering
@@ -52,14 +52,22 @@ In PyTorch \cite{Paszke2019}, an image is represented as a \emph{tensor}, a mult
 \textbf{Stage} & \textbf{Shape} & \textbf{Numbers per image} \\
 \hline
 RGB frame stored in the file (height, width, channels), 8-bit & $544\times960\times3$ & 1\,566\,720 \\
-Random crop with depth, as a tensor in $[0,1]$ & $(4,256,256)$ & 262\,144 \\
-Batch used for training & $(8,4,256,256)$ & --- \\
+Random crop with estimated depth, as a tensor in $[0,1]$ & $(4,256,256)$ & 262\,144 \\
+Random crop without depth (first level of factor D) & $(3,256,256)$ & 196\,608 \\
+Batch used for training & $(8,C,256,256)$, with $C=3$ or $4$ & --- \\
 Latent produced by the encoder & $(4,32,32)$ & 4\,096 \\
 \hline
 \end{tabular}
-\caption{Tensor shapes along the pipeline. The crop has three color channels and one depth channel.}
+\caption{Tensor shapes along the pipeline. The crop has three color channels and, when the depth is used, one more channel.}
 \label{tab:shapes}
 \end{table}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{Imagenes/pixels_to_tensors.png}
+\caption{A crop of the dataset as a tensor. Each channel is a grid of numbers: the three color channels and the estimated depth, which is brighter where the surface is nearer. The red square marks the $6\times6$ pixels of the green channel whose values are shown. The latent produced by the encoder is drawn schematically: it has 64 times fewer numbers than the crop with depth, and 48 times fewer than the crop without it.}
+\label{fig:tensor}
+\end{figure}
 
 \subsection{Neural networks and learning}
 
@@ -75,7 +83,7 @@ which makes the layer sensitive to local patterns, such as the edge of a leaf, w
 
 \subsection{Autoencoders and the latent space}
 
-An autoencoder is a network with two parts: an encoder $E$ that compresses an input $x$ into a smaller representation $z=E(x)$, called the \emph{latent}, and a decoder $D$ that reconstructs the input, $\hat{x}=D(z)$. It is trained to minimize the reconstruction error. In this work, the encoder maps a $(4,256,256)$ tensor to a latent of shape $(4,32,32)$: a grid of $32\times32$ positions, each with 4 values. Each position is called a \emph{token}, and for this reason the autoencoder is also referred to as a tokenizer in the literature.
+An autoencoder is a network with two parts: an encoder $E$ that compresses an input $x$ into a smaller representation $z=E(x)$, called the \emph{latent}, and a decoder $D$ that reconstructs the input, $\hat{x}=D(z)$. It is trained to minimize the reconstruction error. In this work, the encoder maps a tensor of shape $(C,256,256)$, with $C=3$ for RGB and $C=4$ for RGB with estimated depth, to a latent of shape $(4,32,32)$ in both cases: a grid of $32\times32$ positions, each with 4 values. Each position is called a \emph{token}, and for this reason the autoencoder is also referred to as a tokenizer in the literature.
 
 \subsection{Variational autoencoders}
 
