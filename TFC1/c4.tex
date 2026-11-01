@@ -12,7 +12,7 @@ The dataset used in this work contains 4\,908 frames, stored with their estimate
 
 \subsection{Pipeline}
 
-The pipeline has two stages. A $\beta$-VAE compresses a $256\times256$ random crop of the frame, with the depth channel when it is part of the input, in which case the VAE also reconstructs it, into a latent of shape $4\times32\times32$ \cite{Kingma2014,Higgins2017}. A generator then learns to produce latents from noise, and the decoder of the VAE turns them into images \cite{Rombach2022}. Two generators are used: DDPM, trained with 1\,000 steps \cite{Ho2020}, and Flow Matching (FM) with a linear path, sampled with 50 Euler steps \cite{Lipman2023}. Both use a convolutional U-Net without attention layers, which was shown to train stably on small homogeneous datasets \cite{Gonzalez2026}. The training recipe of the generators is the one that resulted from the audit of Annex~\ref{app:audit}: 500 epochs with AdamW, a learning rate of $10^{-4}$ with a single cosine decay, gradient clipping at 1.0, and the scale of the latent estimated from 16 batches. Images are decoded with the mean of the output layer of the decoder, not with a sample. Figure~\ref{fig:pipeline} summarizes the pipeline: the factors act on the VAE, and the latents of the training set are used to train both generators.
+The pipeline has two stages. A $\beta$-VAE compresses a $256\times256$ random crop of the frame, with the depth channel when it is part of the input, in which case the VAE also reconstructs it, into a latent of shape $4\times32\times32$, that is, 4 latent channels of $32\times32$ positions in both cases \cite{Kingma2014,Higgins2017}. A generator then learns to produce latents from noise, and the decoder of the VAE turns them into images \cite{Rombach2022}. Two generators are used: DDPM, trained with 1\,000 steps \cite{Ho2020}, and Flow Matching (FM) with a linear path, sampled with 50 Euler steps \cite{Lipman2023}. Both use a convolutional U-Net without attention layers, which was shown to train stably on small homogeneous datasets \cite{Gonzalez2026}. The training recipe of the generators is the one that resulted from the audit of Annex~\ref{app:audit}: 500 epochs with AdamW, a learning rate of $10^{-4}$ with a single cosine decay, gradient clipping at 1.0, and the scale of the latent estimated from 16 batches. Images are decoded with the mean of the output layer of the decoder, not with a sample. Figure~\ref{fig:pipeline} summarizes the pipeline: the factors act on the VAE, and the latents of the training set are used to train both generators.
 
 \begin{figure}[H]
 \centering
@@ -59,7 +59,7 @@ KL weight of the latent, $\beta$ & 0.001 \cite{XieLi2025VAE} \\
 KL weight of the output layer & 0.001 \\
 VAE optimization & batch size 8, learning rate $10^{-4}$, the same number of epochs in every cell (about 100; confirmed in Stage 0) \\
 Starting point of the VAE & none: every VAE is trained from scratch \\
-Latent and crop & $4\times32\times32$ and $256\times256$ \\
+Latent (4 channels) and crop & $4\times32\times32$ and $256\times256$ \\
 Generator (main experiment) & DDPM, U-Net without attention, 500 epochs \\
 Checkpoint evaluated & final, fixed in advance \\
 Decoding & mean of the output layer \\
