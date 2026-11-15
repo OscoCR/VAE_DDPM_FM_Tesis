@@ -1,56 +1,80 @@
-% !TEX program = xelatex
-% Defensa de propuesta de tesis. Diapositivas 1 a 3 (portada, agenda, contexto).
-% Compilador: XeLaTeX (el tema Metropolis usa la fuente Fira Sans).
+% Defensa de propuesta de tesis (Beamer). Compilar con pdfLaTeX; la bibliografía sale de TFC1/biblio.bib.
+% Estilo: fondo blanco, letra Times como el documento, azul y rojo del logo del TEC.
 \documentclass[aspectratio=169,11pt]{beamer}
 
-\usetheme[progressbar=frametitle,numbering=fraction]{metropolis}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{times}
 \usepackage[spanish,es-noshorthands]{babel}
 \usepackage{graphicx}
 \usepackage{xcolor}
+\usefonttheme{serif}
+\usefonttheme{professionalfonts}
 
-% Colores: azul sobrio y un acento dorado (piña)
-\definecolor{tecblue}{HTML}{1B365D}
-\definecolor{pina}{HTML}{B87A00}
-\setbeamercolor{frametitle}{bg=tecblue,fg=white}
-\setbeamercolor{progress bar}{fg=pina,bg=tecblue!25}
-\setbeamercolor{alerted text}{fg=pina}
-\setbeamercolor{block title alerted}{bg=tecblue!10,fg=tecblue}
-\setbeamercolor{block body alerted}{bg=tecblue!5,fg=black}
-\setbeamercolor{title separator}{fg=pina}
+\definecolor{tecblue}{HTML}{0B4F8A}
+\definecolor{tecred}{HTML}{D14B32}
+\setbeamercolor{structure}{fg=tecblue}
+\setbeamercolor{alerted text}{fg=tecred}
+\setbeamercolor{enumerate item}{fg=tecred}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{itemize item}{\color{tecred}\textbullet}
+\setbeamertemplate{bibliography item}[text]
 
-% Portada
-\title{Effect of Data Processing and VAE Modifications on Latent Diffusion Image Generation with a Small Homogeneous UAV Dataset: A Case Study on Pineapple Fields}
-\subtitle{Defensa de propuesta de tesis \textbullet{} Seminario de investigación 1}
-\author{Oscar Daniel Ortega Navarro\\[2pt]\footnotesize Asesor: Fabián Fallas Moya}
-\institute{Instituto Tecnológico de Costa Rica\\ Escuela de Ciencias de la Computación \textbullet{} Programa de Maestría en Computación}
-\date{Miércoles 25 de noviembre de 2026}
-\titlegraphic{\hfill\includegraphics[height=1.1cm]{Imagenes/logo.png}}
+% Título de cada diapositiva: texto azul y una línea roja fina
+\setbeamertemplate{frametitle}{%
+  \vskip1.5ex
+  {\Large\bfseries\color{tecblue}\insertframetitle\par}
+  \vskip0.7ex
+  {\color{tecred}\hrule height 1.2pt}\vskip1ex}
 
-\setbeamerfont{title}{size=\large}
-\setbeamerfont{subtitle}{size=\normalsize}
+% Pie: autor y evento a la izquierda, número de diapositiva a la derecha
+\setbeamertemplate{footline}{%
+  \leavevmode\hbox{%
+    \begin{beamercolorbox}[wd=.85\paperwidth,ht=2.6ex,dp=1.2ex,left]{footline}
+      \hspace*{1em}\footnotesize\color{gray}Oscar Ortega\hspace{1.2em}|\hspace{1.2em}Defensa de propuesta de tesis
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.15\paperwidth,ht=2.6ex,dp=1.2ex,right]{footline}
+      \footnotesize\color{gray}\insertframenumber{} / \inserttotalframenumber\hspace*{1em}
+    \end{beamercolorbox}}\vskip0pt}
 
 \begin{document}
 
-% ---------------------------------------------------------------- 1. Portada
-\maketitle
+% ------------------------------------------------------------ 1. Portada
+\begin{frame}[plain]
+  \centering
+  \vspace*{2mm}
+  \includegraphics[height=1.5cm]{Imagenes/logo.png}\par
+  \vspace{2mm}
+  {\small Escuela de Ciencias de la Computación \quad|\quad Programa de Maestría en Computación\par}
+  \vspace{9mm}
+  {\large\bfseries\color{tecblue}Effect of Data Processing and VAE Modifications on Latent Diffusion Image Generation with a Small Homogeneous UAV Dataset: A Case Study on Pineapple Fields\par}
+  \vspace{4mm}
+  {\color{tecred}\rule{3.5cm}{1.2pt}}\par
+  \vspace{4mm}
+  {\normalsize Defensa de propuesta de tesis \quad|\quad Seminario de investigación 1\par}
+  \vspace{4mm}
+  {\large\bfseries Oscar Daniel Ortega Navarro\par}
+  {\small Asesor: Fabián Fallas Moya\par}
+  \vspace{3mm}
+  {\small Miércoles 25 de noviembre de 2026\par}
+  \note{Buenas tardes. Soy Oscar Ortega y les presento mi propuesta de tesis, con la guía del profesor Fabián Fallas: cómo el procesamiento de los datos y las modificaciones del VAE afectan la generación de imágenes con difusión latente cuando hay pocos datos.}
+\end{frame}
 
-% ---------------------------------------------------------------- 2. Agenda
+% ------------------------------------------------------------ 2. Agenda
 \begin{frame}{Agenda}
+  \large
   \begin{columns}[T]
     \begin{column}{0.48\textwidth}
-      \begin{enumerate}
-        \setlength\itemsep{4pt}
+      \begin{enumerate}\setlength\itemsep{6pt}
         \item Contexto
-        \item Problema, justificación y vacío de investigación
+        \item Problema, justificación y vacío
         \item Descripción del proyecto
-        \item Pregunta de investigación e hipótesis
+        \item Pregunta e hipótesis
         \item Objetivos
       \end{enumerate}
     \end{column}
     \begin{column}{0.48\textwidth}
-      \begin{enumerate}
-        \setcounter{enumi}{5}
-        \setlength\itemsep{4pt}
+      \begin{enumerate}\setcounter{enumi}{5}\setlength\itemsep{6pt}
         \item Evidencia preliminar
         \item Metodología y flujo estadístico
         \item Métricas y entregables
@@ -58,41 +82,41 @@
       \end{enumerate}
     \end{column}
   \end{columns}
+  \note{Voy a seguir este orden: el contexto, el problema y el vacío, mi propuesta con su pregunta, hipótesis y objetivos, la evidencia preliminar, la metodología, las métricas y entregables, y el cronograma.}
 \end{frame}
 
-% ---------------------------------------------------------------- 3. Contexto
+% ------------------------------------------------------------ 3. Contexto
 \begin{frame}{Contar piña desde el aire}
-  \begin{columns}[T]
-    \begin{column}{0.26\textwidth}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.28\textwidth}
       \centering
-      \includegraphics[width=\linewidth]{Imagenes/defensa_cuadro_real.png}\\[2pt]
-      {\tiny\color{gray} Cuadro real del conjunto de datos}
+      \includegraphics[width=\linewidth]{Imagenes/defensa_cuadro_real.png}\\[1mm]
+      {\scriptsize\color{gray}Cuadro real del conjunto de datos}
     \end{column}
-    \begin{column}{0.72\textwidth}
-      \small
-      \textbf{\color{tecblue}Por qué contar}\\
-      Cuántas plantas hay por hectárea \alert{influye mucho en cuánta fruta se cosecha}. A mano, en áreas grandes, no es práctico. \emph{Piña en Costa Rica: +40\,000 ha \textbullet{} 60\,000 a 100\,000 plantas por hectárea.}\\[-1pt]
-      {\tiny\color{gray} Kitano et al. (2019) \textbullet{} Castro (2019)}
-
-      \vspace{5pt}
-      \textbf{\color{tecblue}Cómo se cuenta con drones}\\
-      \alert{Detectores} aplicados a imágenes de dron; en piña se cuentan frutos maduros. El conteo se hace \alert{contando detecciones} o \alert{aprendiendo un mapa de densidad}.\\[-1pt]
-      {\tiny\color{gray} Shiu et al. (2023)}
-
-      \vspace{5pt}
-      \textbf{\color{tecblue}Qué lo limita}\\
-      Los datos: \alert{pocos, parecidos y caros de etiquetar}.\\[-1pt]
-      {\tiny\color{gray} González-Hernández et al. (2026) \textbullet{} Bah et al. (2018) \textbullet{} Cai et al. (2022)}
+    \begin{column}{0.68\textwidth}
+      \large
+      \begin{itemize}\setlength\itemsep{9pt}
+        \item \alert{60\,000 a 100\,000 plantas por hectárea}: cuántas hay influye en cuánta fruta se cosecha \cite{Castro2019,Kitano2019}
+        \item A mano no es práctico; \alert{detectores en imágenes de dron} cuentan los frutos \cite{Shiu2023}
+        \item El cuello de botella: \alert{pocas imágenes etiquetadas} \cite{Gonzalez2026,Bah2018}
+      \end{itemize}
     \end{column}
   \end{columns}
-
   \vfill
-  \begin{alertblock}{Una vía: imágenes sintéticas}
-    \small Ya mejoraron la detección y el conteo en otros cultivos (sorgo, vid). \alert{Esta propuesta estudia cómo generarlas bien}; no entrena el contador.
-    {\tiny\color{gray}\hfill Cai et al. (2022) \textbullet{} Hirahara et al. (2025)}
-  \end{alertblock}
+  \begin{center}
+    {\large\bfseries\color{tecblue}Una vía: generar imágenes sintéticas \cite{Cai2022,Hirahara2025}\par}
+    {\small\emph{Esta propuesta estudia cómo generarlas bien; no entrena el contador.}\par}
+  \end{center}
+  \note{El número de plantas por hectárea influye mucho en cuánta fruta se cosecha, así que interesa contarlas, pero a mano, en áreas grandes, no es práctico. Por eso se aplican detectores a imágenes de dron; en piña, para contar frutos, contando detecciones o aprendiendo un mapa de densidad. El límite son los datos: pocos, parecidos y caros de etiquetar. Una vía son las imágenes sintéticas, que ya mejoraron la detección y el conteo en otros cultivos (sorgo, vid). Mi propuesta estudia cómo generarlas bien; no entrena el contador. Respaldo por si preguntan: SPH Engineering reporta unas 2 a 2.5 ha por día a mano frente a unas 50 ha por día con dron (dato de proveedor); hoy el conteo se hace sobre todo tras el vuelo.}
 \end{frame}
 
-% ---------------------------------------------------------------- (siguientes diapositivas)
+% ------------------------------------------------------------ (siguientes diapositivas aquí)
+
+% ------------------------------------------------------------ Referencias (siempre la última)
+\begin{frame}[allowframebreaks]{Referencias}
+  \footnotesize
+  \bibliographystyle{unsrt}
+  \bibliography{TFC1/biblio}
+\end{frame}
 
 \end{document}
