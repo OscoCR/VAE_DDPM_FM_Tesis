@@ -1,5 +1,5 @@
 % Defensa de propuesta de tesis (Beamer). Compilar con pdfLaTeX; la bibliografía sale de TFC1/biblio.bib.
-% Estilo: fondo blanco, letra Times como el documento, azul y rojo del logo del TEC.
+% Estilo: fondo blanco, letra Times como el documento, azul del logo del TEC. Énfasis en negrita azul.
 \documentclass[aspectratio=169,11pt]{beamer}
 
 \usepackage[utf8]{inputenc}
@@ -14,10 +14,11 @@
 \definecolor{tecblue}{HTML}{0B4F8A}
 \definecolor{tecred}{HTML}{D14B32}
 \setbeamercolor{structure}{fg=tecblue}
-\setbeamercolor{alerted text}{fg=tecred}
-\setbeamercolor{enumerate item}{fg=tecred}
+\setbeamercolor{alerted text}{fg=tecblue}
+\setbeamerfont{alerted text}{series=\bfseries}
+\setbeamercolor{enumerate item}{fg=tecblue}
 \setbeamertemplate{navigation symbols}{}
-\setbeamertemplate{itemize item}{\color{tecred}\textbullet}
+\setbeamertemplate{itemize item}{\color{tecblue}\textbullet}
 \setbeamertemplate{bibliography item}[text]
 
 % Título de cada diapositiva: texto azul y una línea roja fina
@@ -25,7 +26,7 @@
   \vskip1.5ex
   {\Large\bfseries\color{tecblue}\insertframetitle\par}
   \vskip0.7ex
-  {\color{tecred}\hrule height 1.2pt}\vskip1ex}
+  {\color{tecblue!35}\hrule height 0.8pt}\vskip1ex}
 
 % Pie: autor y evento a la izquierda, número de diapositiva a la derecha
 \setbeamertemplate{footline}{%
@@ -49,7 +50,7 @@
   \vspace{9mm}
   {\large\bfseries\color{tecblue}Effect of Data Processing and VAE Modifications on Latent Diffusion Image Generation with a Small Homogeneous UAV Dataset: A Case Study on Pineapple Fields\par}
   \vspace{4mm}
-  {\color{tecred}\rule{3.5cm}{1.2pt}}\par
+  {\color{tecblue!60}\rule{3.5cm}{0.8pt}}\par
   \vspace{4mm}
   {\normalsize Defensa de propuesta de tesis \quad|\quad Seminario de investigación 1\par}
   \vspace{4mm}
